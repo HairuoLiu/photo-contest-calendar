@@ -13,9 +13,7 @@ import {
 } from 'date-fns'
 import type { Competition } from '../data/competitions'
 import { categoryDotMuted, cn } from '../lib/utils'
-
-const WEEKDAYS = ['一', '二', '三', '四', '五', '六', '日']
-const WEEKDAYS_FULL = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+import { useT } from '../i18n'
 
 interface Props {
   cursor: Date
@@ -28,6 +26,7 @@ interface Props {
 }
 
 export function MonthView({ cursor, byDate, onSelectDay, onHoverDay, hoveredDate }: Props) {
+  const { weekdays, t } = useT()
   const monthStart = startOfMonth(cursor)
   const gridStart = startOfWeek(monthStart, { weekStartsOn: 1 })
   const gridEnd = endOfWeek(endOfMonth(cursor), { weekStartsOn: 1 })
@@ -43,10 +42,10 @@ export function MonthView({ cursor, byDate, onSelectDay, onHoverDay, hoveredDate
     >
       <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="grid grid-cols-7 border-b border-slate-200 bg-slate-50 py-1 text-center text-sm font-semibold text-slate-500 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400 sm:py-3 sm:text-base lg:text-lg">
-          {WEEKDAYS.map((w, i) => (
-            <div key={w} className="py-2.5">
+          {weekdays.short.map((w, i) => (
+            <div key={i} className="py-2.5">
               <span className="sm:hidden">{w}</span>
-              <span className="hidden sm:inline">{WEEKDAYS_FULL[i]}</span>
+              <span className="hidden sm:inline">{weekdays.full[i]}</span>
             </div>
           ))}
         </div>
@@ -94,6 +93,7 @@ function DayCell({
   onHoverDay?: (info: { date: Date; items: Competition[] } | null) => void
 }) {
   const today = isToday(day)
+  const { t } = useT()
   return (
     <button
       type="button"
@@ -117,7 +117,7 @@ function DayCell({
       </span>
       {today && (
         <span className="absolute right-1.5 top-1.5 z-10 rounded-full bg-brand-500 px-1.5 py-0.5 text-[9px] font-bold leading-none text-white shadow">
-          今天
+          {t('nav.today')}
         </span>
       )}
       {items.length > 0 && (
@@ -129,7 +129,7 @@ function DayCell({
             />
           ))}
           <span className="nums ml-0.5 text-[10px] font-medium text-slate-400 sm:text-xs">
-            {items.length} 场
+            {t('count', { n: items.length })}
           </span>
         </div>
       )}

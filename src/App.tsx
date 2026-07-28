@@ -28,6 +28,7 @@ import { useInstallBanner } from './lib/useInstallBanner'
 import type { View } from './lib/types'
 import { REPO_URL } from './lib/config'
 import { cn } from './lib/utils'
+import { useT } from './i18n'
 
 export default function App() {
   const [view, setView] = useState<View>('month')
@@ -38,6 +39,7 @@ export default function App() {
   const [hovered, setHovered] = useState<{ date: string; items: Competition[] } | null>(null)
   const [daySheet, setDaySheet] = useState<{ date: Date; items: Competition[] } | null>(null)
   const { visible: bannerVisible, os, canInstall, dismiss: dismissBanner, install: installApp } = useInstallBanner()
+  const { t, dateLocale } = useT()
 
   // Tap a day cell → open the bottom sheet (touch-friendly, keeps the month
   // grid in context). The week view stays reachable via the 周 segmented tab.
@@ -127,10 +129,10 @@ export default function App() {
     view === 'year'
       ? format(cursor, 'yyyy')
       : view === 'month'
-        ? format(cursor, 'yyyy 年 M 月')
+        ? format(cursor, t('monthTitle'), { locale: dateLocale })
         : view === 'week'
-          ? `${format(weekStart, 'M/d')} – ${format(weekEnd, 'M/d')}`
-          : format(cursor, 'yyyy 年 M 月 d 日')
+          ? `${format(weekStart, t('weekTitle'), { locale: dateLocale })} – ${format(weekEnd, t('weekTitle'), { locale: dateLocale })}`
+          : format(cursor, t('dayTitle'), { locale: dateLocale })
 
   return (
     <MotionConfig reducedMotion="user">
@@ -190,16 +192,16 @@ export default function App() {
           <WatchlistPanel items={watchlist} />
 
           <footer className="mt-10 border-t border-slate-200 pt-6 text-center text-xs text-slate-400 dark:border-slate-800">
-            <p>Photo Contest Calendar · 一个开源、无后端的摄影赛事提醒工具 · 比赛数据保存在仓库本地文件</p>
+            <p>{t('footer.text')}</p>
             <p className="mt-1">
-              以 MIT 协议开源 ·{' '}
+              {t('footer.mit')}
               <a
                 href={REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-600 hover:underline dark:text-brand-400"
               >
-                在 GitHub 上贡献比赛
+                {t('footer.contrib')}
               </a>
             </p>
           </footer>

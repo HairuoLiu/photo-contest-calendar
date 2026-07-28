@@ -1,14 +1,8 @@
 import { Globe, Send, Users } from 'lucide-react'
 import type { Competition } from '../data/competitions'
-import {
-  categoryDotMuted,
-  categoryStyle,
-  cn,
-  daysLeftLabel,
-  feeInfo,
-  tierBadge,
-} from '../lib/utils'
+import { categoryDotMuted, categoryStyle, cn, tierBadge } from '../lib/utils'
 import { TIER_MAP } from '../data/tiers'
+import { useT } from '../i18n'
 import { differenceInCalendarDays, parseISO, startOfDay } from 'date-fns'
 
 type Urgency = 'past' | 'urgent' | 'soon' | 'future'
@@ -33,9 +27,12 @@ interface Props {
 }
 
 export function CompetitionCard({ c, compact = false, action }: Props) {
+  const { t, daysLeft, fee } = useT()
   const u = urgency(c.deadline)
-  const fee = feeInfo(c.fee)
-  const tier = tierBadge(c.tier ?? TIER_MAP[c.id])
+  const f = fee(c.fee)
+  const tierKey = c.tier ?? TIER_MAP[c.id]
+  const tierCls = tierKey ? tierBadge(tierKey)?.cls : null
+  const tierLabel = tierKey ? t(tierKey === 'elite' ? 'tier.elite' : 'tier.major') : null
   return (
     <article
       className={cn(
@@ -61,19 +58,19 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
               u.text,
             )}
           >
-            {daysLeftLabel(c.deadline)}
+            {daysLeft(c.deadline)}
           </span>
         </div>
 
         <div className="flex flex-wrap items-center gap-1.5">
-          {tier && (
-            <span className={cn('rounded-full px-2 py-0.5 text-[11px] font-semibold', tier.cls)}>
-              {tier.label}
+          {tierLabel && (
+            <span className={cn('rounded-full px-2 py-0.5 text-[11px] font-semibold', tierCls)}>
+              {tierLabel}
             </span>
           )}
           {c.confidence && (
             <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-400">
-              预估·{c.confidence === 'high' ? '高' : c.confidence === 'medium' ? '中' : '低'}
+              {t('estimate', { level: t(`level.${c.confidence}`) })}
             </span>
           )}
           <span
@@ -88,18 +85,18 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
           <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
             {c.region}
           </span>
-          {!fee.free && (
+          {!f.free && (
             <span className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-violet-500 dark:bg-violet-900/30">
-              费用
+              {t('card.feeChip')}
             </span>
           )}
           <span
             className={cn(
               'rounded-full px-2 py-0.5 text-[11px] font-semibold',
-              fee.cls,
+              f.cls,
             )}
           >
-            {fee.label}
+            {f.label}
           </span>
         </div>
 
@@ -123,7 +120,7 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
             rel="noopener noreferrer"
             className="press inline-flex items-center gap-1 rounded-lg border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
           >
-            <Globe className="h-3.5 w-3.5" /> 官网
+            <Globe className="h-3.5 w-3.5" /> {t('card.official')}
           </a>
           <a
             href={c.submitUrl}
@@ -131,7 +128,7 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
             rel="noopener noreferrer"
             className="press inline-flex items-center gap-1 rounded-lg border border-brand-300 px-2.5 py-1 text-xs font-semibold text-brand-600 transition hover:bg-brand-50 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-900/20"
           >
-            <Send className="h-3.5 w-3.5" /> 去投稿
+            <Send className="h-3.5 w-3.5" /> {t('card.submit')}
           </a>
           {action && (
             <button

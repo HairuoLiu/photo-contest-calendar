@@ -1,9 +1,9 @@
 import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
 import { CalendarOff, X } from 'lucide-react'
 import { format } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
 import type { Competition } from '../data/competitions'
 import { CompetitionCard } from './CompetitionCard'
+import { useT } from '../i18n'
 
 interface Props {
   /** The day whose details are shown, or null when the sheet is closed. */
@@ -21,6 +21,7 @@ interface Props {
  * equivalent and works fine with a mouse too.
  */
 export function DaySheet({ date, items, onClose }: Props) {
+  const { t, dateLocale, weekdays } = useT()
   return (
     <AnimatePresence>
       {date && (
@@ -48,7 +49,7 @@ export function DaySheet({ date, items, onClose }: Props) {
             }}
             role="dialog"
             aria-modal="true"
-            aria-label={format(date, 'yyyy 年 M 月 d 日', { locale: zhCN })}
+            aria-label={format(date, t('deadlineFull'), { locale: dateLocale })}
             className="grain fixed inset-x-0 bottom-0 z-[71] mx-auto flex max-h-[85vh] w-full max-w-2xl flex-col rounded-t-3xl border border-slate-200 bg-white pb-[env(safe-area-inset-bottom)] shadow-2xl dark:border-slate-700 dark:bg-slate-900"
           >
             <div className="flex justify-center pt-3">
@@ -58,19 +59,19 @@ export function DaySheet({ date, items, onClose }: Props) {
             <header className="flex items-start justify-between gap-3 px-5 pb-3 pt-2">
               <div>
                 <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
-                  {format(date, 'EEEE', { locale: zhCN })}
+                  {weekdays.full[(date.getDay() + 6) % 7]}
                 </p>
                 <h3 className="font-serif text-2xl leading-tight text-slate-900 dark:text-white">
-                  {format(date, 'M 月 d 日', { locale: zhCN })}
+                  {format(date, t('dayTitle'), { locale: dateLocale })}
                 </h3>
                 <p className="nums mt-0.5 text-sm text-slate-500 dark:text-slate-400">
-                  {items.length > 0 ? `当日 ${items.length} 场赛事截稿` : '当日无截稿赛事'}
+                  {items.length > 0 ? t('daySheet.count', { n: items.length }) : t('daySheet.none')}
                 </p>
               </div>
               <button
                 type="button"
                 onClick={onClose}
-                aria-label="关闭"
+                aria-label={t('daySheet.close')}
                 className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
               >
                 <X className="h-4 w-4" />
@@ -81,8 +82,8 @@ export function DaySheet({ date, items, onClose }: Props) {
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center gap-2 py-12 text-center text-slate-400">
                   <CalendarOff className="h-8 w-8" />
-                  <p className="text-sm">这一天没有赛事截稿</p>
-                  <p className="text-xs">圆点只标记有投稿截止的日期</p>
+                  <p className="text-sm">{t('daySheet.emptyTitle')}</p>
+                  <p className="text-xs">{t('daySheet.emptyDesc')}</p>
                 </div>
               ) : (
                 items.map((c) => <CompetitionCard key={c.id} c={c} compact />)

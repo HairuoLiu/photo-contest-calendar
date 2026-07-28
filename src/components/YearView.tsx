@@ -3,8 +3,7 @@ import { eachDayOfInterval, endOfMonth, endOfWeek, format, getMonth, getYear, is
 import type { Competition } from '../data/competitions'
 import { cn } from '../lib/utils'
 import type { View } from '../lib/types'
-
-const WEEKDAYS = ['一', '二', '三', '四', '五', '六', '日']
+import { useT } from '../i18n'
 
 const container = {
   hidden: { opacity: 0 },
@@ -22,6 +21,7 @@ interface Props {
 }
 
 export function YearView({ cursor, onSelectMonth, byDate }: Props) {
+  const { weekdays } = useT()
   const year = getYear(cursor)
   const months = Array.from({ length: 12 }, (_, i) => new Date(year, i, 1))
 
@@ -45,6 +45,7 @@ function MiniMonth({
   onSelect: () => void
   byDate: Map<string, Competition[]>
 }) {
+  const { weekdays, t, dateLocale } = useT()
   const start = startOfWeek(startOfMonth(month), { weekStartsOn: 1 })
   const end = endOfWeek(endOfMonth(month), { weekStartsOn: 1 })
   const days = eachDayOfInterval({ start, end })
@@ -67,18 +68,18 @@ function MiniMonth({
     >
       <div className="mb-2 flex items-center justify-between">
         <span className={cn('text-sm font-semibold', isCurrent ? 'text-brand-600 dark:text-brand-400' : 'text-slate-700 dark:text-slate-200')}>
-          {format(month, 'M 月')}
+          {format(month, t('miniMonth'), { locale: dateLocale })}
         </span>
         {count > 0 && (
           <span className="rounded-full bg-brand-100 px-2 py-0.5 text-[11px] font-medium text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
-            {count} 场
+            {t('count', { n: count })}
           </span>
         )}
       </div>
 
       <div className="mb-1 grid grid-cols-7 gap-0.5 text-center text-[9px] text-slate-400">
-        {WEEKDAYS.map((w) => (
-          <span key={w}>{w}</span>
+        {weekdays.short.map((w, i) => (
+          <span key={i}>{w}</span>
         ))}
       </div>
       <div className="grid grid-cols-7 gap-0.5">

@@ -3,7 +3,8 @@ import { AnimatePresence, motion, useSpring } from 'framer-motion'
 import { format, parseISO } from 'date-fns'
 import { Globe, MousePointerClick } from 'lucide-react'
 import type { Competition } from '../data/competitions'
-import { categoryDotMuted, cn, daysLeftLabel, feeInfo } from '../lib/utils'
+import { categoryDotMuted, cn } from '../lib/utils'
+import { useT } from '../i18n'
 
 interface Props {
   hovered: { date: string; items: Competition[] } | null
@@ -25,6 +26,7 @@ const SPRING = { stiffness: 260, damping: 30, mass: 0.9 }
  * window mousemove listener while shown, and eased with a spring.
  */
 export function HoverBubble({ hovered }: Props) {
+  const { t, daysLeft, fee, dateLocale } = useT()
   const [pos, setPos] = useState({ x: 0, y: 0 })
   const ref = useRef<HTMLDivElement>(null)
   const x = useSpring(0, SPRING)
@@ -66,9 +68,9 @@ export function HoverBubble({ hovered }: Props) {
         >
           <div className="mb-2 flex items-center justify-between gap-2">
             <div>
-              <p className="text-[10px] font-medium uppercase tracking-wider text-slate-400">悬停预览</p>
+              <p className="text-[10px] font-medium uppercase tracking-wider text-slate-400">{t('hover.title')}</p>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                {format(parseISO(hovered.date), 'M 月 d 日')} · 共 {items.length} 场截止
+                {format(parseISO(hovered.date), t('dayTitle'), { locale: dateLocale })} · {t('hover.dueCount', { n: items.length })}
               </h3>
             </div>
             <MousePointerClick className="h-5 w-5 shrink-0 text-brand-400" />
@@ -76,7 +78,7 @@ export function HoverBubble({ hovered }: Props) {
 
           <div className="space-y-2">
             {items.slice(0, MAX_ROWS).map((c) => {
-              const fee = feeInfo(c.fee)
+              const f = fee(c.fee)
               return (
                 <div
                   key={c.id}
@@ -98,11 +100,11 @@ export function HoverBubble({ hovered }: Props) {
                       <span className={cn('h-1.5 w-1.5 rounded-full', categoryDotMuted(c.category))} />
                       {c.category}
                     </span>
-                    <span className={cn('rounded-full px-1.5 py-0.5 text-[10px] font-bold', fee.cls)}>
-                      {fee.free ? '免费' : `费用 ${fee.label}`}
+                    <span className={cn('rounded-full px-1.5 py-0.5 text-[10px] font-bold', f.cls)}>
+                      {f.free ? t('card.free') : `${t('card.feeChip')} ${f.label}`}
                     </span>
                     <span className="nums ml-auto text-[10px] font-medium text-slate-500 dark:text-slate-400">
-                      {daysLeftLabel(c.deadline)}
+                      {daysLeft(c.deadline)}
                     </span>
                   </div>
                 </div>
@@ -111,9 +113,9 @@ export function HoverBubble({ hovered }: Props) {
           </div>
 
           {overflow > 0 && (
-            <p className="mt-2 text-center text-[11px] font-medium text-slate-400">
-              还有 {overflow} 场 · 点击该日期查看全部 →
-            </p>
+              <p className="mt-2 text-center text-[11px] font-medium text-slate-400">
+                {t('hover.more', { n: overflow })}
+              </p>
           )}
         </motion.div>
       )}
