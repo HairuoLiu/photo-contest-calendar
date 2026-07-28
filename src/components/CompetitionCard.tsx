@@ -1,6 +1,6 @@
-import { Globe, Send } from 'lucide-react'
+import { Globe, Send, Users } from 'lucide-react'
 import type { Competition } from '../data/competitions'
-import { categoryStyle, cn, daysLeftLabel } from '../lib/utils'
+import { categoryStyle, cn, daysLeftLabel, feeInfo, regionFlag } from '../lib/utils'
 import { differenceInCalendarDays, parseISO, startOfDay } from 'date-fns'
 
 type Urgency = 'past' | 'urgent' | 'soon' | 'future'
@@ -24,6 +24,8 @@ interface Props {
 
 export function CompetitionCard({ c, compact = false, action }: Props) {
   const u = urgency(c.deadline)
+  const fee = feeInfo(c.fee)
+  const flag = regionFlag(c.region)
   return (
     <article
       className={cn(
@@ -34,11 +36,14 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
       <span className={cn('absolute inset-y-0 left-0 w-1.5', u.bar)} aria-hidden />
       <div className={cn('pl-2', compact ? 'space-y-1.5' : 'space-y-2')}>
         <div className="flex items-start justify-between gap-2">
-          <div className="min-w-0">
-            <p className="text-[11px] font-medium uppercase tracking-wide text-slate-400">{c.name}</p>
-            <h3 className={cn('truncate font-semibold text-slate-900 dark:text-slate-100', compact ? 'text-sm' : 'text-base')}>
-              {c.nameZh}
-            </h3>
+          <div className="flex min-w-0 items-center gap-1.5">
+            {flag && <span className="text-base leading-none" aria-hidden>{flag}</span>}
+            <div className="min-w-0">
+              <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">{c.name}</p>
+              <h3 className={cn('truncate font-semibold text-slate-900 dark:text-slate-100', compact ? 'text-sm' : 'text-base')}>
+                {c.nameZh}
+              </h3>
+            </div>
           </div>
           <span
             className={cn(
@@ -57,19 +62,33 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
           <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
             {c.region}
           </span>
+          {!fee.free && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-violet-500 dark:bg-violet-900/30">
+              费用
+            </span>
+          )}
           <span
             className={cn(
-              'rounded-full px-2 py-0.5 text-[11px] font-medium',
-              c.fee === 'Free'
-                ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300'
-                : 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+              'rounded-full px-2 py-0.5 text-[11px] font-semibold',
+              fee.cls,
             )}
           >
-            {c.fee === 'Free' ? '免费' : '付费'}
+            {fee.label}
           </span>
         </div>
 
-        {!compact && <p className="line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{c.description}</p>}
+        {compact ? (
+          <p className="line-clamp-1 text-xs text-slate-500 dark:text-slate-400">{c.description}</p>
+        ) : (
+          <p className="line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{c.description}</p>
+        )}
+
+        {c.entryType && (
+          <p className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400">
+            <Users className="h-3 w-3 shrink-0" aria-hidden />
+            {c.entryType}
+          </p>
+        )}
 
         <div className="flex flex-wrap items-center gap-2 pt-0.5">
           <a

@@ -69,3 +69,41 @@ export const CATEGORY_DOT: Record<string, string> = {
 export function categoryDot(category: string): string {
   return CATEGORY_DOT[category] ?? 'bg-slate-400'
 }
+
+/** Country flag emoji for a competition's region. Global has no country flag. */
+export const REGION_FLAG: Record<string, string> = {
+  Global: '',
+  Japan: '🇯🇵',
+  UK: '🇬🇧',
+  USA: '🇺🇸',
+  France: '🇫🇷',
+  Germany: '🇩🇪',
+  China: '🇨🇳',
+  Italy: '🇮🇹',
+  Netherlands: '🇳🇱',
+  Switzerland: '🇨🇭',
+  Spain: '🇪🇸',
+  Canada: '🇨🇦',
+  Australia: '🇦🇺',
+}
+
+export function regionFlag(region: string): string {
+  return REGION_FLAG[region] ?? ''
+}
+
+/** Resolve a fee string (e.g. 'Free', '$30', '€25', '£12') to display info. */
+export function feeInfo(fee: string): { free: boolean; label: string; cls: string } {
+  const f = (fee ?? '').trim()
+  if (f === '' || f.toLowerCase() === 'free') {
+    return {
+      free: true,
+      label: '免费',
+      cls: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+    }
+  }
+  return {
+    free: false,
+    label: f,
+    cls: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
+  }
+}

@@ -19,7 +19,7 @@ interface Props {
 const VIEWS: [View, string][] = [
   ['year', '年'],
   ['month', '月'],
-  ['day', '日'],
+  ['week', '周'],
 ]
 
 export function Header({ view, setView, title, onPrev, onNext, onToday, theme, setTheme }: Props) {
@@ -31,8 +31,10 @@ export function Header({ view, setView, title, onPrev, onNext, onToday, theme, s
             <Camera className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold leading-tight text-slate-900 dark:text-white">Photo Contest Calendar</h1>
-            <p className="text-xs text-slate-500 dark:text-slate-400">全球摄影赛事日历 · 投稿截止提醒</p>
+            <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+              Photo Contest Calendar
+            </h1>
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">全球摄影赛事日历 · 投稿截止提醒</p>
           </div>
         </div>
 
@@ -43,7 +45,7 @@ export function Header({ view, setView, title, onPrev, onNext, onToday, theme, s
             rel="noopener noreferrer"
             className="press inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
           >
-            <Github className="h-4 w-4" /> 收藏
+            <Github className="h-4 w-4" /> GitHub
           </a>
           <button
             type="button"

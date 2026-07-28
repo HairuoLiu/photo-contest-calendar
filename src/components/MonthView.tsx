@@ -104,13 +104,12 @@ export function MonthView({ cursor, setCursor, byDate, onSelectDay, onHoverDay, 
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="grid grid-cols-7"
           >
-            {days.map((d, i) => (
+            {days.map((d) => (
               <DayCell
                 key={format(d, 'yyyy-MM-dd')}
                 day={d}
                 outside={!isSameMonth(d, monthStart)}
                 items={byDate.get(format(d, 'yyyy-MM-dd')) ?? []}
-                index={i}
                 onSelectDay={onSelectDay}
                 onHoverDay={onHoverDay}
               />
@@ -126,14 +125,12 @@ function DayCell({
   day,
   outside,
   items,
-  index,
   onSelectDay,
   onHoverDay,
 }: {
   day: Date
   outside: boolean
   items: Competition[]
-  index: number
   onSelectDay: (d: Date) => void
   onHoverDay?: (info: { date: Date; items: Competition[] } | null) => void
 }) {
@@ -143,10 +140,8 @@ function DayCell({
       type="button"
       onClick={() => onSelectDay(day)}
       onMouseEnter={() => onHoverDay?.(items.length ? { date: day, items } : null)}
-      style={{ animationDelay: `${Math.min(index, 30) * 12}ms` }}
       className={cn(
-        'animate-fade-in relative flex min-h-[76px] flex-col gap-1.5 border-b border-r border-slate-100 p-2 text-left transition hover:bg-brand-50/60 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-slate-800 dark:hover:bg-brand-900/10 sm:min-h-[104px] lg:min-h-[128px] xl:min-h-[152px] 2xl:min-h-[176px]',
-        index % 7 === 6 && 'border-r-0',
+        'relative flex min-h-[76px] flex-col gap-1.5 border-b border-r border-slate-100 p-2 text-left transition hover:bg-brand-50/60 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-slate-800 dark:hover:bg-brand-900/10 sm:min-h-[104px] lg:min-h-[128px] xl:min-h-[152px] 2xl:min-h-[176px]',
         outside && 'bg-slate-50/60 text-slate-300 dark:bg-slate-900/40 dark:text-slate-600',
         today && 'bg-brand-50/70 ring-1 ring-inset ring-brand-400/60 dark:bg-brand-900/20',
       )}
@@ -170,7 +165,7 @@ function DayCell({
             <span key={c.id} className={cn('h-2.5 w-2.5 rounded-full', categoryDot(c.category))} />
           ))}
           {items.length > 4 && <span className="text-[11px] font-medium text-slate-400 sm:text-xs">+{items.length - 4}</span>}
-          <span className="ml-0.5 text-[11px] font-medium text-slate-400 sm:text-xs">{items.length} 场</span>
+          <span className="ml-0.5 hidden text-[11px] font-medium text-slate-400 sm:inline sm:text-xs">{items.length} 场</span>
         </div>
       )}
     </button>
