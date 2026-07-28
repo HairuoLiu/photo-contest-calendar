@@ -1,11 +1,14 @@
 import { Globe, Send, Users } from 'lucide-react'
 import type { Competition } from '../data/competitions'
-import { categoryStyle, cn, daysLeftLabel, feeInfo, regionFlag } from '../lib/utils'
+import { categoryStyle, cn, daysLeftLabel, feeInfo, regionFlag, tierBadge } from '../lib/utils'
+import { TIER_MAP } from '../data/tiers'
 import { differenceInCalendarDays, parseISO, startOfDay } from 'date-fns'
 
 type Urgency = 'past' | 'urgent' | 'soon' | 'future'
 
 function urgency(deadline: string): { level: Urgency; bar: string; text: string } {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(deadline))
+    return { level: 'future', bar: 'bg-slate-300 dark:bg-slate-700', text: 'text-slate-500' }
   const today = startOfDay(new Date())
   const dl = startOfDay(parseISO(deadline))
   const diff = differenceInCalendarDays(dl, today)
@@ -26,6 +29,7 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
   const u = urgency(c.deadline)
   const fee = feeInfo(c.fee)
   const flag = regionFlag(c.region)
+  const tier = tierBadge(c.tier ?? TIER_MAP[c.id])
   return (
     <article
       className={cn(
@@ -56,6 +60,16 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
         </div>
 
         <div className="flex flex-wrap items-center gap-1.5">
+          {tier && (
+            <span className={cn('rounded-full px-2 py-0.5 text-[11px] font-semibold', tier.cls)}>
+              {tier.label}
+            </span>
+          )}
+          {c.confidence && (
+            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+              预估·{c.confidence === 'high' ? '高' : c.confidence === 'medium' ? '中' : '低'}
+            </span>
+          )}
           <span className={cn('rounded-full px-2 py-0.5 text-[11px] font-medium', categoryStyle(c.category))}>
             {c.category}
           </span>

@@ -20,6 +20,7 @@ import { MonthView } from './components/MonthView'
 import { WeekView } from './components/WeekView'
 import { HoverBubble } from './components/HoverBubble'
 import { UpcomingPanel } from './components/UpcomingPanel'
+import { WatchlistPanel } from './components/WatchlistPanel'
 import { InstallBanner } from './components/InstallBanner'
 import { useInstallBanner } from './lib/useInstallBanner'
 import type { View } from './lib/types'
@@ -52,13 +53,20 @@ export default function App() {
 
   const byDate = useMemo(() => {
     const m = new Map<string, Competition[]>()
+    const iso = /^\d{4}-\d{2}-\d{2}$/
     for (const c of competitions) {
+      if (!iso.test(c.deadline)) continue // 'TBD' entries live in the watchlist, not the date grid
       const arr = m.get(c.deadline) ?? []
       arr.push(c)
       m.set(c.deadline, arr)
     }
     return m
   }, [])
+
+  const watchlist = useMemo(
+    () => competitions.filter((c) => !/^\d{4}-\d{2}-\d{2}$/.test(c.deadline)),
+    [],
+  )
 
   const goToMonth = (d: Date) => {
     setCursor(d)
@@ -133,6 +141,8 @@ export default function App() {
           <section className="mt-6">
             <UpcomingPanel byDate={byDate} onSelectDay={goToWeek} />
           </section>
+
+          <WatchlistPanel items={watchlist} />
 
           <main className="mt-6">
             <AnimatePresence mode="wait">
