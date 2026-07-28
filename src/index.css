@@ -124,11 +124,11 @@ body {
 }
 
 /* Reusable film-grain texture for elevated surfaces (bottom sheet, cards).
-   The element must be positioned (it is: fixed or relative) so ::after can
-   anchor to it. border-radius:inherit keeps the noise clipped to rounded corners. */
-.grain {
-  position: relative;
-}
+   IMPORTANT: do NOT set `position` here — that would override Tailwind's
+   `fixed`/`absolute` utilities on the host element (CSS source order wins for
+   equal specificity) and break fixed overlays. The host is already positioned
+   (the sheet is `fixed`), so the absolute ::after anchors to it correctly.
+   border-radius:inherit keeps the noise clipped to rounded corners. */
 .grain::after {
   content: '';
   position: absolute;
