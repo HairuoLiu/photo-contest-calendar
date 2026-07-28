@@ -6,12 +6,21 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/%3E%3Ccircle cx='12' cy='13' r='3'/%3E%3C/svg%3E"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="全球摄影比赛日历 · 一个开源、无后端的摄影投稿截止提醒工具。年/月/日视图，闪卡式截止提醒。"
+      content="全球摄影比赛日历 · 一个开源、无后端的摄影投稿截止提醒工具。年/月/周视图，悬停预览，可添加到主屏幕像 App 一样使用。"
     />
     <title>📸 Photo Contest Calendar · 全球摄影赛事日历</title>
+
+    <!-- PWA / Add-to-Home-Screen support -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta name="theme-color" content="#f97316" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="摄影赛事日历" />
     <script>
       // Apply theme before paint to avoid flash-of-wrong-theme.
       (function () {

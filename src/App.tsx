@@ -20,8 +20,11 @@ import { MonthView } from './components/MonthView'
 import { WeekView } from './components/WeekView'
 import { HoverBubble } from './components/HoverBubble'
 import { UpcomingPanel } from './components/UpcomingPanel'
+import { InstallBanner } from './components/InstallBanner'
+import { useInstallBanner } from './lib/useInstallBanner'
 import type { View } from './lib/types'
 import { REPO_URL } from './lib/config'
+import { cn } from './lib/utils'
 
 export default function App() {
   const [view, setView] = useState<View>('month')
@@ -30,6 +33,7 @@ export default function App() {
     typeof document !== 'undefined' && document.documentElement.classList.contains('dark') ? 'dark' : 'light',
   )
   const [hovered, setHovered] = useState<{ date: string; items: Competition[] } | null>(null)
+  const { visible: bannerVisible, os, canInstall, dismiss: dismissBanner, install: installApp } = useInstallBanner()
 
   const handleHoverDay = (info: { date: Date; items: Competition[] } | null) => {
     setHovered(info ? { date: format(info.date, 'yyyy-MM-dd'), items: info.items } : null)
@@ -59,14 +63,19 @@ export default function App() {
   const goToMonth = (d: Date) => {
     setCursor(d)
     setView('month')
+    setHovered(null)
   }
   const goToWeek = (d: Date) => {
     setCursor(d)
     setView('week')
+    // Leaving the month grid: drop any hover preview so it doesn't stick
+    // onto the clicked day after we navigate into the week detail view.
+    setHovered(null)
   }
   const goToday = () => {
     setCursor(new Date())
     setView('month')
+    setHovered(null)
   }
 
   const handlePrev = () => {
@@ -96,7 +105,20 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="min-h-full app-bg">
-        <div className="mx-auto max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8 2xl:max-w-[1800px]">
+        <InstallBanner
+          visible={bannerVisible}
+          os={os}
+          canInstall={canInstall}
+          onInstall={installApp}
+          onDismiss={dismissBanner}
+        />
+
+        <div
+          className={cn(
+            'mx-auto max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8 2xl:max-w-[1800px]',
+            bannerVisible && 'pt-20',
+          )}
+        >
           <Header
             view={view}
             setView={setView}
@@ -150,7 +172,9 @@ export default function App() {
           </footer>
         </div>
 
-        <HoverBubble hovered={hovered} />
+        {/* The hover bubble only belongs to the month grid; never show it in
+            year/week views (and it is already cleared on navigation above). */}
+        <HoverBubble hovered={view === 'month' ? hovered : null} />
       </div>
     </MotionConfig>
   )

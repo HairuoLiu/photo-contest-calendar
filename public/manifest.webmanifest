@@ -1,0 +1,33 @@
+{
+  "name": "Photo Contest Calendar · 全球摄影赛事日历",
+  "short_name": "摄影赛事日历",
+  "description": "一个开源、无后端的全球摄影比赛投稿截止日历。年/月/周视图，悬停预览，可添加到主屏幕像 App 一样使用。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff7ed",
+  "theme_color": "#f97316",
+  "lang": "zh-CN",
+  "categories": ["productivity", "photography", "education"],
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
