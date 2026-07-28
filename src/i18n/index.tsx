@@ -96,9 +96,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('popstate', onPop)
   }, [])
 
-  // Keep <html lang> in sync so screen readers + fonts behave.
+  // Keep <html lang> in sync so screen readers + fonts behave, and give each
+  // language sub-page its own browser-tab title (e.g. /en vs /zh-CN).
   useEffect(() => {
     document.documentElement.lang = lang
+    const title = DICT[lang]?.siteTitle ?? DICT.en.siteTitle
+    if (title) document.title = title
   }, [lang])
 
   const value = useMemo<I18nValue>(() => {

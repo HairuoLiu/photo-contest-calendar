@@ -34,6 +34,7 @@ export const DICT: Record<Lang, Dict> = {
   en: {
     'language.toggle': 'Change language',
     tagline: 'Global photography contest calendar · Deadline reminders',
+    'siteTitle': 'Photo Contest Calendar · Global photography contest calendar',
     github: 'GitHub',
     themeToggle: 'Toggle dark / light theme',
     'view.year': 'Year',
@@ -102,6 +103,7 @@ export const DICT: Record<Lang, Dict> = {
   'zh-CN': {
     'language.toggle': '切换语言',
     tagline: '全球摄影赛事日历 · 投稿截止提醒',
+    'siteTitle': 'Photo Contest Calendar · 全球摄影赛事日历',
     github: 'GitHub',
     themeToggle: '切换深色 / 浅色主题',
     'view.year': '年',
@@ -168,6 +170,7 @@ export const DICT: Record<Lang, Dict> = {
   'zh-TW': {
     'language.toggle': '切換語言',
     tagline: '全球攝影賽事日曆 · 投稿截止提醒',
+    'siteTitle': 'Photo Contest Calendar · 全球攝影賽事日曆',
     github: 'GitHub',
     themeToggle: '切換深色 / 淺色主題',
     'view.year': '年',
@@ -234,6 +237,7 @@ export const DICT: Record<Lang, Dict> = {
   ja: {
     'language.toggle': '言語を切り替え',
     tagline: '世界の写真コンテストカレンダー · 締切リマインダー',
+    'siteTitle': 'Photo Contest Calendar · 世界の写真コンテストカレンダー',
     github: 'GitHub',
     themeToggle: 'ダーク / ライトテーマを切り替え',
     'view.year': '年',
