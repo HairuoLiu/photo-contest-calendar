@@ -20,6 +20,7 @@ import { YearView } from './components/YearView'
 import { MonthView } from './components/MonthView'
 import { WeekView } from './components/WeekView'
 import { HoverBubble } from './components/HoverBubble'
+import { DaySheet } from './components/DaySheet'
 import { UpcomingPanel } from './components/UpcomingPanel'
 import { WatchlistPanel } from './components/WatchlistPanel'
 import { InstallBanner } from './components/InstallBanner'
@@ -35,7 +36,27 @@ export default function App() {
     typeof document !== 'undefined' && document.documentElement.classList.contains('dark') ? 'dark' : 'light',
   )
   const [hovered, setHovered] = useState<{ date: string; items: Competition[] } | null>(null)
+  const [daySheet, setDaySheet] = useState<{ date: Date; items: Competition[] } | null>(null)
   const { visible: bannerVisible, os, canInstall, dismiss: dismissBanner, install: installApp } = useInstallBanner()
+
+  // Tap a day cell → open the bottom sheet (touch-friendly, keeps the month
+  // grid in context). The week view stays reachable via the 周 segmented tab.
+  const openDay = (d: Date) => {
+    const items = byDate.get(format(d, 'yyyy-MM-dd')) ?? []
+    setDaySheet({ date: d, items })
+    setHovered(null)
+  }
+
+  // Lock background scroll while the sheet is open (mobile address-bar jitter
+  // avoidance + no accidental scroll behind the sheet).
+  useEffect(() => {
+    if (!daySheet) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [daySheet])
 
   const handleHoverDay = (info: { date: Date; items: Competition[] } | null) => {
     setHovered(info ? { date: format(info.date, 'yyyy-MM-dd'), items: info.items } : null)
@@ -153,7 +174,7 @@ export default function App() {
                   key="month"
                   cursor={cursor}
                   byDate={byDate}
-                  onSelectDay={goToWeek}
+                  onSelectDay={openDay}
                   onHoverDay={handleHoverDay}
                   hoveredDate={hovered?.date ?? null}
                 />
@@ -187,6 +208,14 @@ export default function App() {
         {/* The hover bubble only belongs to the month grid; never show it in
             year/week views (and it is already cleared on navigation above). */}
         <HoverBubble hovered={view === 'month' ? hovered : null} />
+
+        {/* Mobile-first day detail: tap any day → bottom sheet with that day's
+            competitions, without leaving the month grid. */}
+        <DaySheet
+          date={daySheet?.date ?? null}
+          items={daySheet?.items ?? []}
+          onClose={() => setDaySheet(null)}
+        />
       </div>
     </MotionConfig>
   )

@@ -38,10 +38,15 @@ export default {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
+        'today-pulse': {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(249, 115, 22, 0.45)' },
+          '50%': { boxShadow: '0 0 0 7px rgba(249, 115, 22, 0)' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.4s ease-out both',
         shimmer: 'shimmer 2.5s linear infinite',
+        'today-pulse': 'today-pulse 2.4s ease-in-out infinite',
       },
     },
   },

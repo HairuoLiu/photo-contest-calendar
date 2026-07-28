@@ -110,7 +110,7 @@ function DayCell({
       <span
         className={cn(
           'flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold transition sm:h-9 sm:w-9 sm:text-base lg:h-10 lg:w-10 lg:text-lg',
-          today ? 'bg-brand-500 text-white' : 'text-slate-700 dark:text-slate-200',
+          today ? 'animate-today-pulse bg-brand-500 text-white' : 'text-slate-700 dark:text-slate-200',
         )}
       >
         {format(day, 'd')}
@@ -128,10 +128,9 @@ function DayCell({
               className={cn('h-2 w-2 rounded-full ring-1 ring-black/5', categoryDotMuted(c.category))}
             />
           ))}
-          {items.length > 4 && (
-            <span className="nums text-[11px] font-medium text-slate-400 sm:text-xs">+{items.length - 4}</span>
-          )}
-          <span className="nums ml-0.5 hidden text-[11px] font-medium text-slate-400 sm:inline sm:text-xs">{items.length} 场</span>
+          <span className="nums ml-0.5 text-[10px] font-medium text-slate-400 sm:text-xs">
+            {items.length} 场
+          </span>
         </div>
       )}
     </button>

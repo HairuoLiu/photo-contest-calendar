@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react'
 import { format } from 'date-fns'
 import type { View } from '../lib/types'
@@ -24,37 +23,35 @@ const VIEWS: [View, string][] = [
  * above the calendar grid) so the controls that drive the calendar sit next to
  * the calendar — not on top of the "本周/本月截止" panels, which they don't
  * control.
+ *
+ * NOTE: each button carries its own active background. We deliberately avoid a
+ * single shared `layoutId` pill — on touch devices the absolute-positioned
+ * shared element would ghost over the sibling labels and blank them out after a
+ * tap. Self-contained per-button state is bulletproof on mobile.
  */
 export function CalendarControls({ view, setView, title, onPrev, onNext, onToday }: Props) {
   return (
     <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
       <div className="inline-flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        {VIEWS.map(([v, label]) => (
-          <button
-            key={v}
-            type="button"
-            onClick={() => setView(v)}
-            className="press relative rounded-lg px-4 py-1.5 text-sm font-medium transition"
-          >
-            {view === v && (
-              <motion.span
-                layoutId="view-pill"
-                className="absolute inset-0 rounded-lg bg-slate-900 dark:bg-white"
-                transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-              />
-            )}
-            <span
+        {VIEWS.map(([v, label]) => {
+          const active = view === v
+          return (
+            <button
+              key={v}
+              type="button"
+              aria-pressed={active}
+              onClick={() => setView(v)}
               className={cn(
-                'relative z-10',
-                view === v
-                  ? 'text-white dark:text-slate-900'
-                  : 'text-slate-600 dark:text-slate-300',
+                'press rounded-lg px-4 py-1.5 text-sm font-medium transition-colors',
+                active
+                  ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
+                  : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800',
               )}
             >
               {label}
-            </span>
-          </button>
-        ))}
+            </button>
+          )
+        })}
       </div>
 
       <div className="flex items-center gap-2">
