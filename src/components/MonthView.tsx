@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react'
 import {
   eachDayOfInterval,
   endOfMonth,
@@ -27,9 +27,10 @@ interface Props {
   byDate: Map<string, Competition[]>
   onSelectDay: (d: Date) => void
   onHoverDay?: (info: { date: Date; items: Competition[] } | null) => void
+  onToday?: () => void
 }
 
-export function MonthView({ cursor, setCursor, byDate, onSelectDay, onHoverDay }: Props) {
+export function MonthView({ cursor, setCursor, byDate, onSelectDay, onHoverDay, onToday }: Props) {
   const [direction, setDirection] = useState(1)
 
   const handlePrev = () => {
@@ -54,7 +55,7 @@ export function MonthView({ cursor, setCursor, byDate, onSelectDay, onHoverDay }
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.28, ease: 'easeOut' }}
     >
-      <div className="mb-3 flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -72,12 +73,20 @@ export function MonthView({ cursor, setCursor, byDate, onSelectDay, onHoverDay }
           >
             <ChevronRight className="h-4 w-4" />
           </button>
+          <button
+            type="button"
+            onClick={onToday}
+            className="press inline-flex items-center gap-1.5 rounded-xl border border-brand-200 bg-brand-50 px-3 py-1.5 text-sm font-medium text-brand-700 shadow-sm transition hover:bg-brand-100 dark:border-brand-500/40 dark:bg-brand-900/20 dark:text-brand-300 dark:hover:bg-brand-900/40"
+          >
+            <CalendarDays className="h-4 w-4" />
+            今天
+          </button>
         </div>
-        <p className="text-sm text-slate-500 dark:text-slate-400">将鼠标移到有标记的日期，右侧会显示当天比赛详情</p>
+        <p className="hidden text-sm text-slate-500 dark:text-slate-400 sm:block">将鼠标移到有标记的日期，右侧会显示当天比赛详情</p>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="grid grid-cols-7 border-b border-slate-200 bg-slate-50 text-center text-sm font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400">
+        <div className="grid grid-cols-7 border-b border-slate-200 bg-slate-50 py-1 text-center text-sm font-semibold text-slate-500 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400 sm:py-3 sm:text-base lg:text-lg">
           {WEEKDAYS.map((w, i) => (
             <div key={w} className="py-2.5">
               <span className="sm:hidden">{w}</span>
@@ -136,27 +145,32 @@ function DayCell({
       onMouseEnter={() => onHoverDay?.(items.length ? { date: day, items } : null)}
       style={{ animationDelay: `${Math.min(index, 30) * 12}ms` }}
       className={cn(
-        'animate-fade-in relative flex min-h-[84px] flex-col gap-1.5 border-b border-r border-slate-100 p-2 text-left transition hover:bg-brand-50/60 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-slate-800 dark:hover:bg-brand-900/10 sm:min-h-[104px]',
+        'animate-fade-in relative flex min-h-[76px] flex-col gap-1.5 border-b border-r border-slate-100 p-2 text-left transition hover:bg-brand-50/60 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-slate-800 dark:hover:bg-brand-900/10 sm:min-h-[104px] lg:min-h-[128px] xl:min-h-[152px] 2xl:min-h-[176px]',
         index % 7 === 6 && 'border-r-0',
         outside && 'bg-slate-50/60 text-slate-300 dark:bg-slate-900/40 dark:text-slate-600',
-        today && 'bg-brand-50/70 dark:bg-brand-900/20',
+        today && 'bg-brand-50/70 ring-1 ring-inset ring-brand-400/60 dark:bg-brand-900/20',
       )}
     >
       <span
         className={cn(
-          'flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold',
+          'flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold sm:h-9 sm:w-9 sm:text-base lg:h-10 lg:w-10 lg:text-lg',
           today ? 'bg-brand-500 text-white' : 'text-slate-700 dark:text-slate-200',
         )}
       >
         {format(day, 'd')}
       </span>
+      {today && (
+        <span className="absolute right-1.5 top-1.5 z-10 rounded-full bg-brand-500 px-1.5 py-0.5 text-[9px] font-bold leading-none text-white shadow">
+          今天
+        </span>
+      )}
       {items.length > 0 && (
         <div className="mt-auto flex flex-wrap items-center gap-1">
           {items.slice(0, 4).map((c) => (
-            <span key={c.id} className={cn('h-2 w-2 rounded-full', categoryDot(c.category))} />
+            <span key={c.id} className={cn('h-2.5 w-2.5 rounded-full', categoryDot(c.category))} />
           ))}
-          {items.length > 4 && <span className="text-[10px] font-medium text-slate-400">+{items.length - 4}</span>}
-          <span className="ml-0.5 text-[10px] font-medium text-slate-400">{items.length} 场</span>
+          {items.length > 4 && <span className="text-[11px] font-medium text-slate-400 sm:text-xs">+{items.length - 4}</span>}
+          <span className="ml-0.5 text-[11px] font-medium text-slate-400 sm:text-xs">{items.length} 场</span>
         </div>
       )}
     </button>

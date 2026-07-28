@@ -77,7 +77,7 @@ export default function App() {
 
   return (
     <div className="min-h-full app-bg">
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8 2xl:max-w-[1800px]">
         <Header
           view={view}
           setView={setView}
@@ -89,7 +89,11 @@ export default function App() {
           setTheme={setTheme}
         />
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+        <section className="mt-6">
+          <UpcomingPanel byDate={byDate} onSelectDay={goToDay} />
+        </section>
+
+        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_400px]">
           <main className="min-w-0">
             <AnimatePresence mode="wait">
               {view === 'year' && (
@@ -103,6 +107,7 @@ export default function App() {
                   byDate={byDate}
                   onSelectDay={goToDay}
                   onHoverDay={handleHoverDay}
+                  onToday={goToday}
                 />
               )}
               {view === 'day' && <DayView key="day" date={cursor} byDate={byDate} onBack={() => setView('month')} />}
@@ -112,8 +117,14 @@ export default function App() {
           <aside className="lg:sticky lg:top-6 lg:self-start">
             {hovered && view === 'month' ? (
               <DayDetailPanel date={hovered.date} items={hovered.items} />
+            ) : view === 'month' ? (
+              <div className="rounded-2xl border border-dashed border-slate-200 bg-white/50 p-6 text-center text-sm text-slate-400 dark:border-slate-800 dark:bg-slate-900/40">
+                将鼠标移到有标记的日期，这里会显示当天的比赛详情。
+              </div>
             ) : (
-              <UpcomingPanel byDate={byDate} onSelectDay={goToDay} />
+              <div className="rounded-2xl border border-dashed border-slate-200 bg-white/50 p-6 text-center text-sm text-slate-400 dark:border-slate-800 dark:bg-slate-900/40">
+                切到「月」视图，悬停有标记的日期即可查看当天详情。
+              </div>
             )}
           </aside>
         </div>
