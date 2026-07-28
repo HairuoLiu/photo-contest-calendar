@@ -1,13 +1,23 @@
 name: Check competition deadline updates
 
-# 自动核对机制：以一年为周期（也可在 Actions 页面手动触发）访问各比赛官网，
+# 自动核对机制：
+#   - 每月 1 日 03:00 UTC 以轻量模式只检查"待官宣(TBD)"条目，官方一公布新一届
+#     征稿日期即自动回填为真实 YYYY-MM-DD，并摘掉 confidence 预估标记；
+#   - 每年 1 月 2 日 02:00 UTC 做全量核对（刷新所有已确认日期）。
+# 两种模式都访问各比赛官网（Playwright，失败时回落 HTTP+BeautifulSoup），
 # 抽取截止日并与 src/data/competitions.ts 比对。发现变化则原地更新数据并
 # 开一个 PR 供人工复核 —— 不自动合并，正确性优先。合并后由 deploy.yml 重新部署。
+# 也可在 Actions 页面手动触发（可选 full / tbd-only 模式）。
 on:
   schedule:
-    # 每年 1 月 2 日运行一次（多数年度赛事已开放新一届）。
-    - cron: '0 0 2 1 *'
-  workflow_dispatch: {}
+    - cron: '0 3 1 * *'    # 每月 1 日：仅回填待官宣(TBD)
+    - cron: '0 2 2 1 *'    # 每年 1/2：全量核对
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: '运行模式：tbd-only（仅待官宣）或 full（全量）'
+        required: false
+        default: 'tbd-only'
 
 permissions:
   contents: write
@@ -29,8 +39,24 @@ jobs:
           pip install -r scripts/requirements.txt
           playwright install --with-deps chromium
 
+      - name: Determine mode
+        id: mode
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if [ "${{ github.event.inputs.mode }}" = "full" ]; then
+              echo "flag=" >> "$GITHUB_OUTPUT"
+            else
+              echo "flag=--tbd-only" >> "$GITHUB_OUTPUT"
+            fi
+          elif [ "${{ github.event.schedule }}" = "0 2 2 1 *" ]; then
+            echo "flag=" >> "$GITHUB_OUTPUT"   # 年度全量
+          else
+            echo "flag=--tbd-only" >> "$GITHUB_OUTPUT"   # 月度回填
+          fi
+
       - name: Run deadline checker
-        run: python scripts/check_updates.py --src src/data/competitions.ts --report scripts/report.md
+        run: python scripts/check_updates.py --src src/data/competitions.ts --report scripts/report.md ${{ steps.mode.outputs.flag }}
 
       - name: Upload report
         if: always()
@@ -48,6 +74,7 @@ jobs:
           body: |
             自动核对脚本检测到截止日变化，已写入 `src/data/competitions.ts`。
             请人工复核报告中的证据片段后再合并。合并后站点会自动重新部署。
+            （TBD→日期 的条目已自动移除 `confidence` 预估标记。）
           branch: auto/deadline-sync
           delete-branch: true
           add-paths: |

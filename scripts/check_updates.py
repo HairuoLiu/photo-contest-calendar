@@ -7,14 +7,27 @@ unavailable), extracts candidate deadline dates, and reports changes. When a
 change is detected it updates ``competitions.ts`` IN PLACE (deadline lines
 only) and writes a Markdown report.
 
-A GitHub Action runs this on a yearly schedule (+ manual dispatch) and opens a
-PR for human review -- nothing merges automatically, because correctness is
-the top priority. After a human merges the PR, the existing deploy workflow
-rebuilds and republishes the site.
+Two classes of entry are handled:
+
+* **Confirmed** entries (``deadline: 'YYYY-MM-DD'``) — re-checked so stale
+  dates get refreshed.
+* **TBD** entries (``deadline: 'TBD'``) — these are the "待官宣赛事" the site
+  shows at the bottom. The script *can* backfill them: when an official date
+  is found it converts ``'TBD'`` → ``'YYYY-MM-DD'`` and strips the now-obsolete
+  ``confidence`` estimate field.
+
+A GitHub Action runs this on a monthly schedule (``--tbd-only`` to keep the
+load light) plus an annual full pass, and opens a PR for human review --
+nothing merges automatically, because correctness is the top priority. After a
+human merges the PR, the existing deploy workflow rebuilds and republishes.
 
 Usage:
-    python scripts/check_updates.py \
-        --src src/data/competitions.ts \
+    # Lightweight monthly pass: only entries whose deadline is still TBD/TBD-ish
+    python scripts/check_updates.py --src src/data/competitions.ts \
+        --report scripts/report.md --tbd-only
+
+    # Full annual pass: re-check every entry
+    python scripts/check_updates.py --src src/data/competitions.ts \
         --report scripts/report.md
 """
 from __future__ import annotations
@@ -29,6 +42,8 @@ try:
     from playwright.sync_api import sync_playwright
 except Exception:  # pragma: no cover - browser optional in CI fallback
     sync_playwright = None
+
+ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 KEYWORDS = [
     "deadline", "submission", "submit", "entries close", "closes", "due",
@@ -65,7 +80,9 @@ def parse_competitions(ts_text: str) -> list[dict]:
     """Extract competition objects from the TS file via ordered-field regex.
 
     Only the ``competitions`` array body is parsed, so the ``Competition``
-    interface declaration above it is ignored.
+    interface declaration above it is ignored. Crucially, the ``deadline``
+    field is captured RAW (including ``'TBD'``) so unannounced entries are not
+    silently dropped from the check.
     """
     marker = "competitions: Competition[] = ["
     idx = ts_text.find(marker)
@@ -75,14 +92,16 @@ def parse_competitions(ts_text: str) -> list[dict]:
     ids = field("id").findall(body)
     names = field("name").findall(body)
     names_zh = field("nameZh").findall(body)
-    deadlines = re.compile(r"deadline:\s*'(\d{4}-\d{2}-\d{2})'").findall(body)
+    # Raw capture: ISO dates AND 'TBD' alike.
+    deadlines = field("deadline").findall(body)
     categories = field("category").findall(body)
     regions = field("region").findall(body)
     fees = field("fee").findall(body)
     official = field("officialUrl").findall(body)
     submit = field("submitUrl").findall(body)
 
-    n = min(len(ids), len(names), len(deadlines), len(official), len(submit))
+    n = min(len(ids), len(names), len(names_zh), len(deadlines),
+            len(official), len(submit))
     out: list[dict] = []
     for i in range(n):
         out.append({
@@ -144,11 +163,30 @@ def extract_dates(text: str) -> list[tuple[int, int | None, int | None]]:
     return found
 
 
+def _future_ok(y: int, mo: int | None, d: int | None) -> bool:
+    if d is None or mo is None:
+        return False
+    try:
+        return dt.date(y, mo, d) >= dt.date.today()
+    except Exception:
+        return False
+
+
 def best_candidate(text: str, current: str) -> tuple[str | None, str | None]:
-    """Pick the most likely deadline, prioritizing dates near keywords."""
+    """Pick the most likely deadline, prioritizing dates near keywords.
+
+    For confirmed entries we accept a window around the current year. For TBD
+    entries (no usable current date) we *only* accept future dates, which
+    drastically cuts false positives from archive/news text.
+    """
     if not text:
         return None, None
-    current_year = int(current[:4])
+    current_is_iso = bool(ISO_DATE.match(current))
+    try:
+        current_year = int(current[:4]) if current_is_iso else dt.date.today().year
+    except ValueError:
+        current_year = dt.date.today().year
+
     sentences = re.split(r"(?<=[.!?。！？\n])", text)
     scored: list[tuple[int, int, int, str]] = []
     for s in sentences:
@@ -158,8 +196,15 @@ def best_candidate(text: str, current: str) -> tuple[str | None, str | None]:
         for (y, mo, d) in extract_dates(s):
             if d is None:
                 continue
-            if y < current_year - 1 or y > current_year + 2:
-                continue
+            if current_is_iso:
+                if y < current_year - 1 or y > current_year + 2:
+                    continue
+            else:
+                # TBD: future-only and within a sane horizon.
+                if not _future_ok(y, mo, d):
+                    continue
+                if y > dt.date.today().year + 2:
+                    continue
             scored.append((y, mo or 0, d, s.strip()[:160]))
     if scored:
         scored.sort(key=lambda x: (x[0], x[1], x[2]))
@@ -169,15 +214,35 @@ def best_candidate(text: str, current: str) -> tuple[str | None, str | None]:
     for (y, mo, d) in extract_dates(text):
         if d is None:
             continue
-        if current_year - 1 <= y <= current_year + 2:
-            return (f"{y:04d}-{mo:02d}-{d:02d}", text[:160])
+        if current_is_iso:
+            if current_year - 1 <= y <= current_year + 2:
+                return (f"{y:04d}-{mo:02d}-{d:02d}", text[:160])
+        else:
+            if _future_ok(y, mo, d) and y <= dt.date.today().year + 2:
+                return (f"{y:04d}-{mo:02d}-{d:02d}", text[:160])
     return None, None
+
+
+def strip_confidence(text: str, cid: str) -> str:
+    """Remove the ``confidence: '...'`` line inside ``cid``'s block.
+
+    Used after a TBD entry is backfilled with a real date: the "预估" estimate
+    is no longer appropriate once confirmed against the official site.
+    """
+    pat = re.compile(
+        r"(id:\s*'" + re.escape(cid) + r"'(?:(?!^\s*\},).)*?)"
+        r"(\n\s*confidence:\s*'[^']*',?\n)",
+        re.DOTALL | re.MULTILINE,
+    )
+    return pat.sub(r"\1\n", text, count=1)
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", default="src/data/competitions.ts")
     ap.add_argument("--report", default="scripts/report.md")
+    ap.add_argument("--tbd-only", action="store_true",
+                    help="Only check entries whose deadline is not yet a confirmed ISO date.")
     args = ap.parse_args()
 
     src = Path(args.src)
@@ -185,16 +250,25 @@ def main() -> int:
     comps = parse_competitions(text)
     print(f"Parsed {len(comps)} competitions from {src}")
 
-    changes: list[tuple[str, str, str, str]] = []
+    if args.tbd_only:
+        before = len(comps)
+        comps = [c for c in comps if not ISO_DATE.match(c["deadline"])]
+        print(f"[tbd-only] narrowed to {len(comps)} unannounced entry(ies) "
+              f"(from {before})")
+
+    changes: list[tuple[str, str, str, str, bool]] = []
+    comps_by_id = {c["id"]: c for c in comps}
     rows: list[str] = []
     for c in comps:
         url = c["officialUrl"] or c["submitUrl"]
         print(f"Checking {c['id']} ({c['nameZh']}) -> {url}")
         page = fetch_text(url)
         cand, ctx = best_candidate(page, c["deadline"]) if page else (None, None)
+        was_tbd = not ISO_DATE.match(c["deadline"])
         if cand and cand != c["deadline"]:
-            changes.append((c["id"], c["deadline"], cand, ctx or ""))
-            rows.append(f"| 🔄 | {c['nameZh']} | {c['deadline']} | **{cand}** | {ctx} |")
+            changes.append((c["id"], c["deadline"], cand, ctx or "", was_tbd))
+            tag = "🔄 TBD→日期" if was_tbd else "🔄"
+            rows.append(f"| {tag} | {c['nameZh']} | {c['deadline']} | **{cand}** | {ctx} |")
         elif cand:
             rows.append(f"| ✅ | {c['nameZh']} | {c['deadline']} | {cand} (无变化) | — |")
         else:
@@ -202,7 +276,7 @@ def main() -> int:
 
     # Apply changes in place (deadline lines only), preserving everything else.
     new_text = text
-    for cid, old, new, _ in changes:
+    for cid, old, new, _, was_tbd in changes:
         pat = re.compile(
             r"(id:\s*'" + re.escape(cid) + r"'.*?deadline:\s*')"
             + re.escape(old) + r"(')",
@@ -211,6 +285,11 @@ def main() -> int:
         new_text, n = pat.subn(rf"\g<1>{new}\2", new_text)
         if n == 0:
             print(f"  [warn] could not patch {cid}", file=sys.stderr)
+            continue
+        # A backfilled TBD is now confirmed: drop the '预估' confidence estimate.
+        if was_tbd:
+            new_text = strip_confidence(new_text, cid)
+            print(f"  [info] backfilled {cid}: TBD -> {new} (confidence stripped)")
 
     if changes:
         src.write_text(new_text, encoding="utf-8")
@@ -220,6 +299,7 @@ def main() -> int:
         "# 比赛截止日自动核对报告",
         "",
         f"生成时间：{dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}",
+        f"模式：{'仅待官宣(TBD)' if args.tbd_only else '全量'}",
         f"检测条目：{len(comps)} ｜ 发现变化：{len(changes)}",
         "",
         "| 状态 | 比赛 | 原截止 | 检测截止 | 证据片段 |",
@@ -227,7 +307,8 @@ def main() -> int:
     ]
     report += rows
     if changes:
-        report += ["", "⚠️ 以上变化已由脚本写入 `src/data/competitions.ts`，请人工复核证据片段后合并 PR。"]
+        report += ["", "⚠️ 以上变化已由脚本写入 `src/data/competitions.ts`，请人工复核证据片段后合并 PR。",
+                   "（TBD→日期 的条目已自动移除 `confidence` 预估标记。）"]
     else:
         report += ["", "✅ 未检测到截止日变化（或无法自动判定）。"]
     Path(args.report).write_text("\n".join(report), encoding="utf-8")

@@ -142,8 +142,6 @@ export default function App() {
             <UpcomingPanel byDate={byDate} onSelectDay={goToWeek} />
           </section>
 
-          <WatchlistPanel items={watchlist} />
-
           <main className="mt-6">
             <AnimatePresence mode="wait">
               {view === 'year' && (
@@ -165,6 +163,10 @@ export default function App() {
               )}
             </AnimatePresence>
           </main>
+
+          {/* 待官宣赛事沉到日历下方：未证实的 TBD 不应抢占首屏，
+              避免用户一进来就看到一堆"待官宣/不确定"的条目。 */}
+          <WatchlistPanel items={watchlist} />
 
           <footer className="mt-10 border-t border-slate-200 pt-6 text-center text-xs text-slate-400 dark:border-slate-800">
             <p>Photo Contest Calendar · 一个开源、无后端的摄影赛事提醒工具 · 比赛数据保存在仓库本地文件</p>
