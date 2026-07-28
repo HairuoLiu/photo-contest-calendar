@@ -31,7 +31,7 @@ export function DayView({ date, byDate, onBack }: Props) {
           <ArrowLeft className="h-4 w-4" /> 返回
         </button>
         <div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">{format(date, 'yyyy 年 M 月 d 日')}</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">{format(date, 'yyyy 年 M 月 d 日')}</h2>
           <p className="text-xs text-slate-500 dark:text-slate-400">
             {today ? '就是今天 · ' : ''}共 {items.length} 场投稿截止
           </p>
@@ -45,7 +45,7 @@ export function DayView({ date, byDate, onBack }: Props) {
           <p className="mt-1 text-sm text-slate-400">换个日期，或到 GitHub 补充数据</p>
         </div>
       ) : (
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-3">
           {items.map((c, i) => (
             <motion.div
               key={c.id}

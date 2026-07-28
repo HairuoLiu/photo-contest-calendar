@@ -30,7 +30,7 @@ export function Header({ view, setView, title, onPrev, onNext, onToday, theme, s
             <Camera className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-lg font-bold leading-tight text-slate-900 dark:text-white">Photo Contest Calendar</h1>
+            <h1 className="text-xl font-bold leading-tight text-slate-900 dark:text-white">Photo Contest Calendar</h1>
             <p className="text-xs text-slate-500 dark:text-slate-400">全球摄影赛事日历 · 投稿截止提醒</p>
           </div>
         </div>

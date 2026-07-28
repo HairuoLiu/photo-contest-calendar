@@ -6,16 +6,22 @@ import { Header } from './components/Header'
 import { YearView } from './components/YearView'
 import { MonthView } from './components/MonthView'
 import { DayView } from './components/DayView'
+import { DayDetailPanel } from './components/DayDetailPanel'
 import { UpcomingPanel } from './components/UpcomingPanel'
 import type { View } from './lib/types'
 import { REPO_URL } from './lib/config'
 
 export default function App() {
-  const [view, setView] = useState<View>('year')
+  const [view, setView] = useState<View>('month')
   const [cursor, setCursor] = useState<Date>(new Date())
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
     typeof document !== 'undefined' && document.documentElement.classList.contains('dark') ? 'dark' : 'light',
   )
+  const [hovered, setHovered] = useState<{ date: string; items: Competition[] } | null>(null)
+
+  const handleHoverDay = (info: { date: Date; items: Competition[] } | null) => {
+    setHovered(info ? { date: format(info.date, 'yyyy-MM-dd'), items: info.items } : null)
+  }
 
   useEffect(() => {
     const root = document.documentElement
@@ -83,21 +89,32 @@ export default function App() {
           setTheme={setTheme}
         />
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
           <main className="min-w-0">
             <AnimatePresence mode="wait">
               {view === 'year' && (
                 <YearView key="year" cursor={cursor} onSelectMonth={goToMonth} byDate={byDate} />
               )}
               {view === 'month' && (
-                <MonthView key="month" cursor={cursor} setCursor={setCursor} byDate={byDate} onSelectDay={goToDay} />
+                <MonthView
+                  key="month"
+                  cursor={cursor}
+                  setCursor={setCursor}
+                  byDate={byDate}
+                  onSelectDay={goToDay}
+                  onHoverDay={handleHoverDay}
+                />
               )}
               {view === 'day' && <DayView key="day" date={cursor} byDate={byDate} onBack={() => setView('month')} />}
             </AnimatePresence>
           </main>
 
           <aside className="lg:sticky lg:top-6 lg:self-start">
-            <UpcomingPanel byDate={byDate} onSelectDay={goToDay} />
+            {hovered && view === 'month' ? (
+              <DayDetailPanel date={hovered.date} items={hovered.items} />
+            ) : (
+              <UpcomingPanel byDate={byDate} onSelectDay={goToDay} />
+            )}
           </aside>
         </div>
 

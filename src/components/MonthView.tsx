@@ -26,9 +26,10 @@ interface Props {
   setCursor: (d: Date) => void
   byDate: Map<string, Competition[]>
   onSelectDay: (d: Date) => void
+  onHoverDay?: (info: { date: Date; items: Competition[] } | null) => void
 }
 
-export function MonthView({ cursor, setCursor, byDate, onSelectDay }: Props) {
+export function MonthView({ cursor, setCursor, byDate, onSelectDay, onHoverDay }: Props) {
   const [direction, setDirection] = useState(1)
 
   const handlePrev = () => {
@@ -59,7 +60,7 @@ export function MonthView({ cursor, setCursor, byDate, onSelectDay }: Props) {
             type="button"
             onClick={handlePrev}
             aria-label="上个月"
-            className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="press grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -67,18 +68,18 @@ export function MonthView({ cursor, setCursor, byDate, onSelectDay }: Props) {
             type="button"
             onClick={handleNext}
             aria-label="下个月"
-            className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="press grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>
-        <p className="text-sm text-slate-500 dark:text-slate-400">点选任意日期，查看当天截止的投稿</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">将鼠标移到有标记的日期，右侧会显示当天比赛详情</p>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="grid grid-cols-7 border-b border-slate-200 bg-slate-50 text-center text-xs font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400">
+        <div className="grid grid-cols-7 border-b border-slate-200 bg-slate-50 text-center text-sm font-medium text-slate-500 dark:border-slate-800 dark:bg-slate-800/50 dark:text-slate-400">
           {WEEKDAYS.map((w, i) => (
-            <div key={w} className="py-2">
+            <div key={w} className="py-2.5">
               <span className="sm:hidden">{w}</span>
               <span className="hidden sm:inline">{WEEKDAYS_FULL[i]}</span>
             </div>
@@ -102,6 +103,7 @@ export function MonthView({ cursor, setCursor, byDate, onSelectDay }: Props) {
                 items={byDate.get(format(d, 'yyyy-MM-dd')) ?? []}
                 index={i}
                 onSelectDay={onSelectDay}
+                onHoverDay={onHoverDay}
               />
             ))}
           </motion.div>
@@ -117,21 +119,24 @@ function DayCell({
   items,
   index,
   onSelectDay,
+  onHoverDay,
 }: {
   day: Date
   outside: boolean
   items: Competition[]
   index: number
   onSelectDay: (d: Date) => void
+  onHoverDay?: (info: { date: Date; items: Competition[] } | null) => void
 }) {
   const today = isToday(day)
   return (
     <button
       type="button"
       onClick={() => onSelectDay(day)}
+      onMouseEnter={() => onHoverDay?.(items.length ? { date: day, items } : null)}
       style={{ animationDelay: `${Math.min(index, 30) * 12}ms` }}
       className={cn(
-        'animate-fade-in relative flex min-h-[72px] flex-col gap-1 border-b border-r border-slate-100 p-1.5 text-left transition hover:bg-brand-50/50 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-slate-800 dark:hover:bg-brand-900/10 sm:min-h-[88px]',
+        'animate-fade-in relative flex min-h-[84px] flex-col gap-1.5 border-b border-r border-slate-100 p-2 text-left transition hover:bg-brand-50/60 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-slate-800 dark:hover:bg-brand-900/10 sm:min-h-[104px]',
         index % 7 === 6 && 'border-r-0',
         outside && 'bg-slate-50/60 text-slate-300 dark:bg-slate-900/40 dark:text-slate-600',
         today && 'bg-brand-50/70 dark:bg-brand-900/20',
@@ -139,24 +144,21 @@ function DayCell({
     >
       <span
         className={cn(
-          'flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium',
-          today ? 'bg-brand-500 text-white' : 'text-slate-600 dark:text-slate-300',
+          'flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold',
+          today ? 'bg-brand-500 text-white' : 'text-slate-700 dark:text-slate-200',
         )}
       >
         {format(day, 'd')}
       </span>
-      <div className="flex flex-col gap-0.5">
-        {items.slice(0, 2).map((c) => (
-          <span
-            key={c.id}
-            className="flex items-center gap-1 truncate rounded bg-slate-100 px-1 py-0.5 text-[10px] text-slate-600 dark:bg-slate-800 dark:text-slate-300"
-          >
-            <span className={cn('h-1.5 w-1.5 shrink-0 rounded-full', categoryDot(c.category))} />
-            <span className="truncate">{c.nameZh}</span>
-          </span>
-        ))}
-        {items.length > 2 && <span className="px-1 text-[10px] text-slate-400">+{items.length - 2} 场</span>}
-      </div>
+      {items.length > 0 && (
+        <div className="mt-auto flex flex-wrap items-center gap-1">
+          {items.slice(0, 4).map((c) => (
+            <span key={c.id} className={cn('h-2 w-2 rounded-full', categoryDot(c.category))} />
+          ))}
+          {items.length > 4 && <span className="text-[10px] font-medium text-slate-400">+{items.length - 4}</span>}
+          <span className="ml-0.5 text-[10px] font-medium text-slate-400">{items.length} 场</span>
+        </div>
+      )}
     </button>
   )
 }
