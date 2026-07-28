@@ -13,6 +13,7 @@ export default {
           'Microsoft YaHei',
           'sans-serif',
         ],
+        serif: ['Fraunces', 'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', 'serif'],
       },
       colors: {
         brand: {

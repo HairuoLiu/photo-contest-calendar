@@ -15,6 +15,7 @@ import {
 } from 'date-fns'
 import { competitions, type Competition } from './data/competitions'
 import { Header } from './components/Header'
+import { CalendarControls } from './components/CalendarControls'
 import { YearView } from './components/YearView'
 import { MonthView } from './components/MonthView'
 import { WeekView } from './components/WeekView'
@@ -127,22 +128,22 @@ export default function App() {
             bannerVisible && 'pt-20',
           )}
         >
-          <Header
+          <Header theme={theme} setTheme={setTheme} />
+
+          <section className="mt-6">
+            <UpcomingPanel byDate={byDate} onSelectDay={goToWeek} />
+          </section>
+
+          <CalendarControls
             view={view}
             setView={setView}
             title={title}
             onPrev={handlePrev}
             onNext={handleNext}
             onToday={goToday}
-            theme={theme}
-            setTheme={setTheme}
           />
 
-          <section className="mt-6">
-            <UpcomingPanel byDate={byDate} onSelectDay={goToWeek} />
-          </section>
-
-          <main className="mt-6">
+          <main className="mt-4">
             <AnimatePresence mode="wait">
               {view === 'year' && (
                 <YearView key="year" cursor={cursor} onSelectMonth={goToMonth} byDate={byDate} />
@@ -151,11 +152,10 @@ export default function App() {
                 <MonthView
                   key="month"
                   cursor={cursor}
-                  setCursor={setCursor}
                   byDate={byDate}
                   onSelectDay={goToWeek}
                   onHoverDay={handleHoverDay}
-                  onToday={goToday}
+                  hoveredDate={hovered?.date ?? null}
                 />
               )}
               {view === 'week' && (

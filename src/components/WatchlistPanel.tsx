@@ -21,7 +21,7 @@ export function WatchlistPanel({ items }: Props) {
           <Hourglass className="h-4 w-4" />
         </span>
         <div>
-          <h2 className="flex items-center gap-1.5 text-base font-bold text-slate-900 dark:text-white">
+          <h2 className="flex items-center gap-1.5 font-serif text-base font-bold text-slate-900 dark:text-white">
             待官宣赛事
             <Sparkles className="h-4 w-4 text-amber-500" />
           </h2>

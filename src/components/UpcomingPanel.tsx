@@ -32,7 +32,7 @@ export function UpcomingPanel({ byDate, onSelectDay }: Props) {
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-          <Section title="本周截止" icon={<Flame className="h-4 w-4 text-rose-500" />} items={week} empty="本周暂无截止的比赛 🎉" onSelectDay={onSelectDay} />
+          <Section title="本周截止" icon={<Flame className="h-4 w-4 text-rose-500" />} items={week} empty="本周暂无截止的比赛" onSelectDay={onSelectDay} />
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.06 }}>
           <Section title="本月截止" icon={<CalendarClock className="h-4 w-4 text-amber-500" />} items={month} empty="本月暂无截止的比赛" onSelectDay={onSelectDay} />
@@ -66,8 +66,8 @@ function Section({
     <section className="rounded-2xl border border-slate-200 bg-white/70 p-3 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
       <div className="mb-2 flex items-center gap-2 px-1">
         {icon}
-        <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-200">{title}</h2>
-        <span className="ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-500 dark:bg-slate-800">
+        <h2 className="font-serif text-sm font-semibold text-slate-700 dark:text-slate-200">{title}</h2>
+        <span className="nums ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-500 dark:bg-slate-800">
           {items.length}
         </span>
       </div>

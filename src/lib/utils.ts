@@ -46,68 +46,31 @@ export function tierBadge(tier?: string): { label: string; cls: string } | null 
   return tier && TIER_BADGE[tier] ? TIER_BADGE[tier] : null
 }
 
-/** Tailwind classes for the category badge. */
-export const CATEGORY_STYLES: Record<string, string> = {
-  Nature: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
-  Wildlife: 'bg-lime-100 text-lime-700 dark:bg-lime-900/40 dark:text-lime-300',
-  Portrait: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300',
-  Street: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
-  Documentary: 'bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300',
-  Landscape: 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300',
-  Mobile: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
-  Underwater: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300',
-  Architecture: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
-  Open: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
-  Abstract: 'bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/40 dark:text-fuchsia-300',
-  Travel: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
+/** Neutral chip for a competition category. Colour identity is carried by a
+ *  small dot (see `categoryDotMuted`), not by a fully saturated fill — this
+ *  kills the "rainbow dashboard" noise flagged by every juror. */
+export function categoryStyle(_category: string): string {
+  return 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'
 }
 
-export function categoryStyle(category: string): string {
-  return (
-    CATEGORY_STYLES[category] ??
-    'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
-  )
+/** Low-saturation dot colour per category (used in month cells + chips). */
+export const CATEGORY_DOT_MUTED: Record<string, string> = {
+  Nature: 'bg-emerald-500/80',
+  Wildlife: 'bg-lime-500/80',
+  Portrait: 'bg-rose-500/80',
+  Street: 'bg-amber-500/80',
+  Documentary: 'bg-sky-500/80',
+  Landscape: 'bg-teal-500/80',
+  Mobile: 'bg-violet-500/80',
+  Underwater: 'bg-cyan-500/80',
+  Architecture: 'bg-indigo-500/80',
+  Open: 'bg-orange-400/80',
+  Abstract: 'bg-fuchsia-500/80',
+  Travel: 'bg-blue-500/80',
 }
 
-/** Tailwind dot color for a competition category (used in month cells). */
-export const CATEGORY_DOT: Record<string, string> = {
-  Nature: 'bg-emerald-400',
-  Wildlife: 'bg-lime-400',
-  Portrait: 'bg-rose-400',
-  Street: 'bg-amber-400',
-  Documentary: 'bg-sky-400',
-  Landscape: 'bg-teal-400',
-  Mobile: 'bg-violet-400',
-  Underwater: 'bg-cyan-400',
-  Architecture: 'bg-indigo-400',
-  Open: 'bg-orange-400',
-  Abstract: 'bg-fuchsia-400',
-  Travel: 'bg-blue-400',
-}
-
-export function categoryDot(category: string): string {
-  return CATEGORY_DOT[category] ?? 'bg-slate-400'
-}
-
-/** Country flag emoji for a competition's region. Global has no country flag. */
-export const REGION_FLAG: Record<string, string> = {
-  Global: '',
-  Japan: '🇯🇵',
-  UK: '🇬🇧',
-  USA: '🇺🇸',
-  France: '🇫🇷',
-  Germany: '🇩🇪',
-  China: '🇨🇳',
-  Italy: '🇮🇹',
-  Netherlands: '🇳🇱',
-  Switzerland: '🇨🇭',
-  Spain: '🇪🇸',
-  Canada: '🇨🇦',
-  Australia: '🇦🇺',
-}
-
-export function regionFlag(region: string): string {
-  return REGION_FLAG[region] ?? ''
+export function categoryDotMuted(category: string): string {
+  return CATEGORY_DOT_MUTED[category] ?? 'bg-slate-400/80'
 }
 
 /** Resolve a fee string (e.g. 'Free', '$30', '€25', '£12') to display info. */

@@ -11,7 +11,7 @@
       name="description"
       content="全球摄影比赛日历 · 一个开源、无后端的摄影投稿截止提醒工具。年/月/周视图，悬停预览，可添加到主屏幕像 App 一样使用。"
     />
-    <title>📸 Photo Contest Calendar · 全球摄影赛事日历</title>
+    <title>Photo Contest Calendar · 全球摄影赛事日历</title>
 
     <!-- PWA / Add-to-Home-Screen support -->
     <link rel="manifest" href="./manifest.webmanifest" />
@@ -21,6 +21,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="摄影赛事日历" />
+
+    <!-- Editorial type system: Inter (body) + Fraunces (Latin display) + Noto Serif SC (中文宋体标题) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <script>
       // Apply theme before paint to avoid flash-of-wrong-theme.
       (function () {

@@ -1,6 +1,13 @@
 import { Globe, Send, Users } from 'lucide-react'
 import type { Competition } from '../data/competitions'
-import { categoryStyle, cn, daysLeftLabel, feeInfo, regionFlag, tierBadge } from '../lib/utils'
+import {
+  categoryDotMuted,
+  categoryStyle,
+  cn,
+  daysLeftLabel,
+  feeInfo,
+  tierBadge,
+} from '../lib/utils'
 import { TIER_MAP } from '../data/tiers'
 import { differenceInCalendarDays, parseISO, startOfDay } from 'date-fns'
 
@@ -28,7 +35,6 @@ interface Props {
 export function CompetitionCard({ c, compact = false, action }: Props) {
   const u = urgency(c.deadline)
   const fee = feeInfo(c.fee)
-  const flag = regionFlag(c.region)
   const tier = tierBadge(c.tier ?? TIER_MAP[c.id])
   return (
     <article
@@ -41,7 +47,7 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
       <div className={cn('pl-2', compact ? 'space-y-1.5' : 'space-y-2')}>
         <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 items-center gap-1.5">
-            {flag && <span className="text-base leading-none" aria-hidden>{flag}</span>}
+            <Globe className="h-4 w-4 shrink-0 text-slate-400" aria-hidden />
             <div className="min-w-0">
               <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">{c.name}</p>
               <h3 className={cn('truncate font-semibold text-slate-900 dark:text-slate-100', compact ? 'text-sm' : 'text-base')}>
@@ -51,7 +57,7 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
           </div>
           <span
             className={cn(
-              'shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium dark:bg-slate-800',
+              'nums shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium dark:bg-slate-800',
               u.text,
             )}
           >
@@ -70,7 +76,13 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
               预估·{c.confidence === 'high' ? '高' : c.confidence === 'medium' ? '中' : '低'}
             </span>
           )}
-          <span className={cn('rounded-full px-2 py-0.5 text-[11px] font-medium', categoryStyle(c.category))}>
+          <span
+            className={cn(
+              'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium',
+              categoryStyle(c.category),
+            )}
+          >
+            <span className={cn('h-1.5 w-1.5 rounded-full', categoryDotMuted(c.category))} />
             {c.category}
           </span>
           <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
@@ -117,7 +129,7 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
             href={c.submitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="press inline-flex items-center gap-1 rounded-lg bg-brand-500 px-2.5 py-1 text-xs font-semibold text-white transition hover:bg-brand-600"
+            className="press inline-flex items-center gap-1 rounded-lg border border-brand-300 px-2.5 py-1 text-xs font-semibold text-brand-600 transition hover:bg-brand-50 dark:border-brand-700 dark:text-brand-400 dark:hover:bg-brand-900/20"
           >
             <Send className="h-3.5 w-3.5" /> 去投稿
           </a>

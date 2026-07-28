@@ -4,6 +4,17 @@
 
 :root {
   color-scheme: light dark;
+
+  /* Motion design tokens — a single, calm timing ladder.
+     Replaces the scattered 0.14 / 0.22 / 0.28 / 0.3 / 0.32 hardcodes. */
+  --dur-fast: 0.18s;
+  --dur-mid: 0.26s;
+  --dur-slow: 0.34s;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Hero accent is reserved for "today / now" only (see design review: 收橙). */
+  --hero: 249 115 22; /* brand-500 #f97316 */
 }
 
 html,
@@ -12,22 +23,61 @@ body,
   height: 100%;
 }
 
+/* Warm "paper" light mode / warm "darkroom" ink dark mode.
+   Replaces the cold slate-50 / slate-950 so the page reads like a printed
+   catalog rather than a flat SaaS dashboard. */
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
-  @apply dark:bg-slate-950 dark:text-slate-100;
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  @apply bg-[#faf7f2] text-slate-900 antialiased;
+  @apply dark:bg-[#100c08] dark:text-slate-100;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+}
+.dark body {
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
 }
 
-/* Subtle, cohesive gradient backdrop — warm brand (orange) + premium indigo */
+/* Numeric labels (剩 N 天 / N 场 / 日期) snap to a fixed width. */
+.nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* Cohesive, restrained backdrop — a single warm brand glow + a faint ink
+   wash, kept low-intensity so it never competes with the content. */
 .app-bg {
   background-image:
-    radial-gradient(52rem 52rem at 105% -15%, rgba(249, 115, 22, 0.10), transparent 60%),
-    radial-gradient(44rem 44rem at -12% 5%, rgba(99, 102, 241, 0.09), transparent 55%);
+    radial-gradient(54rem 54rem at 102% -18%, rgba(var(--hero), 0.09), transparent 60%),
+    radial-gradient(46rem 46rem at -10% 2%, rgba(99, 102, 241, 0.06), transparent 55%);
 }
 .dark .app-bg {
   background-image:
-    radial-gradient(52rem 52rem at 105% -15%, rgba(249, 115, 22, 0.14), transparent 60%),
-    radial-gradient(44rem 44rem at -12% 5%, rgba(99, 102, 241, 0.13), transparent 55%);
+    radial-gradient(54rem 54rem at 102% -18%, rgba(var(--hero), 0.12), transparent 60%),
+    radial-gradient(46rem 46rem at -10% 2%, rgba(120, 90, 60, 0.10), transparent 55%);
+}
+
+/* Vignette: gently draw the eye toward the centred calendar. */
+.app-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(120% 120% at 50% 42%, transparent 55%, rgba(0, 0, 0, 0.05) 100%);
+}
+.dark .app-bg::before {
+  background: radial-gradient(120% 120% at 50% 42%, transparent 52%, rgba(0, 0, 0, 0.42) 100%);
+}
+
+/* Film grain (暗房/画册肌理): a static, very low-opacity fractal-noise
+   layer over the whole frame. pointer-events:none keeps it inert. */
+.app-bg::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Thin, theme-aware scrollbars */
@@ -44,29 +94,30 @@ body {
   border-radius: 9999px;
 }
 
-/* Keyboard focus ring (a11y polish) */
+/* Keyboard focus ring — neutral slate/indigo, NOT brand orange. */
 :focus-visible {
-  outline: 2px solid rgba(249, 115, 22, 0.55);
+  outline: 2px solid rgba(99, 102, 241, 0.55);
   outline-offset: 2px;
 }
 
-/* Card hover lift with brand-tinted border + soft shadow */
+/* Card hover lift: quiet, neutral border + soft shadow (no orange tint). */
 .card-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out),
+    border-color var(--dur-mid) var(--ease-out);
 }
 .card-lift:hover {
   transform: translateY(-3px);
-  border-color: rgba(249, 115, 22, 0.4);
-  box-shadow: 0 14px 30px -14px rgba(15, 23, 42, 0.22);
+  border-color: rgba(148, 163, 184, 0.7);
+  box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.25);
 }
 .dark .card-lift:hover {
-  border-color: rgba(249, 115, 22, 0.45);
-  box-shadow: 0 16px 34px -14px rgba(0, 0, 0, 0.65);
+  border-color: rgba(120, 110, 95, 0.6);
+  box-shadow: 0 18px 38px -18px rgba(0, 0, 0, 0.7);
 }
 
 /* Tactile press feedback for buttons & links */
 .press {
-  transition: transform 0.15s ease;
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 .press:active {
   transform: scale(0.96);
