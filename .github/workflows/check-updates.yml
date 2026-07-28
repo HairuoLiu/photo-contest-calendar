@@ -1,0 +1,55 @@
+name: Check competition deadline updates
+
+# 自动核对机制：以一年为周期（也可在 Actions 页面手动触发）访问各比赛官网，
+# 抽取截止日并与 src/data/competitions.ts 比对。发现变化则原地更新数据并
+# 开一个 PR 供人工复核 —— 不自动合并，正确性优先。合并后由 deploy.yml 重新部署。
+on:
+  schedule:
+    # 每年 1 月 2 日运行一次（多数年度赛事已开放新一届）。
+    - cron: '0 0 2 1 *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Run deadline checker
+        run: python scripts/check_updates.py --src src/data/competitions.ts --report scripts/report.md
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deadline-check-report
+          path: scripts/report.md
+
+      - name: Open PR if deadlines changed
+        if: success()
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: 同步比赛截止日（自动核对）"
+          title: "🔄 自动核对：比赛截止日更新"
+          body: |
+            自动核对脚本检测到截止日变化，已写入 `src/data/competitions.ts`。
+            请人工复核报告中的证据片段后再合并。合并后站点会自动重新部署。
+          branch: auto/deadline-sync
+          delete-branch: true
+          add-paths: |
+            src/data/competitions.ts
+            scripts/report.md

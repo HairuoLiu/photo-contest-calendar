@@ -1,0 +1,450 @@
+// ---------------------------------------------------------------------------
+// Photography competition data — verified 2026 (and a few projected/2027) editions.
+//
+// This file is the SINGLE SOURCE OF TRUTH for the calendar. Edit the array below
+// to update the site — no backend, no DB.
+//
+// Deadlines are ISO (YYYY-MM-DD). Most are verified from official sites for the
+// 2026 edition. A few are PROJECTED from the contest's recurring annual pattern
+// because the official 2026/2027 date was not yet published at research time
+// (2026-07-28) — these are flagged in the description. CEWE and 35Awards are
+// annual contests that are OPEN during 2026 but whose submission window closes
+// in 2027, so their deadline sits in 2027.
+// ---------------------------------------------------------------------------
+
+export interface Competition {
+  id: string
+  name: string
+  nameZh: string
+  deadline: string // YYYY-MM-DD
+  category: string
+  region: string
+  fee: 'Free' | 'Paid'
+  description: string // 1-2 sentences in Chinese
+  officialUrl: string
+  submitUrl: string
+  entryType: string
+}
+
+export const competitions: Competition[] = [
+  {
+    id: 'sony-world-photography-awards',
+    name: 'Sony World Photography Awards 2026',
+    nameZh: '2026 索尼世界摄影大赛',
+    deadline: '2026-01-06',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '由世界摄影组织举办的全球规模最大的摄影比赛之一，设专业组、公开组、青少年组与学生组，面向所有水平摄影者免费开放。',
+    officialUrl: 'https://www.worldphoto.org/sony-world-photography-awards',
+    submitUrl: 'https://www.worldphoto.org/sony-world-photography-awards',
+    entryType: '专业人士与业余爱好者均可',
+  },
+  {
+    id: 'siena-international-photo-awards',
+    name: 'Siena International Photo Awards 2026',
+    nameZh: '2026 锡耶纳国际摄影奖',
+    deadline: '2026-01-16',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '意大利锡耶纳国际摄影奖涵盖旅行、自然、野生动物、纪实、街头等十余个类别，专业、业余与学生摄影师均可参加（首幅免费）。',
+    officialUrl: 'https://sienawards.com',
+    submitUrl: 'https://sipacontest.com',
+    entryType: '专业、业余与学生摄影师（首幅免费）',
+  },
+  {
+    id: 'world-press-photo-contest',
+    name: 'World Press Photo Contest 2026',
+    nameZh: '2026 世界新闻摄影比赛',
+    deadline: '2026-01-17',
+    category: 'Documentary',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '由阿姆斯特丹世界新闻摄影基金会举办的年度新闻与纪实摄影顶级赛事，面向全球专业记者与纪实摄影师免费征稿。',
+    officialUrl: 'https://www.worldpressphoto.org/contest/2026',
+    submitUrl: 'https://www.worldpressphoto.org/contest/2026',
+    entryType: '专业新闻与纪实摄影师（免费）',
+  },
+  {
+    id: 'all-about-photo-awards',
+    name: 'All About Photo Awards 2026',
+    nameZh: '2026 All About Photo 摄影奖',
+    deadline: '2026-01-27',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '由 All About Photo 平台举办的年度国际摄影奖（2026 主题为“The Mind’s Eye”），评审由史蒂夫·麦柯里担任，面向全球专业与业余摄影师。',
+    officialUrl: 'https://www.all-about-photo.com/',
+    submitUrl: 'https://www.all-about-photo.com/',
+    entryType: '全球专业与业余摄影师',
+  },
+  {
+    id: 'fine-art-photography-awards',
+    name: 'Fine Art Photography Awards (FAPA) 2026',
+    nameZh: '2026 艺术摄影奖',
+    deadline: '2026-02-15',
+    category: 'Abstract',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '全球首个专注艺术摄影的国际赛事，设抽象、建筑、概念、风景、裸体等 20 个类别，面向专业与业余艺术摄影师开放。',
+    officialUrl: 'https://fineartphotoawards.com/',
+    submitUrl: 'https://fineartphotoawards.com/',
+    entryType: '全球专业与业余艺术摄影师',
+  },
+  {
+    id: 'lensculture-portrait-awards',
+    name: 'LensCulture Portrait Awards 2026',
+    nameZh: '2026 LensCulture 肖像摄影奖',
+    deadline: '2026-02-24',
+    category: 'Portrait',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      'LensCulture 年度肖像摄影奖，面向全球摄影师征集人像作品，单幅作品可免费提交，优胜者获国际曝光与展览机会。',
+    officialUrl: 'https://www.lensculture.com/photo-competitions/portrait-awards',
+    submitUrl: 'https://www.lensculture.com/photo-competitions/portrait-awards',
+    entryType: '全球摄影师（单幅免费）',
+  },
+  {
+    id: 'bigpicture-natural-world',
+    name: 'BigPicture Natural World Photography Competition 2026',
+    nameZh: '2026 BigPicture 自然世界摄影大赛',
+    deadline: '2026-03-01',
+    category: 'Nature',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '由加州科学院主办的自然世界摄影大赛，鼓励全球摄影师用影像展现地球生物多样性与保护，设自然、野生动物、水生等类别。',
+    officialUrl: 'https://www.bigpicturecompetition.org/',
+    submitUrl: 'https://www.bigpicturecompetition.org/competitiondetails',
+    entryType: '全球自然与野生动物摄影师',
+  },
+  {
+    id: 'audubon-photography-awards',
+    name: 'Audubon Photography Awards 2026',
+    nameZh: '2026 奥杜邦鸟类摄影奖',
+    deadline: '2026-03-04',
+    category: 'Wildlife',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '美国奥杜邦协会主办的鸟类摄影与视频大赛，面向美、加、智利、哥伦比亚居民，分成人、青年与多个专项奖。',
+    officialUrl: 'https://www.audubon.org/photography/awards',
+    submitUrl: 'https://www.audubon.org/photography/awards',
+    entryType: '美/加/智/哥居民（鸟类摄影）',
+  },
+  {
+    id: 'iphone-photography-awards',
+    name: 'iPhone Photography Awards 2026',
+    nameZh: '2026 iPhone 摄影奖',
+    deadline: '2026-03-31',
+    category: 'Mobile',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '全球历史最悠久的 iPhone 摄影奖，仅接受使用 iPhone 或 iPad 拍摄、未用桌面软件大幅修改的作品，面向全球用户。',
+    officialUrl: 'https://www.ippawards.com',
+    submitUrl: 'https://www.ippawards.com/2024-entry-form',
+    entryType: '使用 iPhone 或 iPad 的摄影师',
+  },
+  {
+    id: 'taylor-wessing-photo-portrait-prize',
+    name: 'Taylor Wessing Photo Portrait Prize 2026',
+    nameZh: '2026 泰勒·韦森肖像摄影奖',
+    deadline: '2026-04-21',
+    category: 'Portrait',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '伦敦国家肖像画廊主办的国际肖像摄影奖，邀请全球 18 岁以上摄影师（专业或业余）以最广义的“肖像”参赛。',
+    officialUrl: 'https://www.npg.org.uk/whatson/exhibitions/2026/taylor-wessing-photo-portrait-prize-2026',
+    submitUrl: 'http://www.competitions.npg.org.uk/',
+    entryType: '面向全球 18 岁以上摄影师（专业与业余）',
+  },
+  {
+    id: 'lensculture-critics-choice',
+    name: 'LensCulture Critics’ Choice 2026',
+    nameZh: '2026 LensCulture 评论家之选',
+    deadline: '2026-04-22',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      'LensCulture 年度评论家之选，由国际评论家与策展人评选，单幅作品可免费提交，优胜者获伦敦群展与现金奖。',
+    officialUrl: 'https://www.lensculture.com/photo-competitions/critics-choice',
+    submitUrl: 'https://www.lensculture.com/photo-competitions/critics-choice',
+    entryType: '全球摄影师（单幅免费）',
+  },
+  {
+    id: 'nikon-small-world',
+    name: 'Nikon Small World 2026',
+    nameZh: '2026 尼康微观世界摄影大赛',
+    deadline: '2026-04-30',
+    category: 'Nature',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '始于 1975 年的尼康显微摄影大赛，表彰光学显微镜下的微观之美，面向任何对显微摄影感兴趣的人免费开放。',
+    officialUrl: 'https://www.nikonsmallworld.com/',
+    submitUrl: 'https://www.nikonsmallworld.com/',
+    entryType: '显微摄影爱好者（免费）',
+  },
+  {
+    id: 'monovisions-photography-awards',
+    name: 'MonoVisions Photography Awards 2026',
+    nameZh: '2026 MonoVisions 黑白摄影奖',
+    deadline: '2026-05-17',
+    category: 'Abstract',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '专注黑白摄影的国际赛事，设抽象、建筑、人像、街头、旅行等 12 个类别，面向全球专业与业余黑白摄影师。',
+    officialUrl: 'https://monovisionsawards.com/',
+    submitUrl: 'https://monovisionsawards.com/',
+    entryType: '全球黑白摄影爱好者（专业与业余）',
+  },
+  {
+    id: 'hipa',
+    name: 'HIPA 15th Season (Family) 2026',
+    nameZh: '2026 哈姆丹国际摄影奖',
+    deadline: '2026-05-31',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '由迪拜王储设立的哈姆丹国际摄影奖（第十五季主题“Family”），总奖金高达百万美元，面向全球摄影师免费征集。',
+    officialUrl: 'https://www.hipa.ae',
+    submitUrl: 'https://www.hipa.ae/members',
+    entryType: '面向全球摄影师（免费）',
+  },
+  {
+    id: 'british-wildlife-photography-awards',
+    name: 'British Wildlife Photography Awards 2026',
+    nameZh: '2026 英国野生动物摄影奖',
+    deadline: '2026-06-07',
+    category: 'Wildlife',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '英国野生动物摄影奖，面向全球摄影师但作品须摄于英国及附近海域，设动物行为、海岸、城市野生动物等类别。',
+    officialUrl: 'http://bwpawards.org',
+    submitUrl: 'http://enter.bwpawards.org',
+    entryType: '全球摄影师（作品须摄于英国及周边）',
+  },
+  {
+    id: 'lensculture-street-photography-awards',
+    name: 'LensCulture Street Photography Awards 2026',
+    nameZh: '2026 LensCulture 街头摄影奖',
+    deadline: '2026-06-17',
+    category: 'Street',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      'LensCulture 年度街头摄影奖，征集全球街头摄影师的作品，单幅可免费提交，优胜者在伦敦 Photo London 群展展出。',
+    officialUrl: 'https://www.lensculture.com/photo-competitions/street-photography-awards',
+    submitUrl: 'https://www.lensculture.com/photo-competitions/street-photography-awards',
+    entryType: '全球街头摄影师（单幅免费）',
+  },
+  {
+    id: 'world-nature-photography-awards',
+    name: 'World Nature Photography Awards 2026',
+    nameZh: '2026 世界自然摄影奖',
+    deadline: '2026-06-30',
+    category: 'Nature',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '世界自然摄影奖面向全球专业与业余自然摄影师，设动物栖息地、鸟类、水下、黑白、自然艺术等类别，总冠军获 1000 美元。',
+    officialUrl: 'https://www.worldnaturephotographyawards.com/',
+    submitUrl: 'https://www.worldnaturephotographyawards.com/',
+    entryType: '全球专业与业余自然摄影师',
+  },
+  {
+    id: 'comedy-wildlife-photography-awards',
+    name: 'Nikon Comedy Wildlife Photography Awards 2026',
+    nameZh: '2026 搞笑野生动物摄影奖',
+    deadline: '2026-06-30',
+    category: 'Wildlife',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '以幽默为核心的尼康搞笑野生动物摄影奖，捕捉动物们令人捧腹的瞬间，完全免费、面向所有人开放。',
+    officialUrl: 'https://www.comedywildlifephoto.com/',
+    submitUrl: 'https://www.comedywildlifephoto.com/',
+    entryType: '所有人可参加（免费）',
+  },
+  {
+    id: 'international-photography-awards',
+    name: 'International Photography Awards (IPA) 2026',
+    nameZh: '2026 国际摄影奖',
+    deadline: '2026-06-30',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '自 2003 年举办的年度国际摄影奖（Lucie 基金会），面向全球专业、业余与学生摄影师，涵盖广告、建筑、自然、人物等类别。',
+    officialUrl: 'https://www.photoawards.com',
+    submitUrl: 'https://www.photoawards.com/how-to-enter/',
+    entryType: '专业、业余与学生摄影师',
+  },
+  {
+    id: 'close-up-photographer-of-the-year',
+    name: 'Close-up Photographer of the Year 2026',
+    nameZh: '2026 特写摄影师大赛',
+    deadline: '2026-07-12',
+    category: 'Nature',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '年度特写摄影师奖，通过特写、微距与显微摄影揭示世界的隐藏之美，面向所有人开放，设动物、昆虫、水下、植物等 11 类。',
+    officialUrl: 'https://www.cupoty.com/',
+    submitUrl: 'https://www.cupoty.com/',
+    entryType: '所有人可参加（特写/微距/显微）',
+  },
+  {
+    id: 'prix-de-la-photographie-paris',
+    name: 'Prix de la Photographie Paris (Px3) 2026',
+    nameZh: '2026 巴黎摄影奖',
+    deadline: '2026-07-22',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '巴黎摄影奖旨在推广摄影艺术并连接全球摄影师与巴黎艺术圈，面向全球 18 岁以上摄影师，设专业与非专业组别。',
+    officialUrl: 'https://px3.fr/',
+    submitUrl: 'https://px3.fr/',
+    entryType: '面向全球 18 岁以上摄影师',
+  },
+  {
+    id: 'nd-awards',
+    name: 'ND Awards 2026',
+    nameZh: '2026 中性密度摄影奖',
+    deadline: '2026-09-20',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '中性密度摄影奖由 ND 杂志主办，面向全球专业与业余摄影师，设建筑、编辑、艺术、自然、人物等类别，总奖金逾万美元。',
+    officialUrl: 'https://www.ndawards.net/',
+    submitUrl: 'https://www.ndawards.net/',
+    entryType: '专业与业余摄影师',
+  },
+  {
+    id: 'travel-photographer-of-the-year',
+    name: 'Travel Photographer of the Year 2026',
+    nameZh: '2026 年度旅行摄影师大赛',
+    deadline: '2026-10-12',
+    category: 'Travel',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '历史悠久的年度旅行摄影师大赛，设作品集与单幅“One Shot”等类别，鼓励用镜头讲述旅途中的故事与风景，业余与专业均可。',
+    officialUrl: 'https://www.tpoty.com/tpoty-2026-awards/',
+    submitUrl: 'https://www.tpoty.com/enter',
+    entryType: '业余与专业旅行摄影师',
+  },
+  {
+    id: 'monochrome-awards',
+    name: 'Monochrome Awards 2026',
+    nameZh: '2026 单色摄影奖',
+    deadline: '2026-11-15',
+    category: 'Abstract',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '国际黑白摄影大赛，设专业与业余组别，颁发现金奖与年度画册收录，面向所有水平与观点的黑白摄影爱好者。',
+    officialUrl: 'https://monoawards.com/',
+    submitUrl: 'https://monoawards.com/',
+    entryType: '专业与业余黑白摄影师',
+  },
+  {
+    id: 'smithsonian-photo-contest',
+    name: 'Smithsonian Magazine Photo Contest 2026',
+    nameZh: '2026 史密森尼摄影大赛',
+    deadline: '2026-12-01',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '史密森尼杂志年度摄影大赛，免费向全球 18 岁以上摄影师开放，设自然世界、旅行、人物、艺术影像等类别（2026 届截稿日期为预计）。',
+    officialUrl: 'https://photocontest.smithsonianmag.com/photocontest/',
+    submitUrl: 'https://photocontest.smithsonianmag.com/photocontest/',
+    entryType: '全球 18 岁以上摄影师（免费）',
+  },
+  {
+    id: 'wildlife-photographer-of-the-year',
+    name: 'Wildlife Photographer of the Year 2026',
+    nameZh: '2026 年度野生动物摄影师大赛',
+    deadline: '2026-12-04',
+    category: 'Wildlife',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '伦敦自然历史博物馆主办的年度野生动物摄影师大赛。2026 年度（第 62 届）已于 2025 年 12 月截稿，下方日期为 2027 年度赛事的预计早期 12 月截稿日。',
+    officialUrl: 'https://www.nhm.ac.uk/wpy',
+    submitUrl: 'https://www.nhm.ac.uk/wpy',
+    entryType: '全球自然摄影师（专业与业余）',
+  },
+  {
+    id: 'ocean-art-underwater',
+    name: 'Ocean Art Underwater Photo Contest 2026–2027',
+    nameZh: '2026 海洋艺术水下摄影大赛',
+    deadline: '2026-12-12',
+    category: 'Underwater',
+    region: 'Global',
+    fee: 'Paid',
+    description:
+      '由 Underwater Photography Guide 主办的水下摄影大赛，奖金池超过 6 万美元，面向全球水下摄影师（2026–2027 赛季截稿日期为预计）。',
+    officialUrl: 'https://www.uwphotographyguide.com/ocean-art-competition',
+    submitUrl: 'https://www.uwphotographyguide.com/ocean-art-competition',
+    entryType: '全球水下摄影师',
+  },
+  {
+    id: 'sony-world-photography-awards-2027',
+    name: 'Sony World Photography Awards 2027',
+    nameZh: '2027 索尼世界摄影大赛',
+    deadline: '2027-01-05',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '索尼世界摄影大赛迎来第 20 届，已于 2026 年 6 月 1 日开放投稿。2027 届单幅组（Single Image，原公开组）截稿 2027 年 1 月 5 日，系列组（Series，原专业组）截稿 1 月 12 日，面向全球摄影师免费参加。',
+    officialUrl: 'https://www.worldphoto.org/sony-world-photography-awards',
+    submitUrl: 'https://www.worldphoto.org/sony-world-photography-awards',
+    entryType: '全球专业与业余摄影师（免费）',
+  },
+  {
+    id: '35awards',
+    name: '35Awards 2026 (100 Best Photos of 2026)',
+    nameZh: '2026 35Awards 国际摄影奖',
+    deadline: '2027-02-25',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '成立于 2015 年的年度国际摄影奖（“100 Best Photos of 2026”），免费向全球摄影师开放，贯穿全年提交并由国际评审团多阶段评选。',
+    officialUrl: 'https://35awards.com',
+    submitUrl: 'https://35awards.com',
+    entryType: '全球摄影师（年度评选）',
+  },
+  {
+    id: 'cewe-photo-award',
+    name: 'CEWE Photo Award 2026–2027',
+    nameZh: '2026 CEWE 摄影奖',
+    deadline: '2027-05-31',
+    category: 'Open',
+    region: 'Global',
+    fee: 'Free',
+    description:
+      '号称全球规模最大的摄影比赛（2026–2027 届），主题“Our World is Beautiful”，免费上传最多 100 幅，设十个类别与青年才俊奖。',
+    officialUrl: 'https://www.cewe.com/fotowettbewerbe.html',
+    submitUrl: 'https://contest.cewe.ie/cewephotoaward2027/',
+    entryType: '全球摄影爱好者（免费，最多 100 幅）',
+  },
+]
