@@ -37,6 +37,7 @@ export function WatchlistPanel({ items }: Props) {
         {items.map((c, i) => (
           <motion.div
             key={c.id}
+            className="min-w-0"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.28, delay: Math.min(i * 0.03, 0.3), ease: 'easeOut' }}

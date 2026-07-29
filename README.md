@@ -118,8 +118,8 @@
 ---
 
 ## 更多文档
-- 想了解技术实现、如何贡献比赛数据、自动化与部署？请看 [`docs/TECH_DOC.md`](./docs/TECH_DOC.md)。
-- 想了解视觉与交互的设计思路？请看 [`docs/DESIGN.md`](./docs/DESIGN.md)。
+- 维护者 / 开发者请看 **[`README.dev.md`](./README.dev.md)**（技术架构、数据模型、i18n 双层结构、自动化与部署、设计系统）。
+- Agent 协作与任务交接请看 **[`MANAGER.md`](./MANAGER.md)**（用了多少 Agent、如何分配、每种语言 Agent 的职责、继续维护的检查清单）。
 
 ## 许可证
 以 [MIT](./LICENSE) 协议开源。

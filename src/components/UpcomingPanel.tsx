@@ -32,10 +32,10 @@ export function UpcomingPanel({ byDate, onSelectDay }: Props) {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
-        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+        <motion.div className="min-w-0" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           <Section title={t('upcoming.week')} icon={<Flame className="h-4 w-4 text-rose-500" />} items={week} empty={t('upcoming.week.empty')} onSelectDay={onSelectDay} />
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.06 }}>
+        <motion.div className="min-w-0" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.06 }}>
           <Section title={t('upcoming.month')} icon={<CalendarClock className="h-4 w-4 text-amber-500" />} items={month} empty={t('upcoming.month.empty')} onSelectDay={onSelectDay} />
         </motion.div>
       </div>
