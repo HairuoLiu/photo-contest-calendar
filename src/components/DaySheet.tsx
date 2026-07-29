@@ -57,8 +57,8 @@ export function DaySheet({ date, items, onClose }: Props) {
             </div>
 
             <header className="flex items-start justify-between gap-3 px-5 pb-3 pt-2">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+              <div className="min-w-0">
+                <p className="truncate text-xs font-medium uppercase tracking-wide text-slate-400">
                   {weekdays.full[(date.getDay() + 6) % 7]}
                 </p>
                 <h3 className="font-serif text-2xl leading-tight text-slate-900 dark:text-white">

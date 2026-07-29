@@ -22,12 +22,12 @@ export function WatchlistPanel({ items }: Props) {
         <span className="grid h-8 w-8 place-items-center rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-300">
           <Hourglass className="h-4 w-4" />
         </span>
-        <div>
+        <div className="min-w-0">
           <h2 className="flex items-center gap-1.5 font-serif text-base font-bold text-slate-900 dark:text-white">
             {t('watchlist.title')}
             <Sparkles className="h-4 w-4 text-amber-500" />
           </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400">{t('watchlist.desc')}</p>
+          <p className="truncate text-xs text-slate-500 dark:text-slate-400">{t('watchlist.desc')}</p>
         </div>
         <span className="ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-500 dark:bg-slate-800">
           {items.length}

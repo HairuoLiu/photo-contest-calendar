@@ -988,7 +988,7 @@ export const DICT: Record<Lang, Dict> = {
     themeToggle: 'สลับธีมมืด / สว่าง',
     'view.year': 'ปี',
     'view.month': 'เดือน',
-    'view.week': 'สัปดาห์',
+    'view.week': 'สัปด.',
     'nav.prev': 'ก่อนหน้า',
     'nav.next': 'ถัดไป',
     'nav.today': 'วันนี้',

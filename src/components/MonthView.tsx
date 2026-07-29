@@ -116,7 +116,7 @@ function DayCell({
         {format(day, 'd')}
       </span>
       {today && (
-        <span className="absolute right-1.5 top-1.5 z-10 rounded-full bg-brand-500 px-1.5 py-0.5 text-[9px] font-bold leading-none text-white shadow">
+        <span className="absolute right-1.5 top-1.5 z-10 hidden rounded-full bg-brand-500 px-1.5 py-0.5 text-[9px] font-bold leading-none text-white shadow lg:block">
           {t('nav.today')}
         </span>
       )}
