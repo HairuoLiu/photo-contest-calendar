@@ -51,16 +51,16 @@ export function WeekView({ cursor, byDate, onBack }: Props) {
               )}
             >
               <div className="mb-2 flex items-center justify-between gap-2">
-                <h3 className="flex items-center gap-2 text-base font-bold text-slate-900 dark:text-white">
-                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-slate-100 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">
-                    {weekdays.full[(d.getDay() + 6) % 7]}
+                <h3 className="flex min-w-0 items-center gap-2 text-base font-bold text-slate-900 dark:text-white">
+                  <span className="grid h-7 min-w-7 place-items-center rounded-lg bg-slate-100 px-1 text-xs font-semibold text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                    {weekdays.short[(d.getDay() + 6) % 7]}
                   </span>
-                  {format(d, t('dayTitle'), { locale: dateLocale })}
+                  <span className="truncate">{format(d, t('dayTitle'), { locale: dateLocale })}</span>
                   {today && (
-                    <span className="rounded-full bg-brand-500 px-2 py-0.5 text-[10px] font-bold text-white">{t('nav.today')}</span>
+                    <span className="shrink-0 rounded-full bg-brand-500 px-2 py-0.5 text-[10px] font-bold text-white">{t('nav.today')}</span>
                   )}
                 </h3>
-                <span className="nums rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+                <span className="nums shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-500 dark:bg-slate-800 dark:text-slate-300">
                   {t('count', { n: items.length })}
                 </span>
               </div>

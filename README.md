@@ -1,7 +1,8 @@
 # 📸 截稿不迷路 · 全球摄影赛事日历
 
 <p align="center">
-  <img src="./public/social-preview.png" alt="截稿不迷路 · 全球摄影赛事日历" width="720" />
+  <img src="./public/screenshot-home.jpg" alt="移动端首页：本周/本月截止、月视图与导航" width="360" />
+  <img src="./public/screenshot-daysheet.jpg" alt="移动端日详情：单场比赛的截止日期、费用、官网与投稿入口" width="360" />
 </p>
 
 一个**开源、无后端、免登录**的全球摄影比赛截止提醒工具。用年 / 月 / 周三种视图，把全球知名摄影比赛的投稿截止日直观地呈现出来，并像「闪卡」一样提示本周 / 本月有哪些投稿即将截止。
