@@ -21,22 +21,23 @@ export function Header() {
         </div>
       </div>
 
-      {/* Right: a borderless cluster that blends into the background.
-          Top = GitHub (logo only). Bottom row = language + share.
-          No theme button here — that lives as a floating action button. */}
-      <div className="flex shrink-0 flex-col items-end gap-1.5">
+      {/* Square right cluster: a full-width GitHub bar on top, and two
+          equal-width buttons (language + share) below whose combined width
+          exactly matches the bar — so the whole block reads as one square. */}
+      <div className="flex shrink-0 flex-col items-stretch gap-1.5">
         <a
           href={REPO_URL}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t('github')}
-          className="press grid h-9 w-9 place-items-center rounded-xl text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+          className="press flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
         >
-          <Github className="h-5 w-5" />
+          <Github className="h-4 w-4" />
+          <span className="text-sm font-semibold">GitHub</span>
         </a>
-        <div className="flex items-center gap-1.5">
-          <LanguageSwitcher />
-          <ShareButton />
+        <div className="grid grid-cols-2 gap-1.5">
+          <LanguageSwitcher className="h-11 w-full" />
+          <ShareButton className="h-11 w-full" />
         </div>
       </div>
     </header>

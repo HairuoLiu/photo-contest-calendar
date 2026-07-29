@@ -15,9 +15,9 @@ function urgency(deadline: string): { level: Urgency; bar: string; text: string 
   const dl = startOfDay(parseISO(deadline))
   const diff = differenceInCalendarDays(dl, today)
   if (diff < 0) return { level: 'past', bar: 'bg-slate-300 dark:bg-slate-700', text: 'text-slate-500' }
-  if (diff <= 7) return { level: 'urgent', bar: 'bg-rose-500', text: 'text-rose-600 dark:text-rose-400' }
-  if (diff <= 30) return { level: 'soon', bar: 'bg-amber-500', text: 'text-amber-600 dark:text-amber-400' }
-  return { level: 'future', bar: 'bg-emerald-500', text: 'text-emerald-600 dark:text-emerald-400' }
+  if (diff <= 7) return { level: 'urgent', bar: 'bg-rose-500', text: 'text-rose-700 dark:text-rose-300' }
+  if (diff <= 30) return { level: 'soon', bar: 'bg-amber-500', text: 'text-amber-700 dark:text-amber-300' }
+  return { level: 'future', bar: 'bg-emerald-500', text: 'text-emerald-700 dark:text-emerald-300' }
 }
 
 interface Props {

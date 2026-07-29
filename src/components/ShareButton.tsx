@@ -30,7 +30,7 @@ export function ShareButton({ className }: { className?: string }) {
       aria-label={copied ? t('share.copied') : t('share.copy')}
       title={copied ? t('share.copied') : t('share.copy')}
       className={cn(
-        'press grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800',
+        'press grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800',
         className,
       )}
     >

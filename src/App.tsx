@@ -39,6 +39,11 @@ export default function App() {
   const [daySheet, setDaySheet] = useState<{ date: Date; items: Competition[] } | null>(null)
   const { visible: bannerVisible, os, canInstall, dismiss: dismissBanner, install: installApp } = useInstallBanner()
   const { t } = useT()
+  // Footer hint reuses the (now-orphaned) "data lives in this repo" string,
+  // with the {github} placeholder swapped for a real link — no innerHTML.
+  const hintParts = t('upcoming.hint').split('{github}')
+  const hintBefore = hintParts[0]
+  const hintAfter = hintParts[1] ?? ''
 
   // Tap a day cell → open the bottom sheet (touch-friendly, keeps the month
   // grid in context). The week view stays reachable via the 周 segmented tab.
@@ -135,7 +140,7 @@ export default function App() {
 
         <div
           className={cn(
-            'mx-auto max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8 2xl:max-w-[1800px]',
+            'mx-auto max-w-[1500px] px-4 pb-24 pt-6 sm:px-6 lg:px-8 2xl:max-w-[1800px]',
             bannerVisible && 'pt-20',
           )}
         >
@@ -181,6 +186,18 @@ export default function App() {
 
           <footer className="mt-10 border-t border-slate-200 pt-6 text-center text-xs text-slate-400 dark:border-slate-800">
             <p>{t('footer.text')}</p>
+            <p className="mt-2">
+              {hintBefore}
+              <a
+                href={REPO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-600 hover:underline dark:text-brand-400"
+              >
+                GitHub
+              </a>
+              {hintAfter}
+            </p>
             <p className="mt-1">
               {t('footer.mit')}
               <a

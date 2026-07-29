@@ -48,7 +48,7 @@ export function CalendarControls({ view, setView, cursor, onPrev, onNext, onToda
   const periodShort = view === 'year' ? format(cursor, 'yyyy') : format(cursor, 'yyyy/M/d')
 
   return (
-    <div className="mt-8 flex flex-nowrap items-center justify-between gap-2">
+    <div className="mt-8 flex flex-nowrap items-center justify-between gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
       <div className="inline-flex rounded-xl border border-slate-200 bg-white p-1 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         {VIEW_KEYS.map(([v, key]) => {
           const active = view === v
@@ -59,7 +59,7 @@ export function CalendarControls({ view, setView, cursor, onPrev, onNext, onToda
               aria-pressed={active}
               onClick={() => setView(v)}
               className={cn(
-                'press rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
+                'press rounded-lg px-2.5 py-2 text-xs font-medium transition-colors sm:px-3 sm:py-1.5 sm:text-sm',
                 active
                   ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
                   : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800',
@@ -76,7 +76,7 @@ export function CalendarControls({ view, setView, cursor, onPrev, onNext, onToda
           type="button"
           onClick={onPrev}
           aria-label={t('nav.prev')}
-          className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+          className="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
@@ -98,7 +98,7 @@ export function CalendarControls({ view, setView, cursor, onPrev, onNext, onToda
           type="button"
           onClick={onNext}
           aria-label={t('nav.next')}
-          className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+          className="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
         >
           <ChevronRight className="h-4 w-4" />
         </button>
