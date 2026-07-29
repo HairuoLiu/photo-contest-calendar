@@ -3,6 +3,7 @@ import { REPO_URL } from '../lib/config'
 import { cn } from '../lib/utils'
 import { useT } from '../i18n'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { ShareButton } from './ShareButton'
 
 interface Props {
   theme: 'light' | 'dark'
@@ -28,6 +29,7 @@ export function Header({ theme, setTheme }: Props) {
 
         <div className="flex items-center gap-2">
           <LanguageSwitcher />
+          <ShareButton />
           <a
             href={REPO_URL}
             target="_blank"

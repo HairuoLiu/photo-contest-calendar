@@ -11,7 +11,7 @@ import { cn } from '../lib/utils'
  * names stay in their original language as proper nouns.
  */
 export function LanguageSwitcher() {
-  const { lang, setLang, t } = useT()
+  const { lang, setLang, setAuto, isAuto, t } = useT()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -53,8 +53,30 @@ export function LanguageSwitcher() {
         <ul
           role="listbox"
           aria-label={t('language.toggle')}
-          className="absolute right-0 z-[80] mt-2 w-44 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-xl shadow-slate-900/10 dark:border-slate-700 dark:bg-slate-900"
+          className="absolute right-0 z-[80] mt-2 max-h-[70vh] w-44 overflow-y-auto rounded-xl border border-slate-200 bg-white py-1 shadow-xl shadow-slate-900/10 dark:border-slate-700 dark:bg-slate-900"
         >
+          <li>
+            <button
+              type="button"
+              role="option"
+              aria-selected={isAuto}
+              onClick={() => {
+                setAuto()
+                setOpen(false)
+              }}
+              className={cn(
+                'flex w-full items-center justify-between gap-2 px-3 py-2 text-left text-sm transition hover:bg-slate-50 dark:hover:bg-slate-800',
+                isAuto ? 'font-semibold text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-300',
+              )}
+            >
+              <span className="flex items-center gap-2">
+                <span className="w-5 text-center text-xs font-semibold text-slate-400">↺</span>
+                {t('language.auto')}
+              </span>
+              {isAuto && <Check className="h-4 w-4 text-brand-500" />}
+            </button>
+          </li>
+          <li className="my-1 border-t border-slate-100 dark:border-slate-800" />
           {LANGS.map((l) => {
             const active = l.code === lang
             return (

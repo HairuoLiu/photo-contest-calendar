@@ -29,6 +29,10 @@ function appBase(): string {
 interface I18nValue {
   lang: Lang
   setLang: (l: Lang) => void
+  /** Forget any manual choice and fall back to the browser's detected language. */
+  setAuto: () => void
+  /** True when the active language is the browser-detected default (no URL / storage lock). */
+  isAuto: boolean
   /** Translate a key, with optional `{name}` placeholders. */
   t: (key: string, vars?: Record<string, string | number>) => string
   /** Active date-fns locale for the current language. */
@@ -72,6 +76,28 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       /* ignore */
     }
   }
+
+  /** Drop any explicit lock (URL segment + localStorage) and re-detect. */
+  const setAuto = () => {
+    try {
+      localStorage.removeItem(STORAGE_KEY)
+      const target = appBase()
+      if (window.location.pathname !== target) {
+        window.history.pushState({}, '', target)
+      }
+    } catch {
+      /* ignore */
+    }
+    setLangState(detectLang())
+  }
+
+  const isAuto = (() => {
+    try {
+      return langFromPath(window.location.pathname) === null && !localStorage.getItem(STORAGE_KEY)
+    } catch {
+      return false
+    }
+  })()
 
   // React to browser back/forward: re-derive the language from the URL.
   useEffect(() => {
@@ -157,6 +183,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     return {
       lang,
       setLang,
+      setAuto,
+      isAuto,
       t,
       dateLocale: DATE_LOCALE[lang],
       daysLeft,
