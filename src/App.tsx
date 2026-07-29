@@ -5,9 +5,7 @@ import {
   addMonths,
   addWeeks,
   addYears,
-  endOfWeek,
   format,
-  startOfWeek,
   subDays,
   subMonths,
   subWeeks,
@@ -24,6 +22,7 @@ import { DaySheet } from './components/DaySheet'
 import { UpcomingPanel } from './components/UpcomingPanel'
 import { WatchlistPanel } from './components/WatchlistPanel'
 import { InstallBanner } from './components/InstallBanner'
+import { ThemeFab } from './components/ThemeFab'
 import { useInstallBanner } from './lib/useInstallBanner'
 import type { View } from './lib/types'
 import { REPO_URL } from './lib/config'
@@ -39,7 +38,7 @@ export default function App() {
   const [hovered, setHovered] = useState<{ date: string; items: Competition[] } | null>(null)
   const [daySheet, setDaySheet] = useState<{ date: Date; items: Competition[] } | null>(null)
   const { visible: bannerVisible, os, canInstall, dismiss: dismissBanner, install: installApp } = useInstallBanner()
-  const { t, dateLocale } = useT()
+  const { t } = useT()
 
   // Tap a day cell → open the bottom sheet (touch-friendly, keeps the month
   // grid in context). The week view stays reachable via the 周 segmented tab.
@@ -123,17 +122,6 @@ export default function App() {
     else setCursor(addDays(cursor, 1))
   }
 
-  const weekStart = startOfWeek(cursor, { weekStartsOn: 1 })
-  const weekEnd = endOfWeek(cursor, { weekStartsOn: 1 })
-  const title =
-    view === 'year'
-      ? format(cursor, 'yyyy')
-      : view === 'month'
-        ? format(cursor, t('monthTitle'), { locale: dateLocale })
-        : view === 'week'
-          ? `${format(weekStart, t('weekTitle'), { locale: dateLocale })} – ${format(weekEnd, t('weekTitle'), { locale: dateLocale })}`
-          : format(cursor, t('dayTitle'), { locale: dateLocale })
-
   return (
     <MotionConfig reducedMotion="user">
       <div className="min-h-full app-bg">
@@ -151,7 +139,7 @@ export default function App() {
             bannerVisible && 'pt-20',
           )}
         >
-          <Header theme={theme} setTheme={setTheme} />
+          <Header />
 
           <section className="mt-6">
             <UpcomingPanel byDate={byDate} onSelectDay={goToWeek} />
@@ -160,7 +148,7 @@ export default function App() {
           <CalendarControls
             view={view}
             setView={setView}
-            title={title}
+            cursor={cursor}
             onPrev={handlePrev}
             onNext={handleNext}
             onToday={goToday}
@@ -218,6 +206,8 @@ export default function App() {
           items={daySheet?.items ?? []}
           onClose={() => setDaySheet(null)}
         />
+
+        <ThemeFab theme={theme} setTheme={setTheme} hidden={daySheet !== null} />
       </div>
     </MotionConfig>
   )

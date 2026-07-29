@@ -3,6 +3,7 @@ import type { Competition } from '../data/competitions'
 import { categoryDotMuted, categoryStyle, cn, tierBadge } from '../lib/utils'
 import { TIER_MAP } from '../data/tiers'
 import { useT } from '../i18n'
+import { localizedName, localizedDesc, localizedEntry } from '../data/i18n/content'
 import { differenceInCalendarDays, parseISO, startOfDay } from 'date-fns'
 
 type Urgency = 'past' | 'urgent' | 'soon' | 'future'
@@ -27,7 +28,10 @@ interface Props {
 }
 
 export function CompetitionCard({ c, compact = false, action }: Props) {
-  const { t, daysLeft, fee } = useT()
+  const { t, daysLeft, fee, lang } = useT()
+  const name = localizedName(c, lang)
+  const desc = localizedDesc(c, lang)
+  const entry = localizedEntry(c, lang)
   const u = urgency(c.deadline)
   const f = fee(c.fee)
   const tierKey = c.tier ?? TIER_MAP[c.id]
@@ -46,9 +50,8 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
           <div className="flex min-w-0 items-center gap-1.5">
             <Globe className="h-4 w-4 shrink-0 text-slate-400" aria-hidden />
             <div className="min-w-0">
-              <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">{c.name}</p>
               <h3 className={cn('truncate font-semibold text-slate-900 dark:text-slate-100', compact ? 'text-sm' : 'text-base')}>
-                {c.nameZh}
+                {name}
               </h3>
             </div>
           </div>
@@ -101,15 +104,15 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
         </div>
 
         {compact ? (
-          <p className="line-clamp-1 text-xs text-slate-500 dark:text-slate-400">{c.description}</p>
+          <p className="line-clamp-1 text-xs text-slate-500 dark:text-slate-400">{desc}</p>
         ) : (
-          <p className="line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{c.description}</p>
+          <p className="line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{desc}</p>
         )}
 
         {c.entryType && (
           <p className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400">
             <Users className="h-3 w-3 shrink-0" aria-hidden />
-            {c.entryType}
+            {entry}
           </p>
         )}
 

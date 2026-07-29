@@ -4,7 +4,6 @@ import { Flame, CalendarClock } from 'lucide-react'
 import type { Competition } from '../data/competitions'
 import { CompetitionCard } from './CompetitionCard'
 import { isSameMonth, isSameWeek, parseISO, startOfDay, startOfWeek } from 'date-fns'
-import { REPO_URL } from '../lib/config'
 import { useT } from '../i18n'
 
 interface Props {
@@ -14,7 +13,6 @@ interface Props {
 
 export function UpcomingPanel({ byDate, onSelectDay }: Props) {
   const { t } = useT()
-  const [hintBefore, hintAfter] = t('upcoming.hint').split('{github}')
   const { week, month } = useMemo(() => {
     const today = startOfDay(new Date())
     const weekStart = startOfWeek(today, { weekStartsOn: 1 })
@@ -41,13 +39,6 @@ export function UpcomingPanel({ byDate, onSelectDay }: Props) {
           <Section title={t('upcoming.month')} icon={<CalendarClock className="h-4 w-4 text-amber-500" />} items={month} empty={t('upcoming.month.empty')} onSelectDay={onSelectDay} />
         </motion.div>
       </div>
-      <p className="px-1 text-center text-xs text-slate-400">
-        {hintBefore}
-        <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="font-medium text-brand-600 hover:underline dark:text-brand-400">
-          {t('github')}
-        </a>
-        {hintAfter}
-      </p>
     </div>
   )
 }
