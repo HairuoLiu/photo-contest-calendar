@@ -30,7 +30,7 @@ export function Header() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t('github')}
-          className="press flex h-11 w-full items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="press flex h-11 w-full items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
         >
           <Github className="h-4 w-4" />
           <span className="text-sm font-semibold">GitHub</span>

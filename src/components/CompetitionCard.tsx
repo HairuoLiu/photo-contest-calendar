@@ -45,7 +45,7 @@ export function CompetitionCard({ c, compact = false, action }: Props) {
       )}
     >
       <span className={cn('absolute inset-y-0 left-0 w-1.5', u.bar)} aria-hidden />
-      <div className={cn('pl-2', compact ? 'space-y-1.5' : 'space-y-2')}>
+      <div className={cn('pl-2 pr-2', compact ? 'space-y-1.5' : 'space-y-2')}>
         <div className="flex items-start justify-between gap-2">
           <div className="flex min-w-0 items-center gap-1.5">
             <Globe className="h-4 w-4 shrink-0 text-slate-400" aria-hidden />
