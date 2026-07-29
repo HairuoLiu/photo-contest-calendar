@@ -189,7 +189,7 @@ export const DICT: Record<Lang, Dict> = {
     dayTitle: 'MMM d',
     miniMonth: 'MMM',
     deadlineFull: 'MMMM d, yyyy',
-    wdShort: 'S|M|T|W|T|F|S',
+    wdShort: 'M|T|W|T|F|S|S',
     wdFull: 'Mon|Tue|Wed|Thu|Fri|Sat|Sun',
   },
   'zh-CN': {
@@ -614,7 +614,7 @@ export const DICT: Record<Lang, Dict> = {
     dayTitle: 'd MMM',
     miniMonth: 'MMM',
     deadlineFull: 'd MMMM yyyy',
-    wdShort: 'L|M|M|J|V|S|D',
+    wdShort: 'L|M|Me|J|V|S|D',
     wdFull: 'lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche',
   },
   de: {
@@ -902,7 +902,7 @@ export const DICT: Record<Lang, Dict> = {
     dayTitle: 'd MMM',
     miniMonth: 'MMM',
     deadlineFull: 'd MMMM yyyy',
-    wdShort: 'L|M|M|G|V|S|D',
+    wdShort: 'L|M|Me|G|V|S|D',
     wdFull: 'lunedì|martedì|mercoledì|giovedì|venerdì|sabato|domenica',
   },
   nl: {
@@ -1190,8 +1190,8 @@ export const DICT: Record<Lang, Dict> = {
     dayTitle: 'd MMM',
     miniMonth: 'MMM',
     deadlineFull: 'd MMMM yyyy',
-    wdShort: 'Min|Sen|Sel|Rab|Kam|Jum|Sab',
-    wdFull: 'Minggu|Senin|Selasa|Rabu|Kamis|Jumat|Sabtu',
+    wdShort: 'Sen|Sel|Rab|Kam|Jum|Sab|Min',
+    wdFull: 'Senin|Selasa|Rabu|Kamis|Jumat|Sabtu|Minggu',
   },
   ms: {
     'language.toggle': 'Tukar bahasa',
@@ -1206,7 +1206,7 @@ export const DICT: Record<Lang, Dict> = {
     'view.month': 'Bulan',
     'view.week': 'Minggu',
     'nav.prev': 'Sebelum',
-    'nav.next': 'Selepas',
+    'nav.next': 'Seterusnya',
     'nav.today': 'Hari ini',
     'upcoming.week': 'Tutup minggu ini',
     'upcoming.month': 'Tutup bulan ini',
@@ -1262,7 +1262,7 @@ export const DICT: Record<Lang, Dict> = {
     dayTitle: 'd MMM',
     miniMonth: 'MMM',
     deadlineFull: 'd MMMM yyyy',
-    wdShort: 'Ahd|Isn|Sel|Rab|Kha|Jum|Sab',
-    wdFull: 'Ahad|Isnin|Selasa|Rabu|Khamis|Jumaat|Sabtu',
+    wdShort: 'Isn|Sel|Rab|Kha|Jum|Sab|Ahd',
+    wdFull: 'Isnin|Selasa|Rabu|Khamis|Jumaat|Sabtu|Ahad',
   },
 }

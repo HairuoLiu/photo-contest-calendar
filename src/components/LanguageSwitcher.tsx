@@ -10,7 +10,7 @@ import { cn } from '../lib/utils'
  * the top-right cluster, leftmost. Only UI chrome is translated — contest
  * names stay in their original language as proper nouns.
  */
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ className }: { className?: string }) {
   const { lang, setLang, setAuto, isAuto, t } = useT()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -41,7 +41,10 @@ export function LanguageSwitcher() {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={t('language.toggle')}
-        className="press grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+        className={cn(
+          'press grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800',
+          className,
+        )}
       >
         <Globe className="h-4 w-4 text-slate-500 dark:text-slate-400" />
         <span className="nums pointer-events-none absolute -bottom-0.5 -right-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-slate-900 px-1 text-[9px] font-bold leading-none text-white dark:bg-white dark:text-slate-900">
@@ -53,7 +56,7 @@ export function LanguageSwitcher() {
         <ul
           role="listbox"
           aria-label={t('language.toggle')}
-          className="absolute right-0 z-[80] mt-2 max-h-[70vh] w-44 overflow-y-auto rounded-xl border border-slate-200 bg-white py-1 shadow-xl shadow-slate-900/10 dark:border-slate-700 dark:bg-slate-900"
+          className="absolute right-0 z-[80] mt-2 max-h-[70vh] w-44 max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-xl border border-slate-200 bg-white py-1 shadow-xl shadow-slate-900/10 dark:border-slate-700 dark:bg-slate-900"
         >
           <li>
             <button
