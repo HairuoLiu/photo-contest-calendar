@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { format } from 'date-fns'
-import { DICT, DATE_LOCALE, detectLang, LANGS, type Lang } from './translations'
+import { DICT, FEE_DICT, DATE_LOCALE, detectLang, LANGS, type Lang } from './translations'
+import type { Fee, FeeNoteKind } from '../data/competitions'
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
 const STORAGE_KEY = 'pcc-lang'
@@ -41,8 +42,8 @@ interface I18nValue {
   daysLeft: (iso: string, today?: Date) => string
   /** Localized full deadline (e.g. "July 15, 2026"). */
   formatDeadline: (iso: string) => string
-  /** Resolve a fee string to display info (label localized; class language-agnostic). */
-  fee: (feeStr: string) => { free: boolean; label: string; cls: string }
+  /** Resolve a fee to display info (label localized; class language-agnostic). */
+  fee: (raw: Fee) => { free: boolean; label: string; cls: string }
   weekdays: { short: string[]; full: string[] }
   patterns: { monthTitle: string; weekTitle: string; dayTitle: string; miniMonth: string }
 }
@@ -134,7 +135,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     const d = DICT[lang]
 
     const t = (key: string, vars?: Record<string, string | number>) => {
-      let s = d[key] ?? DICT.en[key] ?? key
+      let s = d[key] ?? FEE_DICT[lang]?.[key] ?? DICT.en[key] ?? FEE_DICT.en[key] ?? key
       if (vars) {
         for (const [k, v] of Object.entries(vars)) {
           s = s.replace(new RegExp(`\\{${k}\\}`, 'g'), String(v))
@@ -162,20 +163,52 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       return format(new Date(y, m - 1, dd), t('deadlineFull'), { locale: DATE_LOCALE[lang] })
     }
 
-    const fee = (feeStr: string) => {
-      const f = (feeStr ?? '').trim()
-      if (f === '' || f.toLowerCase() === 'free') {
-        return {
-          free: true,
-          label: t('card.free'),
-          cls: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300',
+    const fee = (raw: Fee) => {
+      const FREE_CLS = 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300'
+      const PAID_CLS = 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300'
+
+      const noteText = (n: { kind: FeeNoteKind; amt?: string }): string => {
+        switch (n.kind) {
+          case 'someCategoriesFree':
+            return t('fee.note.someCategoriesFree')
+          case 'youthFree':
+            return t('fee.note.youthFree')
+          case 'every5thFree':
+            return t('fee.note.every5thFree')
+          case 'byCategory':
+            return t('fee.note.byCategory')
+          case 'firstFreeExtra':
+            return t('fee.note.firstFreeExtra', { amt: n.amt ?? '' })
+          case 'firstFreeSeries':
+            return t('fee.note.firstFreeSeries', { amt: n.amt ?? '' })
+          case 'portfolioYouth':
+            return t('fee.note.portfolioYouth', { amt: n.amt ?? '' })
+          default:
+            return ''
         }
       }
-      return {
-        free: false,
-        label: f,
-        cls: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300',
+
+      const isFree = raw.free === true
+      if (isFree && !raw.note) {
+        return { free: true, label: t('card.free'), cls: FREE_CLS }
       }
+
+      let amountPart = raw.amount ?? ''
+      if (raw.perImage) amountPart = `${raw.amount ?? ''}${t('fee.perImage')}`
+      else if (raw.approx && raw.from) amountPart = t('fee.approxFrom', { amount: raw.amount ?? '' })
+      else if (raw.from) amountPart = t('fee.from', { amount: raw.amount ?? '' })
+
+      if (isFree && raw.note) {
+        return { free: true, label: `${t('card.free')} (${noteText(raw.note)})`, cls: FREE_CLS }
+      }
+
+      const label = raw.note
+        ? raw.note.kind === 'byCategory'
+          ? `${noteText(raw.note)} (${amountPart})`
+          : `${amountPart} (${noteText(raw.note)})`
+        : amountPart
+
+      return { free: false, label, cls: PAID_CLS }
     }
 
     const splitWd = (s: string) => s.split('|')

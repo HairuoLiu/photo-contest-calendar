@@ -101,7 +101,7 @@ export function HoverBubble({ hovered }: Props) {
                       {c.category}
                     </span>
                     <span className={cn('rounded-full px-1.5 py-0.5 text-[10px] font-bold', f.cls)}>
-                      {f.free ? t('card.free') : `${t('card.feeChip')} ${f.label}`}
+                      {f.free ? f.label : `${t('card.feeChip')} ${f.label}`}
                     </span>
                     <span className="nums ml-auto text-[10px] font-medium text-slate-500 dark:text-slate-400">
                       {daysLeft(c.deadline)}
