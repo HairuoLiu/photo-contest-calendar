@@ -28,6 +28,7 @@ import type { View } from './lib/types'
 import { REPO_URL } from './lib/config'
 import { cn } from './lib/utils'
 import { useT } from './i18n'
+import { Coffee, Heart } from 'lucide-react'
 
 export default function App() {
   const [view, setView] = useState<View>('month')
@@ -209,6 +210,32 @@ export default function App() {
                 {t('footer.contrib')}
               </a>
             </p>
+
+            {/* 捐赠入口：轻量变现，契合开源无广告定位。
+                GitHub Sponsors + Ko-fi 双通道，仅生产/公开站点展示。 */}
+            <div className="mt-5 flex flex-col items-center gap-2.5">
+              <p className="text-slate-500 dark:text-slate-400">{t('footer.support')}</p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="https://github.com/sponsors/HairuoLiu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600"
+                >
+                  <Heart className="h-3.5 w-3.5" aria-hidden />
+                  {t('footer.sponsor')}
+                </a>
+                <a
+                  href="https://ko-fi.com/liuhaier"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press inline-flex items-center gap-1.5 rounded-full bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600"
+                >
+                  <Coffee className="h-3.5 w-3.5" aria-hidden />
+                  {t('footer.kofi')}
+                </a>
+              </div>
+            </div>
           </footer>
         </div>
 
