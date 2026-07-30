@@ -9,7 +9,7 @@
 
 一个**开源、无后端、免登录**的全球摄影比赛截止提醒工具。用年 / 月 / 周三种视图，把全球知名摄影比赛的投稿截止日直观地呈现出来，并像「闪卡」一样提示本周 / 本月有哪些投稿即将截止。
 
-线上地址：`https://hairuoliu.github.io/photo-contest-calendar/`
+线上地址：[摄影比赛截止日历](https://hairuoliu.github.io/photo-contest-calendar/)
 
 > 目的：让所有喜欢摄影的人把这个站点 / 仓库当成**摄影比赛的提醒工具**——无论你是从官网进来，还是直接在 GitHub 上翻看这份清单。
 
@@ -28,7 +28,7 @@
 本站点是一个轻量 **PWA（渐进式 Web 应用）**：无需去应用商店，把它「存到主屏幕」后，就能像原生 App 一样全屏打开、带图标、有缓存。
 
 **iPhone / iPad（Safari）**
-1. 打开 `https://hairuoliu.github.io/photo-contest-calendar/`。
+1. 打开 [摄影比赛截止日历](https://hairuoliu.github.io/photo-contest-calendar/)。
 2. 点底部工具栏的 **分享按钮**（⬆️ 方框箭头图标）。
 3. 在弹出的菜单里向上滑，找到并点 **「添加到主屏幕」**。
 4. 可改名（默认「摄影赛事日历」），点 **添加**。
@@ -47,7 +47,7 @@
 
 ## 收录的摄影比赛与活动
 
-下面是从数据源直接生成的清单，**共 59 场**（其中 43 场已有明确截稿日、16 场待官宣）。按截止日排序，方便检索。部分 2026 年赛事的截稿日已经过期——网站会自动用灰 / 红标记「已截止」，而清单本身保留完整历史，便于回溯。所有日期均尽力以官方公布为准。
+下面是从数据源直接生成的清单，**共 68 场**（其中 47 场已有明确截稿日、21 场待官宣）。按截止日排序，方便检索。部分 2026 年赛事的截稿日已经过期——网站会自动用灰 / 红标记「已截止」，而清单本身保留完整历史，便于回溯。所有日期均尽力以官方公布为准。
 
 > 说明：标「免费」指投稿本身免费；标金额指需缴纳报名费。等级一栏：★ 殿堂级 / ◉ 重要级（留空为普通赛事）。链接指向各赛事官网。
 
@@ -96,6 +96,10 @@
 | 2026–2027 尼康国际摄影大赛 | Nikon Photo Contest 2026–2027 | 2027-01-31 | Open | Japan | 免费 |  | [链接](https://www.nikon-photocontest.com/) |
 | 2027 徕卡奥斯卡·巴纳克摄影奖 | Leica Oskar Barnack Award 2027 | 2027-03-15 | Documentary | Germany | 免费 |  | [链接](https://www.leica-oskar-barnack-award.com/) |
 | 2027 索尼世界摄影大赛 | Sony World Photography Awards 2027 | 2027-01-05 | Open | Global | 免费 |  | [链接](https://www.worldphoto.org/sony-world-photography-awards) |
+| 东京国际摄影奖（TIFA） | Tokyo International Foto Awards 2026 | 2026-08-01 | Open | Japan | $20 / 张 | ◉重要级 | [链接](https://www.tokyofotoawards.jp/) |
+| LensCulture 奖项（原 Exposure Awards） | LensCulture Awards 2026 | 2026-08-12 | Open | Global | $45 | ◉重要级 | [链接](https://www.lensculture.com/photo-competitions) |
+| Head On 摄影奖 | Head On Photo Awards 2026 | 2026-08-16 | Open | Australia | A$35 / 张 | ◉重要级 | [链接](https://headon.org.au/awards/) |
+| W. 尤金·史密斯人道主义摄影基金奖 | W. Eugene Smith Grant 2026 | 2026-10-12 | Documentary | USA | $50 | ★殿堂级 | [链接](https://www.smithfund.org/eugene-smith-grant) |
 | B&W 儿童黑白摄影大赛 | B&W Child Photo Competition | 待官宣 | Portrait | Global | 约 €10 起 | ◉重要级 | [链接](https://blackandwhite.childphotocompetition.com/) |
 | Communication Arts 摄影年赛 | Communication Arts Photography Competition | 待官宣 | Open | USA | $40 起 | ◉重要级 | [链接](https://www.commarts.com/competition/photography) |
 | GDT 欧洲野生动物摄影师大赛 | GDT European Wildlife Photographer of the Year | 待官宣 | Wildlife | Europe | €35（青年免费） | ◉重要级 | [链接](https://www.gdtfoto.de/seiten/european-wildlife-photographer-of-the-year-competition.html) |

@@ -238,4 +238,40 @@ export const comp_en: Record<string, CompLocalized> = {
     desc: 'An international annual competition focused on black-and-white child portraiture, hosted by the Child Photo Competition platform, emphasising emotional expression and artistry in monochrome imagery. In 2026 it adopts rolling / round-based submissions, with the exact deadline to be announced.',
     entry: 'Photographers worldwide (black-and-white works on the theme of children)',
   },
+  'leica-lfi-gallery': {
+    desc: 'LFI Gallery is Leica’s official online showcase platform. The LFI magazine editorial team selects outstanding work daily; featured photographers appear in LFI magazine’s Lightbox section, earn the Leica Mastershot title, and may be exhibited at Leica’s physical galleries.',
+    entry: 'Open to Leica camera users worldwide (must shoot with a Leica body) who can register and upload work',
+  },
+  'co-berlin-talent-award': {
+    desc: 'An annual emerging-photographer award established by the C/O Berlin Foundation in 2006, with Artist and Theorist categories. Winners receive €5,000, a solo exhibition in Berlin, and a monograph published by Spector Books.',
+    entry: 'Emerging photographers aged 18–35 (working with photographic or lens-based media), submitting work around an annual theme not previously shown as a solo exhibition or published as a monograph by major institutions',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    desc: 'Awarded jointly by London’s The Photographers’ Gallery and the Deutsche Börse Photography Foundation, it honors each year the artist who has made the most significant contribution to European contemporary photography over the past 12 months. The winner receives £30,000 and three shortlisted artists £5,000 each.',
+    entry: 'By nomination only from curators, critics and gallery directors; no open submission. For artists who have made a major contribution to contemporary photography in Europe through exhibitions or publications in the past 12 months',
+  },
+  'head-on-photo-awards': {
+    desc: 'An international photo award organized by Australia’s Head On Foundation, with Portrait, Landscape and Exposure (news/street/art) categories. Each category winner receives A$5,000 cash and an OM System camera kit, with shortlisted work shown at the Head On Photo Festival in Sydney. Renowned for fully anonymous judging.',
+    entry: 'Photographers worldwide aged 18+ (under 18 may enter via a guardian); A$35 per image (A$30 early bird), A$17.50 for under 25, A$25 for Head On members',
+  },
+  'tokyo-international-foto-awards': {
+    desc: 'A major Asia-Pacific photo award based in Japan, with Professional, Non-professional and Student divisions across 11 categories including advertising, architecture, nature and people. The Photographer of the Year receives $3,000 and a trophy, with winning work exhibited in Tokyo.',
+    entry: 'Professional, emerging and student photographers worldwide; Professional single image $20, series $30, with discounts for non-professional and student entrants',
+  },
+  'w-eugene-smith-grant': {
+    desc: 'An annual humanitarian documentary photography grant managed by the W. Eugene Smith Memorial Fund. In 2026 the main grant is $30,000 with two $10,000 finalist grants, supporting long-form documentary projects on social change and the human condition. Open to photographers worldwide aged 18+.',
+    entry: 'Documentary/photojournalist photographers worldwide aged 18+ (amateurs welcome; students apply to the student category); one proposal per person, $50 fee',
+  },
+  'henri-cartier-bresson-award': {
+    desc: 'A biennial award (formerly the HCB Award) granted by the Fondation Henri Cartier-Bresson in Paris to a photographer with a mature documentary body of work. The laureate receives €35,000 to produce a solo exhibition at the Foundation and publish a catalogue, sponsored by the Fondation d’entreprise Hermès.',
+    entry: 'Open to mature photographers worldwide of any age with a significant documentary body of work, nominated by photography professionals (critics, curators, publishers, etc.)',
+  },
+  'rencontres-arles-awards': {
+    desc: 'The annual awards program of the Rencontres d’Arles photography festival (founded 1970), comprising the Louis Vuitton Foundation Discovery Award (Prix Découverte: €15,000 jury prize, €5,000 public prize) and the Author/Historical/Photo-Text Book Awards (€6,000 each). Winning and shortlisted work is exhibited during the festival.',
+    entry: 'The Discovery Award is by nomination only from galleries and art centers (artists cannot submit themselves); the Book Awards are open to professional photographers/artists worldwide submitting a published photo book',
+  },
+  'lensculture-awards': {
+    desc: 'LensCulture’s annual international awards system (formerly the Exposure Awards), now split by genre into art, street, portrait and photo-book categories. The currently open 2026 Photo Book Award (deadline 2026-08-12) offers fully-funded publication with Nazraeli Press (worth over $25,000) and a Los Angeles exhibition.',
+    entry: 'Open to professional and amateur photographers worldwide (aged 18+), submitting single images, series or book projects individually or as a group',
+  },
 }

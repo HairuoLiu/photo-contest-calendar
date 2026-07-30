@@ -238,4 +238,41 @@ export const comp_id: Record<string, CompLocalized> = {
     desc: 'Kompetisi tahunan internasional yang fokus pada potret anak hitam-putih, diselenggarakan oleh platform Child Photo Competition; menekankan ekspresi emosional dan artistik citra hitam-putih. Pada 2026 menggunakan pengumpulan bergulir/putaran, dengan tanggal tutup pasti menunggu pengumuman resmi.',
     entry: 'Fotografer di seluruh dunia (karya hitam-putih bertema anak)',
   },
+
+  'leica-lfi-gallery': {
+    desc: 'LFI Gallery adalah platform pameran daring resmi Leica. Tim redaksi majalah LFI menyeleksi karya luar biasa setiap hari; fotografer pilihan tampil di rubrik Lightbox majalah LFI, meraih gelar Leica Mastershot, dan berkesempatan dipamerkan di galeri fisik Leica.',
+    entry: 'Terbuka bagi pengguna kamera Leica di seluruh dunia (harus memotret dengan bodi Leica) yang dapat mendaftar dan mengunggah karya.',
+  },
+  'co-berlin-talent-award': {
+    desc: 'Penghargaan fotografer pendatang baru tahunan yang didirikan oleh C/O Berlin Foundation pada 2006, dengan kategori Artist dan Theorist. Pemenang menerima €5,000, pameran tunggal di Berlin, dan monograf yang diterbitkan oleh Spector Books.',
+    entry: 'Fotografer pendatang baru berusia 18–35 tahun (bekerja dengan media fotografi atau berbasis lensa), mengajukan karya bertema tahunan yang belum pernah dipamerkan sebagai pameran tunggal atau diterbitkan sebagai monograf oleh institusi besar.',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    desc: 'Penghargaan ini diberikan bersama oleh The Photographers’ Gallery London dan Deutsche Börse Photography Foundation, yang setiap tahun menghormati seniman yang memberikan kontribusi paling signifikan bagi fotografi kontemporer Eropa selama 12 bulan terakhir. Pemenang menerima £30,000 dan tiga seniman nominasi masing-masing menerima £5,000.',
+    entry: 'Hanya lewat nominasi dari kurator, kritikus, dan direktur galeri; tidak menerima pengajuan terbuka. Untuk seniman yang telah memberikan kontribusi besar bagi fotografi kontemporer di Eropa melalui pameran atau publikasi selama 12 bulan terakhir.',
+  },
+  'head-on-photo-awards': {
+    desc: 'Penghargaan foto internasional yang diselenggarakan oleh Head On Foundation Australia, dengan kategori Potret, Lanskap, dan Exposure (berita/jalanan/seni). Juara setiap kategori menerima uang tunai A$5,000 dan paket kamera OM System, dengan karya terpilih dipamerkan di Head On Photo Festival di Sydney. Terkenal dengan penjurian yang sepenuhnya anonim.',
+    entry: 'Fotografer di seluruh dunia berusia 18 tahun ke atas (di bawah 18 tahun dapat mengikuti melalui wali); A$35 per foto (A$30 harga early bird), A$17.50 untuk di bawah 25 tahun, A$25 untuk anggota Head On.',
+  },
+  'tokyo-international-foto-awards': {
+    desc: 'Penghargaan foto penting kawasan Asia-Pasifik yang berbasis di Jepang, dengan divisi Profesional, Non-profesional, dan Pelajar dalam 11 kategori termasuk iklan, arsitektur, alam, dan manusia. Fotografer Terbaik Tahun Ini menerima $3,000 dan trofi, dengan karya pemenang dipamerkan di Tokyo.',
+    entry: 'Fotografer profesional, pendatang baru, dan pelajar di seluruh dunia; foto tunggal profesional $20, seri $30, dengan diskon untuk peserta non-profesional dan pelajar.',
+  },
+  'w-eugene-smith-grant': {
+    desc: 'Hibah fotografi dokumenter kemanusiaan tahunan yang dikelola oleh W. Eugene Smith Memorial Fund. Pada 2026, hibah utama sebesar $30,000 beserta dua hibah finalis masing-masing $10,000, mendukung proyek dokumenter jangka panjang tentang perubahan sosial dan kondisi manusia. Terbuka bagi fotografer di seluruh dunia berusia 18 tahun ke atas.',
+    entry: 'Fotografer dokumenter/fotojurnalis di seluruh dunia berusia 18 tahun ke atas (amatir dipersilakan; pelajar mendaftar ke kategori pelajar); satu proposal per orang, biaya pendaftaran $50.',
+  },
+  'henri-cartier-bresson-award': {
+    desc: 'Penghargaan dua tahunan (dahulu HCB Award) yang diberikan oleh Fondation Henri Cartier-Bresson di Paris kepada fotografer yang memiliki karya dokumenter matang. Penerima mendapat €35,000 untuk menyelenggarakan pameran tunggal di Yayasan dan menerbitkan katalog, disponsori oleh Fondation d’entreprise Hermès.',
+    entry: 'Terbuka bagi fotografer matang di seluruh dunia dari usia berapa pun yang memiliki karya dokumenter penting, dinominasikan oleh profesional fotografi (kritikus, kurator, penerbit, dll.).',
+  },
+  'rencontres-arles-awards': {
+    desc: 'Program penghargaan tahunan dari festival fotografi Rencontres d’Arles (didirikan 1970), mencakup Louis Vuitton Foundation Discovery Award (Prix Découverte: hadiah juri €15,000, hadiah publik €5,000) serta Author/Historical/Photo-Text Book Awards (masing-masing €6,000); karya pemenang dan nominasi dipamerkan selama festival.',
+    entry: 'Discovery Award hanya lewat nominasi dari galeri dan pusat seni (seniman tidak dapat mengajukan diri sendiri); Book Awards terbuka bagi fotografer/seniman profesional di seluruh dunia yang mengajukan buku foto yang telah diterbitkan.',
+  },
+  'lensculture-awards': {
+    desc: 'Sistem penghargaan internasional tahunan LensCulture (dahulu Exposure Awards), kini dibagi berdasarkan genre menjadi kategori seni, jalanan, potret, dan buku foto. Yang sedang dibuka adalah 2026 Photo Book Award (batas akhir 2026-08-12), pemenangnya mendapat publikasi dibiayai penuh bersama Nazraeli Press (nilai lebih dari $25,000) dan pameran di Los Angeles.',
+    entry: 'Terbuka bagi fotografer profesional dan amatir di seluruh dunia (usia 18 tahun ke atas), mengajukan foto tunggal, seri, atau proyek buku secara individu maupun berkelompok.',
+  },
 }

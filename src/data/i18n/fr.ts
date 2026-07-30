@@ -238,4 +238,41 @@ export const comp_fr: Record<string, CompLocalized> = {
     desc: "Concours international annuel de portraits d'enfants en noir et blanc, par la plateforme Child Photo Competition, misant sur l'expression émotionnelle et l'art du N&B. En 2026, collecte par roulements ; date à confirmer.",
     entry: 'Photographes du monde entier (œuvres N&B sur le thème de l\'enfant)',
   },
+
+  'leica-lfi-gallery': {
+    desc: 'LFI Gallery est la plateforme officielle de présentation en ligne de Leica. L’équipe éditoriale du magazine LFI sélectionne chaque jour des œuvres remarquables ; les photographes mis à l’honneur apparaissent dans la rubrique Lightbox du magazine LFI, obtiennent le titre de Leica Mastershot et peuvent être exposés dans les galeries physiques de Leica.',
+    entry: 'Ouvert aux utilisateurs d’appareils Leica du monde entier (qui doivent photographier avec un boîtier Leica) et pouvant s’inscrire et téléverser leurs œuvres.',
+  },
+  'co-berlin-talent-award': {
+    desc: 'Un prix annuel dédié aux nouveaux talents de la photographie, créé par la Fondation C/O Berlin en 2006, avec les catégories Artist et Theorist. Les lauréats reçoivent 5 000 €, une exposition personnelle à Berlin et une monographie publiée par Spector Books.',
+    entry: 'Photographes émergents âgés de 18 à 35 ans (travaillant avec des médias photographiques ou à base d’objectif), soumettant des œuvres autour d’un thème annuel n’ayant pas encore été présentées en exposition personnelle par de grandes institutions ni publiées sous forme de monographie.',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    desc: 'Ce prix est décerné conjointement par The Photographers’ Gallery de Londres et la Fondation Deutsche Börse Photography. Il récompense chaque année l’artiste ayant apporté la contribution la plus marquante à la photographie contemporaine européenne au cours des 12 derniers mois. Le lauréat reçoit 30 000 £ et trois artistes présélectionnés 5 000 £ chacun.',
+    entry: 'Sur nomination uniquement par des commissaires d’exposition, des critiques et des directeurs de galerie ; aucune candidature ouverte. Destiné aux artistes ayant apporté une contribution majeure à la photographie contemporaine en Europe via des expositions ou des publications au cours des 12 derniers mois.',
+  },
+  'head-on-photo-awards': {
+    desc: 'Un prix photographique international organisé par la Head On Foundation australienne, avec les catégories Portrait, Paysage et Exposure (actualité/rue/art). Le vainqueur de chaque catégorie reçoit 5 000 $ AU en espèces et un kit d’appareil photo OM System, les œuvres présélectionnées étant exposées lors du Head On Photo Festival à Sydney. Il est réputé pour son jugement entièrement anonyme.',
+    entry: 'Photographes du monde entier âgés de 18 ans ou plus (les moins de 18 ans peuvent participer par l’intermédiaire d’un tuteur) ; 35 $ AU par image (30 $ AU en tarif précoce), 17,50 $ AU pour les moins de 25 ans, 25 $ AU pour les membres Head On.',
+  },
+  'tokyo-international-foto-awards': {
+    desc: 'Un prix photographique majeur de la région Asie-Pacifique basé au Japon, avec les divisions Professionnel, Non-professionnel et Étudiant réparties en 11 catégories incluant la publicité, l’architecture, la nature et les personnes. Le Photographe de l’année reçoit 3 000 $ et un trophée, les œuvres primées étant exposées à Tokyo.',
+    entry: 'Photographes professionnels, émergents et étudiants du monde entier ; image unique professionnelle 20 $, série 30 $, avec des réductions pour les participants non-professionnels et étudiants.',
+  },
+  'w-eugene-smith-grant': {
+    desc: 'Une bourse annuelle de photographie documentaire humanitaire gérée par le W. Eugene Smith Memorial Fund. En 2026, la bourse principale s’élève à 30 000 $ avec deux bourses de finaliste de 10 000 $, soutenant des projets documentaires de longue haleine portant sur le changement social et la condition humaine. Les photographes du monde entier âgés de 18 ans ou plus peuvent postuler.',
+    entry: 'Photographes documentaires/photojournalistes du monde entier âgés de 18 ans ou plus (amateurs bienvenus ; les étudiants doivent postuler dans la catégorie étudiante) ; une proposition par personne, frais de dossier de 50 $.',
+  },
+  'henri-cartier-bresson-award': {
+    desc: 'Un prix biennal (anciennement le HCB Award) décerné par la Fondation Henri Cartier-Bresson à Paris à un photographe possédant un corpus documentaire abouti. Le lauréat reçoit 35 000 € pour produire une exposition personnelle à la Fondation et publier un catalogue, avec le soutien de la Fondation d’entreprise Hermès.',
+    entry: 'Ouvert aux photographes confirmés du monde entier, de tout âge, possédant un corpus documentaire important et nommés par des professionnels de la photographie (critiques, commissaires d’exposition, éditeurs, etc.).',
+  },
+  'rencontres-arles-awards': {
+    desc: 'Le programme de prix annuels des Rencontres d’Arles (créées en 1970), comprenant le Prix Découverte de la Fondation Louis Vuitton (Prix Découverte : 15 000 € pour le prix du jury, 5 000 € pour le prix du public) ainsi que les Prix du Livre Auteur/Historique/Photo-Texte (6 000 € chacun). Les œuvres primées et présélectionnées sont exposées pendant le festival.',
+    entry: 'Le Prix Découverte se fait uniquement sur nomination par des galeries et centres d’art (les artistes ne peuvent pas se porter candidats eux-mêmes) ; les Prix du Livre sont ouverts aux photographes/artistes professionnels du monde entier soumettant un livre photo déjà publié.',
+  },
+  'lensculture-awards': {
+    desc: 'Le système de prix internationaux annuels de LensCulture (autrefois les Exposure Awards), désormais divisé par genre en catégories art, rue, portrait et livre photo. Le Prix du Livre Photo 2026 actuellement ouvert (date limite 2026-08-12) offre une publication intégralement financée avec Nazraeli Press (d’une valeur de plus de 25 000 $) et une exposition à Los Angeles.',
+    entry: 'Ouvert aux photographes professionnels et amateurs du monde entier (âgés de 18 ans ou plus), soumettant des images uniques, des séries ou des projets de livre individuellement ou en groupe.',
+  },
 }

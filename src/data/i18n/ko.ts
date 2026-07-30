@@ -297,4 +297,50 @@ export const comp_ko: Record<string, CompLocalized> = {
     desc: '아동 흑백 인물에 집중하는 국제 연례 대회로, Child Photo Competition 플랫폼이 주최하며 흑백 이미지의 감정 표현과 예술성을 강조합니다. 2026년은 롤링·분기별 방식으로 모집하며 정확한 마감일은 공식 발표를 기다립니다.',
     entry: '전 세계 사진작가(아동 주제의 흑백 작품)',
   },
+
+  'leica-lfi-gallery': {
+    name: 'Leica LFI 온라인 갤러리',
+    desc: 'LFI Gallery는 Leica의 공식 온라인 전시 플랫폼으로, LFI 매거진 편집팀이 매일 우수 작품을 엄선합니다. 선정된 작가는 LFI 매거진의 Lightbox 코너에 실리며 Leica Mastershot 타이틀을 받고, Leica 오프라인 전시회에 출품될 기회를 얻습니다.',
+    entry: '전 세계 Leica 카메라 사용자(Leica 바디로 촬영해야 함)라면 누구나 가입해 작품을 업로드할 수 있습니다.',
+  },
+  'co-berlin-talent-award': {
+    name: 'C/O Berlin 사진 인재상',
+    desc: 'C/O Berlin 재단이 2006년부터 매년 수여하는 신진 사진 인재상으로, Artist와 Theorist 두 부문으로 나뉩니다. 수상자는 €5,000의 상금, 베를린 개인전, 그리고 Spector Books에서 출판하는 단행본을 받습니다.',
+    entry: '18~35세 신진 사진가(사진 또는 렌즈 기반 매체 작업)로서, 연간 주제에 맞춰 메이저 기관의 개인전이나 단행본으로 출판된 적 없는 작품을 제출해야 합니다.',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    name: 'Deutsche Börse Photography Foundation 상',
+    desc: '이 상은 런던의 The Photographers’ Gallery와 Deutsche Börse Photography Foundation이 공동 수여하며, 매년 지난 12개월간 유럽의 현대 사진에 가장 뚜렷한 공헌을 한 작가를 기립니다. 수상자는 £30,000을, 본선 진출 3인은 각각 £5,000을 받습니다.',
+    entry: '큐레이터, 평론가, 갤러리 디렉터의 추천만 받으며 공개 응모는 불가합니다. 지난 12개월간 유럽에서 전시나 출판을 통해 현대 사진에 중대한 공헌을 한 작가를 대상으로 합니다.',
+  },
+  'head-on-photo-awards': {
+    name: 'Head On 사진상',
+    desc: '호주의 Head On Foundation이 주최하는 국제 사진상으로, 초상, 풍경, 노출(뉴스/스트리트/아트) 세 부문을 둡니다. 각 부문 우승자는 A$5,000의 현금과 OM System 카메라 키트를 받으며, 본선 진출 작품은 시드니의 Head On Photo Festival에서 전시됩니다. 완전 익명 심사로 유명합니다.',
+    entry: '전 세계 18세 이상 사진가(18세 미만은 보호자 대리 응모 가능). 이미지 1장당 A$35(얼리버드 A$30), 25세 미만 A$17.50, Head On 회원 A$25.',
+  },
+  'tokyo-international-foto-awards': {
+    name: '도쿄 국제 사진상 (TIFA)',
+    desc: '일본을 거점으로 한 아시아·태평양 지역의 주요 사진상으로, 프로/아마추어/학생 부문과 광고, 건축, 자연, 인물 등 11개 카테고리를 둡니다. 올해의 사진가는 $3,000과 트로피를 받고, 수상작은 도쿄에서 전시됩니다.',
+    entry: '전 세계의 프로, 신진, 학생 사진가 누구나 참여 가능. 프로 부문은 단일 이미지 $20, 시리즈 $30이며, 아마추어 및 학생은 더 저렴합니다.',
+  },
+  'w-eugene-smith-grant': {
+    name: 'W. Eugene Smith 인도주의 사진 기금상',
+    desc: 'W. Eugene Smith Memorial Fund가 운영하는 연간 인도주의 다큐멘터리 사진 기금으로, 2026년 대상은 $30,000에 두 건의 $10,000 본선 진출상이 더해져, 사회 변화와 인간의 조건을 다루는 장편 다큐멘터리 프로젝트를 후원합니다. 전 세계 18세 이상 사진가가 신청할 수 있습니다.',
+    entry: '전 세계 18세 이상 다큐멘터리/보도 사진가(아마추어 포함, 학생은 학생 부문에 신청). 1인당 제안서 1건, 신청비 $50.',
+  },
+  'henri-cartier-bresson-award': {
+    name: 'Henri Cartier-Bresson 창작상 (HCB 상)',
+    desc: '파리의 Fondation Henri Cartier-Bresson이 수여하는 격년제 상(구 HCB Award)으로, 성숙한 다큐멘터리 작품 세계를 지닌 사진가에게 주어집니다. 수상자는 재단에서 개인전을 열고 화집을 출판하기 위한 €35,000의 지원금을 받으며, Hermès 기업 재단이 후원합니다.',
+    entry: '전 세계 어느 연령대의 성숙한 사진가로서, 중요한 다큐멘터리 작품 세계를 갖추고 사진 전문가(평론가, 큐레이터, 출판인 등)의 추천을 받은 경우 응모 가능합니다.',
+  },
+  'rencontres-arles-awards': {
+    name: '아를 사진축제 상',
+    desc: '1970년 창설된 프랑스 아를 사진축제의 연간 시상 체계로, Louis Vuitton 재단 디스커버리상(Prix Découverte, 심사위원상 €15,000·대중상 €5,000)과 작가/역사/사진·텍스트 도서상(각 €6,000)을 포함합니다. 수상 및 본선 진출 작품은 축제 기간 중 전시됩니다.',
+    entry: '디스커버리상은 갤러리, 아트 센터 등 전문 기관의 추천만으로 신인에게 주어지며(작가 본인은 응모 불가), 도서상은 전 세계 프로 사진가/작가가 출판된 사진 도서를 제출하면 응모 가능합니다.',
+  },
+  'lensculture-awards': {
+    name: 'LensCulture 상 (구 Exposure Awards)',
+    desc: 'LensCulture의 연간 국제 시상 체계(전신은 Exposure Awards)로, 현재는 장르별로 아트, 스트리트, 초상, 포토북 등 개별 부문으로 나뉩니다. 현재 열려 있는 2026 포토북 어워드(마감 2026-08-12)는 Nazraeli Press와의 전액 지원 출판(가치 $25,000 이상)과 로스앤젤레스 전시를 제공합니다.',
+    entry: '전 세계 프로 및 아마추어 사진가(18세 이상) 누구나, 개인 또는 팀 형태로 단일 이미지, 시리즈, 도서 프로젝트를 제출할 수 있습니다.',
+  },
 }

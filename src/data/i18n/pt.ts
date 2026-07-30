@@ -238,4 +238,41 @@ export const comp_pt: Record<string, CompLocalized> = {
     desc: 'Concurso anual internacional dedicado ao retrato em P&B de crianças, promovido pela plataforma Child Photo Competition, enfatizando a expressão emocional e a arte da imagem em preto e branco. Em 2026 adota convocatória contínua por rodadas; data a confirmar.',
     entry: 'Fotógrafos do mundo todo (obras em P&B com tema infantil)',
   },
+
+  'leica-lfi-gallery': {
+    desc: 'A LFI Gallery é a plataforma oficial de exibição online da Leica. A equipa editorial da revista LFI seleciona diariamente trabalhos excecionais; os fotógrafos em destaque aparecem na secção Lightbox da revista LFI, recebem o título Leica Mastershot e podem ser expostos nas galerias físicas da Leica.',
+    entry: 'Aberto a utilizadores de câmaras Leica em todo o mundo (devem fotografar com um corpo Leica) que possam registar-se e enviar trabalhos.',
+  },
+  'co-berlin-talent-award': {
+    desc: 'Um prémio anual de fotógrafos emergentes criado pela Fundação C/O Berlin em 2006, com as categorias Artista e Teórico. Os vencedores recebem 5.000 euros, uma exposição individual em Berlim e uma monografia publicada pela Spector Books.',
+    entry: 'Fotógrafos emergentes com idades entre 18 e 35 anos (que trabalhem com meios fotográficos ou baseados em lente), que apresentem trabalhos em torno de um tema anual ainda não exibidos como exposição individual ou publicados como monografia por grandes instituições.',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    desc: 'Atribuído em conjunto pela The Photographers Gallery de Londres e pela Fundação de Fotografia Deutsche Börse, premeia anualmente o artista que mais contribuiu para a fotografia contemporânea europeia nos últimos 12 meses. O vencedor recebe 30.000 libras e três nomeados recebem 5.000 libras cada.',
+    entry: 'Apenas por nomeação de curadores, críticos e diretores de galerias; não são aceites candidaturas abertas. Destina-se a artistas que tenham dado um contributo importante para a fotografia contemporânea na Europa através de exposições ou publicações nos últimos 12 meses.',
+  },
+  'head-on-photo-awards': {
+    desc: 'Um prémio de fotografia internacional organizado pela Head On Foundation da Austrália, com as categorias Retrato, Paisagem e Exposição (notícias/rua/arte). Cada vencedor de categoria recebe 5.000 dólares australianos em dinheiro e um kit de câmara OM System, com os trabalhos selecionados exibidos no Head On Photo Festival em Sydney. É conhecido pela sua apreciação totalmente anónima.',
+    entry: 'Fotógrafos de todo o mundo com 18 ou mais anos (menores de 18 podem participar através de um tutor); 35 dólares australianos por imagem (30 em inscrição antecipada), 17,50 para menores de 25, 25 para membros da Head On.',
+  },
+  'tokyo-international-foto-awards': {
+    desc: 'Um importante prémio de fotografia da região Ásia-Pacífico com sede no Japão, com divisões Profissional, Não Profissional e Estudante em 11 categorias, incluindo publicidade, arquitetura, natureza e pessoas. O Fotógrafo do Ano recebe 3.000 dólares e um troféu, com os trabalhos premiados expostos em Tóquio.',
+    entry: 'Fotógrafos profissionais, emergentes e estudantes de todo o mundo podem participar; imagem única profissional 20 dólares, série 30, com descontos para não profissionais e estudantes.',
+  },
+  'w-eugene-smith-grant': {
+    desc: 'Uma bolsa anual de fotografia documental humanitária gerida pelo Fundo Memorial W. Eugene Smith. Em 2026, a bolsa principal é de 30.000 dólares com dois prémios de finalista de 10.000 dólares, apoiando projetos documentais de longo formato sobre mudança social e a condição humana. Fotógrafos de todo o mundo com 18 ou mais anos podem candidatar-se.',
+    entry: 'Fotógrafos documentais/jornalistas de todo o mundo com 18 ou mais anos (amadores bem-vindos; estudantes devem candidatar-se à categoria de estudante); um único projeto por pessoa, taxa de 50 dólares.',
+  },
+  'henri-cartier-bresson-award': {
+    desc: 'Um prémio bienal (anteriormente HCB Award) concedido pela Fundação Henri Cartier-Bresson em Paris a um fotógrafo com um trabalho documental maduro. O laureado recebe 35.000 euros para produzir uma exposição individual na Fundação e publicar um catálogo, patrocinado pela Fundação Empresarial Hermès.',
+    entry: 'Aberto a fotógrafos maduros de todo o mundo, de qualquer idade, com um trabalho documental significativo, nomeados por profissionais da fotografia (críticos, curadores, editores, etc.).',
+  },
+  'rencontres-arles-awards': {
+    desc: 'O programa anual de prémios do festival de fotografia Rencontres d’Arles (fundado em 1970), que inclui o Prémio Descoberta da Fundação Louis Vuitton (Prix Découverte: 15.000 euros do júri, 5.000 euros do público) e os Prémios de Livro Autor/Histórico/Fototexto (6.000 euros cada). Os trabalhos premiados e selecionados são exibidos durante o festival.',
+    entry: 'O Prémio Descoberta é apenas por nomeação de galerias e centros de arte (os artistas não podem submeter-se a si próprios); os Prémios de Livro estão abertos a fotógrafos/artistas profissionais de todo o mundo que apresentem um livro de fotografia já publicado.',
+  },
+  'lensculture-awards': {
+    desc: 'O sistema anual de prémios internacionais da LensCulture (anteriormente Exposure Awards), agora dividido por género em categorias de arte, rua, retrato e livro de fotografia. O atual Prémio de Livro de Fotografia 2026 (prazo 2026-08-12) oferece publicação integralmente financiada com a Nazraeli Press (valor superior a 25.000 dólares) e uma exposição em Los Angeles.',
+    entry: 'Aberto a fotógrafos profissionais e amadores de todo o mundo (com 18 ou mais anos), que apresentem imagens únicas, séries ou projetos de livro individualmente ou em grupo.',
+  },
 }

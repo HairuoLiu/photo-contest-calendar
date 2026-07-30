@@ -238,4 +238,41 @@ export const comp_vi: Record<string, CompLocalized> = {
     desc: 'Cuộc thi thường niên quốc tế chuyên về chân dung trẻ em trắng đen, do nền tảng Child Photo Competition tổ chức, nhấn mạnh biểu đạt cảm xúc và tính nghệ thuật của hình ảnh trắng đen. Năm 2026 áp dụng hình thức nhận bài cuốn chiếu / theo từng vòng, ngày kết thúc cụ thể chờ công bố chính thức.',
     entry: 'Nhiếp ảnh gia toàn cầu (tác phẩm trắng đen chủ đề trẻ em).',
   },
+
+  'leica-lfi-gallery': {
+    desc: 'LFI Gallery là nền tảng trưng bày nhiếp ảnh trực tuyến chính thức của Leica. Ban biên tập tạp chí LFI lựa chọn những tác phẩm xuất sắc mỗi ngày; các nhiếp ảnh gia được chọn sẽ xuất hiện trong mục Lightbox của tạp chí LFI, nhận danh hiệu Leica Mastershot và có cơ hội triển lãm tại các gallery Leica thực tế.',
+    entry: 'Dành cho người dùng máy ảnh Leica trên toàn thế giới (phải chụp bằng thân máy Leica) có thể đăng ký và tải tác phẩm lên.',
+  },
+  'co-berlin-talent-award': {
+    desc: 'Giải thưởng tài năng nhiếp ảnh mới nổi thường niên do Quỹ C/O Berlin thành lập từ năm 2006, chia thành hai hạng mục Artist và Theorist. Người chiến thắng nhận €5,000 tiền thưởng, triển lãm cá nhân tại Berlin và một chuyên khảo do Spector Books xuất bản.',
+    entry: 'Nhiếp ảnh gia mới nổi từ 18–35 tuổi (sử dụng chất liệu nhiếp ảnh hoặc dựa trên ống kính), phải nộp tác phẩm theo chủ đề thường niên chưa từng triển lãm cá nhân tại các tổ chức lớn hoặc xuất bản thành chuyên khảo.',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    desc: 'Giải thưởng do The Photographers’ Gallery tại London và Quỹ Nhiếp ảnh Deutsche Börse phối hợp trao tặng, mỗi năm vinh danh nghệ sĩ có đóng góp nổi bật nhất cho nhiếp ảnh đương đại châu Âu trong 12 tháng qua. Người chiến thắng nhận £30,000 và ba nghệ sĩ lọt vào vòng chung kết mỗi người nhận £5,000.',
+    entry: 'Chỉ nhận đề cử từ giám tuyển, nhà phê bình và giám đốc gallery; không nhận bài dự thi tự do. Dành cho các nghệ sĩ đã có đóng góp lớn cho nhiếp ảnh đương đại tại châu Âu qua triển lãm hoặc ấn phẩm trong 12 tháng qua.',
+  },
+  'head-on-photo-awards': {
+    desc: 'Giải thưởng nhiếp ảnh quốc tế do Head On Foundation của Úc tổ chức, gồm ba hạng mục Chân dung, Phong cảnh và Phơi sáng (tin tức/đường phố/nghệ thuật). Người chiến thắng mỗi hạng mục nhận A$5,000 tiền mặt và bộ máy ảnh OM System, tác phẩm lọt vào vòng chung kết được trưng bày tại Head On Photo Festival ở Sydney. Nổi tiếng với cơ chế chấm điểm hoàn toàn ẩn danh.',
+    entry: 'Nhiếp ảnh gia trên toàn thế giới từ 18 tuổi trở lên (dưới 18 tuổi có thể dự thi qua người giám hộ); A$35 mỗi ảnh (A$30 vé sớm), A$17.50 cho người dưới 25 tuổi, A$25 cho thành viên Head On.',
+  },
+  'tokyo-international-foto-awards': {
+    desc: 'Giải thưởng nhiếp ảnh quan trọng khu vực châu Á – Thái Bình Dương do Nhật Bản chủ trì, gồm nhóm Chuyên nghiệp/Nghiệp dư/Học sinh và 11 hạng mục như quảng cáo, kiến trúc, thiên nhiên, con người. Nhiếp ảnh gia của năm nhận $3,000 và cúp, tác phẩm đoạt giải được triển lãm tại Tokyo.',
+    entry: 'Nhiếp ảnh gia chuyên nghiệp, mới nổi và học sinh trên toàn thế giới đều có thể tham gia; nhóm chuyên nghiệp ảnh đơn $20, ảnh bộ $30, nhóm nghiệp dư và học sinh được ưu đãi hơn.',
+  },
+  'w-eugene-smith-grant': {
+    desc: 'Quỹ tài trợ nhiếp ảnh tài liệu nhân đạo thường niên do W. Eugene Smith Memorial Fund quản lý. Năm 2026, giải chính là $30,000 cùng hai giải chung kết $10,000, tài trợ cho các dự án tài liệu dài hạn về thay đổi xã hội và thân phận con người. Dành cho nhiếp ảnh gia trên toàn thế giới từ 18 tuổi trở lên.',
+    entry: 'Nhiếp ảnh gia tài liệu/tin tức trên toàn thế giới từ 18 tuổi trở lên (chào đón người nghiệp dư; học sinh đăng ký nhóm học sinh); mỗi người giới hạn một đề xuất, phí đăng ký $50.',
+  },
+  'henri-cartier-bresson-award': {
+    desc: 'Giải thưởng hai năm một lần (trước đây là HCB Award) do Fondation Henri Cartier-Bresson tại Paris trao tặng cho nhiếp ảnh gia đã có cơ nghiệp tài liệu trưởng thành. Người đoạt giải nhận €35,000 tài trợ để tổ chức triển lãm cá nhân tại Quỹ và xuất bản album ảnh, được Fondation d’entreprise Hermès tài trợ.',
+    entry: 'Dành cho nhiếp ảnh gia trưởng thành trên toàn thế giới ở mọi độ tuổi, đã có cơ nghiệp tài liệu quan trọng và được các chuyên gia nhiếp ảnh (nhà phê bình, giám tuyển, nhà xuất bản, v.v.) đề cử.',
+  },
+  'rencontres-arles-awards': {
+    desc: 'Hệ thống giải thưởng thường niên của Liên hoan Nhiếp ảnh Rencontres d’Arles (thành lập năm 1970), bao gồm Giải Khám phá của Fondation Louis Vuitton (Prix Découverte: giải giám khảo €15,000, giải công chúng €5,000) và Giải Sách ảnh Tác giả/Lịch sử/Ảnh-ký (mỗi giải €6,000); tác phẩm đoạt giải và lọt vào chung kết được triển lãm trong thời gian diễn ra liên hoan.',
+    entry: 'Giải Khám phá chỉ nhận đề cử từ gallery và trung tâm nghệ thuật (nghệ sĩ không thể tự nộp bài); Giải Sách ảnh dành cho nhiếp ảnh gia/nghệ sĩ chuyên nghiệp trên toàn thế giới, phải nộp một cuốn sách ảnh đã xuất bản.',
+  },
+  'lensculture-awards': {
+    desc: 'Hệ thống giải thưởng quốc tế thường niên của LensCulture (trước đây là Exposure Awards), hiện chia theo thể loại thành các giải đơn lẻ như nghệ thuật, đường phố, chân dung, sách ảnh. Giải đang mở nhận là Giải Sách ảnh 2026 (hạn chót 2026-08-12), người đoạt giải được tài trợ toàn phần xuất bản cùng Nazraeli Press (trị giá hơn $25,000) và triển lãm tại Los Angeles.',
+    entry: 'Dành cho nhiếp ảnh gia chuyên nghiệp và nghiệp dư trên toàn thế giới (từ 18 tuổi trở lên), nộp ảnh đơn, ảnh bộ hoặc dự án sách ảnh dưới danh nghĩa cá nhân hoặc theo nhóm.',
+  },
 }

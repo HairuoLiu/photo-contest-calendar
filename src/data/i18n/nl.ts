@@ -61,4 +61,41 @@ export const comp_nl: Record<string, CompLocalized> = {
   'portrait-of-humanity': { desc: 'Een portretfotografie-initiatief van 1854 Media (uitgever van British Journal of Photography) en Magnum Photos, rond het thema \'gedeelde menselijkheid\', met 50 genomineerde werken die wereldwijd touren. De editie 2026 sloot begin dit jaar; de datum voor 2027 volgt nog.', entry: 'Fotografen wereldwijd (alle niveaus)' },
   'nature-photographer-of-the-year-npoty': { desc: 'Een pan-Europese natuurfotografiewedstrijd van het Nederlandse fotofestival Nature Talks, met een prijzenpot van €25.000 en tentoonstelling van winnend werk in Nederland en België. De editie 2026 sloot op 8 juni; de editie 2027 valt naar verwachting in april–juni 2027.', entry: 'Natuurfotografen wereldwijd (professioneel en amateur, alle leeftijden)' },
   'bw-child-photo-competition': { desc: 'Een internationale jaarlijkse wedstrijd gewijd aan zwart-wit kinderportretten, georganiseerd door het platform Child Photo Competition, met de nadruk op emotie en artisticiteit in zwart-witbeelden. In 2026 geldt een doorlopende/per-ronde inzending; de exacte deadline volgt nog.', entry: 'Fotografen wereldwijd (zwart-wit werk met kinderen als onderwerp)' },
+
+  'leica-lfi-gallery': {
+    desc: 'LFI Gallery is het officiële online fotopresentatieplatform van Leica. Het redactieteam van het LFI-magazine selecteert dagelijks uitzonderlijk werk; geselecteerde fotografen verschijnen in de Lightbox-rubriek van het LFI-magazine, ontvangen de titel Leica Mastershot en krijgen mogelijk een plek in een fysieke Leica-tentoonstelling.',
+    entry: 'Voor Leica-cameragebruikers wereldwijd (moet met een Leica-camerabody worden gefotografeerd) die zich kunnen registreren en werk kunnen uploaden.',
+  },
+  'co-berlin-talent-award': {
+    desc: 'Een jaarlijkse prijs voor opkomende fotografietalent, in 2006 opgericht door de C/O Berlin Foundation, met de categorieën Artist en Theorist. Winnaars ontvangen €5.000, een solotentoonstelling in Berlijn en een monografie uitgegeven door Spector Books.',
+    entry: 'Opkomende fotografen van 18 tot 35 jaar (die werken met fotografische of lensgebaseerde media), die werk rond een jaarlijks thema indienen dat nog niet eerder als solotentoonstelling in een grote instelling is getoond of als monografie is uitgegeven.',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    desc: 'Deze prijs wordt gezamenlijk uitgereikt door The Photographers’ Gallery in Londen en de Deutsche Börse Photography Foundation, en bekroont elk jaar de kunstenaar die de meest betekenisvolle bijdrage heeft geleverd aan de Europese hedendaagse fotografie in de afgelopen 12 maanden. De winnaar ontvangt £30.000 en drie genomineerden elk £5.000.',
+    entry: 'Uitsluitend op voordracht van curatoren, critici en galeriedirecteuren; geen open inschrijving. Voor kunstenaars die in de afgelopen 12 maanden in Europa een grote bijdrage aan de hedendaagse fotografie hebben geleverd via tentoonstellingen of publicaties.',
+  },
+  'head-on-photo-awards': {
+    desc: 'Een internationale fotoprijs georganiseerd door de Australische Head On Foundation, met de categorieën Portret, Landschap en Exposure (nieuws/straat/kunst). De winnaar per categorie ontvangt A$5.000 contant en een OM System-cameraset; genomineerd werk wordt getoond op het Head On Photo Festival in Sydney. Bekend om volledig anonieme jurering.',
+    entry: 'Fotografen wereldwijd van 18 jaar en ouder (onder de 18 jaar mogen via een voogd worden ingediend); A$35 per afbeelding (A$30 vroegboektarief), A$17,50 voor onder de 25 jaar, A$25 voor Head On-leden.',
+  },
+  'tokyo-international-foto-awards': {
+    desc: 'Een belangrijke fotoprijs in de Aziatisch-Pacifische regio, georganiseerd vanuit Japan, met de afdelingen Professioneel, Niet-professioneel en Student en 11 categorieën waaronder advertentie, architectuur, natuur en mens. De Fotograaf van het Jaar ontvangt $3.000 en een trofee, en het winnende werk wordt in Tokio getoond.',
+    entry: 'Professionele, opkomende en studentenfotografen wereldwijd; Professioneel enkele afbeelding $20, serie $30, met kortingen voor niet-professionele en student-deelnemers.',
+  },
+  'w-eugene-smith-grant': {
+    desc: 'Een jaarlijks humanitair documentairefotografiefonds beheerd door het W. Eugene Smith Memorial Fund. In 2026 bedraagt de hoofdbeurs $30.000 met twee finalistbeurzen van $10.000, ter ondersteuning van langlopende documentaireprojecten over sociale verandering en de menselijke situatie. Fotografen wereldwijd van 18 jaar en ouder kunnen zich aanmelden.',
+    entry: 'Documentaire-/fotojournalistieke fotografen wereldwijd van 18 jaar en ouder (amateurs welkom; studenten melden zich aan voor de studentencategorie); één voorstel per persoon, $50 aanmeldingsgeld.',
+  },
+  'henri-cartier-bresson-award': {
+    desc: 'Een tweejaarlijkse prijs (voorheen de HCB Award) die door de Fondation Henri Cartier-Bresson in Parijs wordt toegekend aan een fotograaf met een volwassen documentair oeuvre. De laureaat ontvangt €35.000 voor het realiseren van een solotentoonstelling in de Fondation en het uitgeven van een catalogus, gesponsord door de Fondation d’entreprise Hermès.',
+    entry: 'Voor volwassen fotografen wereldwijd van elke leeftijd met een belangrijk documentair oeuvre, voorgedragen door fotografieprofessionals (critici, curatoren, uitgevers, enz.).',
+  },
+  'rencontres-arles-awards': {
+    desc: 'Het jaarlijkse prijzensysteem van het fotografiefestival Rencontres d’Arles (opgericht in 1970), bestaande uit de Discovery Award van de Louis Vuitton Foundation (Prix Découverte: €15.000 juryprijs, €5.000 publieksprijs) en de Auteur/Historisch/Foto-tekst Boekprijzen (elk €6.000); winnend en genomineerd werk wordt tijdens het festival getoond.',
+    entry: 'De Discovery Award geschiedt uitsluitend op voordracht door galeries en kunstcentra (de kunstenaar kan zichzelf niet indienen); de Boekprijzen staan open voor professionele fotografen/kunstenaars wereldwijd die een reeds uitgegeven fotoboek moeten indienen.',
+  },
+  'lensculture-awards': {
+    desc: 'Het jaarlijkse internationale prijzensysteem van LensCulture (voorheen de Exposure Awards), nu per genre gesplitst in afzonderlijke prijzen voor kunst, straat, portret en fotoboek. Momenteel open is de Fotoboekprijs 2026 (deadline 2026-08-12), waarbij de winnaar volledig gesponsorde publicatie bij Nazraeli Press (ter waarde van meer dan $25.000) en een tentoonstelling in Los Angeles ontvangt.',
+    entry: 'Open voor professionele en amateurfotografen wereldwijd (van 18 jaar en ouder), die individueel of als groep enkele afbeeldingen, series of boekprojecten indienen.',
+  },
 }

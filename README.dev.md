@@ -48,7 +48,7 @@ src/
     tiers.ts                含金量等级映射 TIER_MAP
     i18n/
       content.ts            赛事「内容」本地化层（回退链 + localizedName/Desc/Entry）
-      en.ts … ms.ts         15 个语言文件，每文件 59 条 {name?, desc, entry}
+      en.ts … ms.ts         15 个语言文件，每文件 68 条 {name?, desc, entry}
   components/
     Header.tsx              品牌行（标题 / 右上正方形簇：GitHub 横条 + 语言 + 分享）
     CalendarControls.tsx    视图切换(年/月/周) + 今天/上/下（日期融入「今天」按钮）
@@ -117,12 +117,12 @@ export interface Competition {
 - 回退链（必须保持，新增语言时不要破坏）：
   - `localizedName`：具体语言有 `name` → 用；`zh-CN` → 用 `nameZh`；否则 → 英文品牌名 `name`。
   - `localizedDesc / localizedEntry`：具体语言 → 英文 `en` → 原始中文（`description` / `entryType`）。
-- 每个语言文件（`en.ts`、`zhTW.ts` … `ms.ts`）是扁平 `Record<contestId, CompLocalized>`，**每条含 `desc`、`entry`；CJK 语言额外含 `name`**（非 CJK 用英文名作专有名词，符合国际惯例）。当前每个文件 **59 条**，与 `competitions.ts` 的 id 一一对应。
+- 每个语言文件（`en.ts`、`zhTW.ts` … `ms.ts`）是扁平 `Record<contestId, CompLocalized>`，**每条含 `desc`、`entry`；CJK 语言额外含 `name`**（非 CJK 用英文名作专有名词，符合国际惯例）。当前每个文件 **68 条**，与 `competitions.ts` 的 id 一一对应。
 - `CompetitionCard` 通过 `useT().lang` 调用这三个解析器来渲染。
 
 ### 4.3 如何新增一种语言
 1. `translations.ts`：在 `LANGS` 加一项；在 `DICT` 加该语言的全套 UI 文案块；在 `DATE_LOCALE` 加对应 date-fns Locale。
-2. `src/data/i18n/<code>.ts`：新建文件，`Record<id, {name?, desc, entry}>`，**59 条**（CJK 加 `name`）。
+2. `src/data/i18n/<code>.ts`：新建文件，`Record<id, {name?, desc, entry}>`，**68 条**（CJK 加 `name`）。
 3. `content.ts`：import 该文件并加入 `TABLES`。
 4. `typecheck` 必须 0 错误（缺 id 会编译失败）。
 

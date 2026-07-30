@@ -61,4 +61,41 @@ export const comp_ms: Record<string, CompLocalized> = {
   'portrait-of-humanity': { desc: 'Inisiatif fotografi potret anjuran bersama 1854 Media (penerbit British Journal of Photography) dan Magnum Photos, bertema “kemanusiaan yang dikongsi”, dengan 50 karya finalis dipamerkan jelajah global. Edisi 2026 ditutup awal tahun; tarikh edisi 2027 menunggu pengumuman.', entry: 'Jurugambar global (semua peringkat kemahiran)' },
   'nature-photographer-of-the-year-npoty': { desc: 'Pertandingan fotografi alam pan-Eropah anjuran festival fotografi Nature Talks Belanda, dengan kumpulan hadiah €25,000; karya pemenang menjelajah Belanda dan Belgium. Edisi 2026 ditutup 8 Jun; edisi 2027 dijangka Apr–Jun 2027.', entry: 'Jurugambar alam global (profesional dan amatur, semua peringkat umur)' },
   'bw-child-photo-competition': { desc: 'Pertandingan tahunan antarabangsa yang khusus untuk potret kanak-kanak hitam-putih, anjuran platform Child Photo Competition, menekankan ungkapan emosi dan nilai seni imej hitam-putih. Pada 2026 menggunakan pengumpulan bergulir/berpusing; tarikh tutup tepat menunggu pengumuman rasmi.', entry: 'Jurugambar global (karya hitam-putih bertema kanak-kanak)' },
+
+  'leica-lfi-gallery': {
+    desc: 'LFI Gallery ialah platform pameran foto dalam talian rasmi Leica. Pasukan editorial majalah LFI memilih karya terbaik setiap hari; jurugambar pilihan akan dipaparkan dalam ruangan Lightbox majalah LFI, dianugerahkan gelaran Leica Mastershot, dan berpeluang dipamerkan di galeri fizikal Leica.',
+    entry: 'Terbuka kepada pengguna kamera Leica di seluruh dunia (mesti menggunakan badan kamera Leica) yang boleh mendaftar dan memuat naik karya.',
+  },
+  'co-berlin-talent-award': {
+    desc: 'Anugerah bakat fotografi baru yang diperkenalkan oleh Yayasan C/O Berlin sejak 2006, dengan dua kategori iaitu Artist dan Theorist. Pemenang menerima €5,000, pameran solo di Berlin, dan sebuah monograf yang diterbitkan oleh Spector Books.',
+    entry: 'Jurugambar baru berusia 18–35 tahun (yang menggunakan media fotografi atau berasaskan lensa), perlu menyerahkan karya berdasarkan tema tahunan yang belum pernah dipamerkan sebagai pameran solo di institusi besar atau diterbitkan sebagai monograf.',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    desc: 'Anugerah ini dianugerahkan bersama oleh The Photographers’ Gallery di London dan Yayasan Fotografi Deutsche Börse, mengiktiraf setiap tahun artis yang memberikan sumbangan paling ketara kepada fotografi kontemporari Eropah sepanjang 12 bulan lalu. Pemenang menerima £30,000 dan tiga finalis masing-masing menerima £5,000.',
+    entry: 'Hanya melalui pencalonan oleh kurator, pengkritik dan pengarah galeri; tiada penyerahan terbuka. Untuk artis yang telah memberikan sumbangan besar kepada fotografi kontemporari di Eropah melalui pameran atau penerbitan dalam 12 bulan lalu.',
+  },
+  'head-on-photo-awards': {
+    desc: 'Anugerah foto antarabangsa anjuran Head On Foundation Australia, dengan tiga kategori iaitu Potret, Lanskap dan Pendedahan (berita/jalanan/seni). Juara setiap kategori menerima A$5,000 tunai dan set kamera OM System, dengan karya finalis dipamerkan di Head On Photo Festival Sydney. Terkenal dengan penjurian tanpa nama sepenuhnya.',
+    entry: 'Jurugambar seluruh dunia berusia 18 tahun ke atas (di bawah 18 tahun boleh menyertai melalui penjaga); A$35 setiap imej (A$30 awal, "early bird"), A$17.50 untuk bawah 25 tahun, A$25 untuk ahli Head On.',
+  },
+  'tokyo-international-foto-awards': {
+    desc: 'Anugerah fotografi utama Asia-Pasifik yang dianjurkan di Jepun, dengan bahagian Profesional, Bukan profesional dan Pelajar merentasi 11 kategori termasuk pengiklanan, seni bina, alam semula jadi dan manusia. Jurugambar Terbaik Tahun ini menerima $3,000 dan trofi, dengan karya pemenang dipamerkan di Tokyo.',
+    entry: 'Jurugambar profesional, baru muncul dan pelajar di seluruh dunia boleh menyertai; imej tunggal bahagian profesional $20, siri $30, dengan diskaun untuk peserta bukan profesional dan pelajar.',
+  },
+  'w-eugene-smith-grant': {
+    desc: 'Dana fotografi dokumentari kemanusiaan tahunan yang diuruskan oleh W. Eugene Smith Memorial Fund. Pada 2026, geran utama ialah $30,000 dengan dua geran finalis $10,000, menyokong projek dokumentari jangka panjang mengenai perubahan sosial dan keadaan manusia. Terbuka kepada jurugambar seluruh dunia berusia 18 tahun ke atas.',
+    entry: 'Jurugambar dokumentari/fotojurnalistik seluruh dunia berusia 18 tahun ke atas (amatur dialu-alukan; pelajar memohon ke kategori pelajar); satu cadangan setiap orang, yuran permohonan $50.',
+  },
+  'henri-cartier-bresson-award': {
+    desc: 'Anugerah dwitahunan (dahulunya HCB Award) yang dianugerahkan oleh Fondation Henri Cartier-Bresson di Paris kepada jurugambar yang mempunyai karya dokumentari matang. Penerima menerima €35,000 untuk menghasilkan pameran solo di Yayasan dan menerbitkan katalog, disokong oleh Fondation d’entreprise Hermès.',
+    entry: 'Terbuka kepada jurugambar matang di seluruh dunia dari sebarang umur yang mempunyai karya dokumentari penting, dan dicalonkan oleh profesional fotografi (pengkritik, kurator, penerbit, dsb.).',
+  },
+  'rencontres-arles-awards': {
+    desc: 'Sistem anugerah tahunan Festival Fotografi Rencontres d’Arles Perancis (ditubuhkan 1970), merangkumi Anugerah Penemuan Yayasan Louis Vuitton (Prix Découverte: hadiah juri €15,000, hadiah orang ramai €5,000) dan Anugerah Buku Pengarang/Sejarah/Foto-Teks (€6,000 setiap satu); karya pemenang dan finalis dipamerkan sepanjang festival.',
+    entry: 'Anugerah Penemuan hanya melalui pencalonan oleh galeri dan pusat seni (artis sendiri tidak boleh menyerahkan); Anugerah Buku terbuka kepada jurugambar/artis profesional seluruh dunia, perlu menyerahkan buku foto yang telah diterbitkan.',
+  },
+  'lensculture-awards': {
+    desc: 'Sistem anugerah antarabangsa tahunan LensCulture (dahulunya Exposure Awards), kini dibahagikan mengikut genre kepada anugerah seni, jalanan, potret dan buku foto. Yang sedang dibuka ialah Anugerah Buku Foto 2026 (tutup 2026-08-12), pemenang mendapat penerbitan dibiayai sepenuhnya dengan Nazraeli Press (bernilai lebih $25,000) dan pameran di Los Angeles.',
+    entry: 'Terbuka kepada jurugambar profesional dan amatur seluruh dunia (berusia 18 tahun ke atas), menyerahkan imej tunggal, siri atau projek buku secara individu atau berkumpulan.',
+  },
 }

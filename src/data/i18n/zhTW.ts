@@ -297,4 +297,50 @@ export const comp_zhTW: Record<string, CompLocalized> = {
     desc: '專注兒童黑白人像的國際年度賽事，由 Child Photo Competition 平台主辦，強調黑白影像的情感表達與藝術性。2026 年採用滾動/分輪徵集，具體截止日期待官方公布。',
     entry: '全球攝影師（以兒童為主題的黑白作品）',
   },
+
+  'leica-lfi-gallery': {
+    name: '徠卡 LFI 線上畫廊',
+    desc: 'LFI Gallery 是徠卡官方線上攝影展示平台，由 LFI 雜誌編輯團隊每日甄選優秀作品，入選者可登上 LFI 雜誌 Lightbox 欄目、獲評 Leica Mastershot，並有機會在徠卡線下展覽中展出。',
+    entry: '全球徠卡相機使用者（須以徠卡機身拍攝）均可註冊並上傳作品',
+  },
+  'co-berlin-talent-award': {
+    name: 'C/O Berlin 攝影人才獎',
+    desc: 'C/O Berlin 基金會自 2006 年起設立的年度新興攝影人才獎，分 Artist 與 Theorist 兩類，獲獎者獲 €5,000 獎金、柏林個展及 Spector Books 出版的專著。',
+    entry: '18–35 歲新興攝影師（使用攝影或鏡頭媒介），須圍繞年度主題提交未在大型機構個展或出版成專著的作品',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    name: '德意志交易所攝影基金會獎',
+    desc: '該獎由倫敦 The Photographers’ Gallery 與德意志交易所攝影基金會聯合頒發，每年獎勵過去 12 個月對歐洲當代攝影貢獻最突出的藝術家，獲獎者獲 £30,000，三位入圍者各獲 £5,000。',
+    entry: '僅限由策展人、評論家與畫廊總監提名，不接受公開投稿；面向過去 12 個月在歐洲透過展覽或出版物對當代攝影作出重大貢獻的藝術家',
+  },
+  'head-on-photo-awards': {
+    name: 'Head On 攝影獎',
+    desc: '由澳洲 Head On Foundation 主辦的國際攝影獎，設肖像、風景、曝光（新聞／街頭／藝術）三類，各類冠軍獲 A$5,000 現金及 OM System 相機套裝，入圍作品於雪梨 Head On Photo Festival 展出。以完全匿名評審著稱。',
+    entry: '全球 18 歲以上攝影師（18 歲以下可由監護人代投）；每幅 A$35（早鳥 A$30），25 歲以下 A$17.50，Head On 會員 A$25',
+  },
+  'tokyo-international-foto-awards': {
+    name: '東京國際攝影獎（TIFA）',
+    desc: '日本主辦的亞太地區重要攝影獎，設專業／非專業／學生組及廣告、建築、自然、人文等 11 個類別，年度攝影師獲 $3,000 及獎盃，獲獎作品在東京展出。',
+    entry: '全球專業、新銳及學生攝影師均可參加；專業組單幅 $20、組照 $30，非專業及學生更優惠',
+  },
+  'w-eugene-smith-grant': {
+    name: 'W. 尤金·史密斯人道主義攝影基金獎',
+    desc: '由 W. Eugene Smith Memorial Fund 管理的年度人道主義紀實攝影基金，2026 年主獎 $30,000 及兩項 $10,000 入圍獎，資助關注社會變革與人類處境的長篇紀實項目。全球 18 歲以上攝影師可申請。',
+    entry: '全球 18 歲以上紀實／新聞攝影師（含業餘，學生須申學生組）；每人限一項提案，$50 申請費',
+  },
+  'henri-cartier-bresson-award': {
+    name: '亨利·卡蒂埃-布列松創作獎（HCB 獎）',
+    desc: '由巴黎亨利·卡蒂埃-布列松基金會頒發的雙年獎（原 HCB Award），授予已有成熟紀實作品的攝影師；獲獎者獲 €35,000 資助，用於在基金會舉辦個展並出版畫冊，由愛馬仕企業基金會贊助。',
+    entry: '面向全球、任何年齡、已有重要紀實作品且由攝影專業人士（評論家、策展人、出版人等）提名的成熟攝影師',
+  },
+  'rencontres-arles-awards': {
+    name: '阿爾勒攝影節獎項',
+    desc: '法國阿爾勒攝影節（1970 年創立）的年度獎項體系，含路易·威登基金會發現獎（Prix Découverte，評審獎 €15,000、公眾獎 €5,000）與作者／歷史／圖文圖書獎（各 €6,000）；獲獎及入圍作品於攝影節期間展出。',
+    entry: '發現獎僅由畫廊、藝術中心等專業機構提名新人（藝術家本人不能投稿）；圖書獎面向全球職業攝影師／藝術家，須提交已出版攝影書',
+  },
+  'lensculture-awards': {
+    name: 'LensCulture 獎項（原 Exposure Awards）',
+    desc: 'LensCulture 的年度國際獎項體系（前身為 Exposure Awards），現以類型分設藝術、街頭、肖像、攝影書等單項獎；當前開放的是 2026 攝影書獎（截止 2026-08-12），獲獎者獲與 Nazraeli Press 全額資助出版（價值逾 $25,000）及洛杉磯展覽。',
+    entry: '面向全球職業與業餘攝影師（18 歲以上），個人或以組合形式提交單幅、組照或圖書項目',
+  },
 }

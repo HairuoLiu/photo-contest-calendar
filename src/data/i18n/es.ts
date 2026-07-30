@@ -61,4 +61,41 @@ export const comp_es: Record<string, CompLocalized> = {
   'portrait-of-humanity': { desc: 'Iniciativa de retrato impulsada conjuntamente por 1854 Media (editora de British Journal of Photography) y Magnum Photos, bajo el tema de la «humanidad compartida», con 50 obras finalistas en gira mundial. La edición 2026 cerró a principios de año; la fecha de la 2027 está por anunciarse.', entry: 'Fotógrafos de todo el mundo (cualquier nivel)' },
   'nature-photographer-of-the-year-npoty': { desc: 'El amplio certamen paneuropeo de fotografía de naturaleza organizado por el festival holandés Nature Talks, con un premio total de €25 000 y las obras ganadoras en gira por Países Bajos y Bélgica. La edición 2026 cerró el 8 de junio; se prevé que la 2027 se celebre entre abril y junio de 2027.', entry: 'Fotógrafos de naturaleza de todo el mundo (profesionales, aficionados y todas las edades)' },
   'bw-child-photo-competition': { desc: 'Certamen anual internacional dedicado al retrato en blanco y negro de niños, organizado por la plataforma Child Photo Competition, que enfatiza la expresión emocional y el arte de la imagen en blanco y negro. En 2026 adopta una convocatoria rotatoria por rondas; la fecha límite exacta está por anunciarse oficialmente.', entry: 'Fotógrafos de todo el mundo (obras en blanco y negro con tema infantil)' },
+
+  'leica-lfi-gallery': {
+    desc: 'LFI Gallery es la plataforma oficial en línea de exhibición fotográfica de Leica. El equipo editorial de la revista LFI selecciona obras destacadas a diario; los fotógrafos seleccionados aparecen en la sección Lightbox de la revista LFI, obtienen el título de Leica Mastershot y tienen la oportunidad de exponer en las galerías físicas de Leica.',
+    entry: 'Abierto a usuarios de cámaras Leica de todo el mundo (deben fotografiar con un cuerpo Leica) que pueden registrarse y subir sus obras.',
+  },
+  'co-berlin-talent-award': {
+    desc: 'Un premio anual para talentos emergentes en fotografía creado por la fundación C/O Berlin en 2006, con dos categorías: Artist y Theorist. Los ganadores reciben 5.000 € en efectivo, una exposición individual en Berlín y una monografía publicada por Spector Books.',
+    entry: 'Fotógrafos emergentes de 18 a 35 años (que trabajen con medios fotográficos o basados en lente) que presenten obras sobre un tema anual que no se hayan exhibido antes como exposición individual ni publicado como monografía por instituciones importantes.',
+  },
+  'deutsche-boerse-photography-foundation-prize': {
+    desc: 'Este premio lo otorgan conjuntamente The Photographers Gallery de Londres y la Fundación de Fotografía Deutsche Börse. Cada año honra al artista que ha realizado la contribución más destacada a la fotografía contemporánea europea en los últimos 12 meses. El ganador recibe 30.000 £ y tres finalistas reciben 5.000 £ cada uno.',
+    entry: 'Solo por nominación de curadores, críticos y directores de galería; no se aceptan presentaciones abiertas. Dirigido a artistas que hayan realizado una contribución importante a la fotografía contemporánea en Europa mediante exposiciones o publicaciones en los últimos 12 meses.',
+  },
+  'head-on-photo-awards': {
+    desc: 'Un premio internacional de fotografía organizado por la Head On Foundation de Australia, con tres categorías: retrato, paisaje y exposición (noticias, calle y arte). El ganador de cada categoría gana 5.000 A$ en efectivo y un kit de cámara OM System, y las obras finalistas se exhiben en el Head On Photo Festival de Sídney. Es conocido por su jurado totalmente anónimo.',
+    entry: 'Fotógrafos de todo el mundo mayores de 18 años (los menores de 18 pueden participar por medio de un tutor); 35 A$ por imagen (30 A$ en inscripción anticipada), 17,50 A$ para menores de 25, 25 A$ para miembros de Head On.',
+  },
+  'tokyo-international-foto-awards': {
+    desc: 'Un premio fotográfico importante de la región de Asia y el Pacífico con sede en Japón, con divisiones profesional, no profesional y estudiantil en 11 categorías como publicidad, arquitectura, naturaleza y personas. El Fotógrafo del Año recibe 3.000 $ y un trofeo, y las obras ganadoras se exhiben en Tokio.',
+    entry: 'Fotógrafos profesionales, emergentes y estudiantes de todo el mundo pueden participar; en la categoría profesional 20 $ por imagen individual y 30 $ por serie, con descuentos para participantes no profesionales y estudiantes.',
+  },
+  'w-eugene-smith-grant': {
+    desc: 'Una beca anual de fotografía documental humanitaria gestionada por el W. Eugene Smith Memorial Fund. En 2026 la beca principal es de 30.000 $ con dos becas para finalistas de 10.000 $ cada una, que apoyan proyectos documentales de largo aliento sobre el cambio social y la condición humana. Abierta a fotógrafos de todo el mundo mayores de 18 años.',
+    entry: 'Fotógrafos documentales o periodísticos de todo el mundo mayores de 18 años (se aceptan aficionados; los estudiantes deben postular a la categoría estudiantil); una propuesta por persona, con una cuota de 50 $.',
+  },
+  'henri-cartier-bresson-award': {
+    desc: 'Un premio bienal (antes HCB Award) otorgado por la Fondation Henri Cartier-Bresson de París a un fotógrafo con una obra documental madura. El galardonado recibe 35.000 € para realizar una exposición individual en la Fundación y publicar un catálogo, con el patrocinio de la Fondation Hermès.',
+    entry: 'Abierto a fotógrafos maduros de todo el mundo, de cualquier edad, con una obra documental importante, nominados por profesionales de la fotografía (críticos, curadores, editores, etc.).',
+  },
+  'rencontres-arles-awards': {
+    desc: 'El programa anual de premios del festival de fotografía Rencontres de Arles (fundado en 1970), que incluye el Premio al Descubrimiento de la Fundación Louis Vuitton (Prix Découverte: 15.000 € del jurado, 5.000 € del público) y los premios de libro Autor, Histórico y Fototexto (6.000 € cada uno). Las obras ganadoras y finalistas se exhiben durante el festival.',
+    entry: 'El Premio al Descubrimiento es solo por nominación de galerías y centros de arte (el artista no puede postularse por sí mismo); los premios de libro están abiertos a fotógrafos y artistas profesionales de todo el mundo que deben presentar un libro de fotografía ya publicado.',
+  },
+  'lensculture-awards': {
+    desc: 'El sistema anual de premios internacionales de LensCulture (antes Exposure Awards), ahora dividido por género en categorías como arte, calle, retrato y libro de fotografía. El abierto actualmente es el Premio de Libro de Fotografía 2026 (cierre el 2026-08-12), que ofrece la publicación totalmente financiada con Nazraeli Press (valorada en más de 25.000 $) y una exposición en Los Ángeles.',
+    entry: 'Abierto a fotógrafos profesionales y aficionados de todo el mundo (mayores de 18 años) que presenten imágenes individuales, series o proyectos de libro de forma individual o en grupo.',
+  },
 }

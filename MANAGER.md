@@ -7,7 +7,7 @@
 ---
 
 ## 0. 项目一句话
-开源、无后端、免登录的**摄影比赛截止日历**（年/月/周视图 + 本周/本月截止提醒 + 59 场赛事，16 种语言）。线上：`https://hairuoliu.github.io/photo-contest-calendar/`。推 `main` 即部署。
+开源、无后端、免登录的**摄影比赛截止日历**（年/月/周视图 + 本周/本月截止提醒 + 68 场赛事，16 种语言）。线上：[摄影比赛截止日历](https://hairuoliu.github.io/photo-contest-calendar/)。推 `main` 即部署。
 
 ---
 
@@ -16,7 +16,7 @@
 | 阶段 | Agent 数量 | 类型 / 角色 | 各自做了什么 |
 | --- | --- | --- | --- |
 | A. 初始搭建 | 1（主导 Agent） | modern-webapp 专家 | 从零搭好整个 Vite+React+TS+Tailwind 应用、所有组件、i18n 框架、部署。 |
-| B. 15 语言内容翻译 | **15** | general-purpose，每语言 1 个 | 每个 Agent 独立写出 `src/data/i18n/<lang>.ts`（59 条 `{name?,desc,entry}`）。并行、写不同文件，互不冲突。 |
+| B. 15 语言内容翻译 | **15** | general-purpose，每语言 1 个 | 每个 Agent 独立写出 `src/data/i18n/<lang>.ts`（68 条 `{name?,desc,entry}`）。并行、写不同文件，互不冲突。 |
 | C. 移动端重构 + UX 打磨 | 1（主导）+ 1（评审） | 主导实现；1 个红点 UX 评审 Agent | 主导落实无边框正方形顶栏簇、悬浮主题按钮、日期融入「今天」、footer 提示；1 个红点评审 Agent 给易用性清单，主导落地。 |
 | D. 溢出修复 + 语言重叠审计 + 红点评审#2 | 1（主导）+ **15** + **3** | 主导修复；15 个语言重叠审计 Agent；3 个红点评审 Agent | 主导修复 WatchlistPanel 横向溢出（`min-w-0`）；**15 个语言 Agent 各审一种语言的文字重叠/溢出**；3 个红点 Agent 分维度评审（风格化 / 红点标准 / 跨设备兼容）。 |
 | **合计** | **约 36 次 Agent 调用** | | 翻译 15 + 重叠审计 15 + 红点评审 1+3=4 + 主导若干。 |
@@ -77,7 +77,7 @@
 
 1. 先读 `README.md` → `README.dev.md` → 本文件 → 源码。
 2. `npm install` → `npm run typecheck`（**必须 0 错误**）→ `npm run build`（`dist/` + `404.html` 再生）。
-3. **改内容**：编辑 `competitions.ts`；**加语言**：扩 `LANGS`+`DICT` + 新建 `src/data/i18n/<code>.ts`（59 条）+ `content.ts` 的 import 与 `TABLES`。
+3. **改内容**：编辑 `competitions.ts`；**加语言**：扩 `LANGS`+`DICT` + 新建 `src/data/i18n/<code>.ts`（68 条）+ `content.ts` 的 import 与 `TABLES`。
 4. **部署**：推 `main` → GitHub Actions 构建并发布；随后验证线上 URL。
 5. **产品/UX 拿不准时**：给出 2–3 个方案让用户选，**不要替用户猜**。
 6. 提交用约定式 commit；`main` 即部署分支。
